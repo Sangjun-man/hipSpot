@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 export const MapLayout = styled("div")`
-  position: fixed;
   max-width: 1200px;
   height: 100%;
   width: 100%;
