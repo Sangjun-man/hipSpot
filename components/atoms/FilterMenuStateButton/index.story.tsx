@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ModalStateButton from ".";
 
 export default {
-  title: "Atoms / Button / ModalStateButton",
+  title: "Atoms / Button / FilterMenuStateButton",
   component: ModalStateButton,
 } as ComponentMeta<typeof ModalStateButton>;
 

@@ -1,7 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
-  console.log(process.env.NEXT_PUBLIC_NAVER_ID);
   return (
     <Html>
       <Head>

@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-interface FilterButton {
-  children: React.ReactChildren | string;
-  onClick: () => void;
+interface FilterButtonProps {
+  children: React.ReactNode | string;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const FilterButton = ({ children, onClick }: FilterButton) => {
+const FilterButton = ({ children }: FilterButtonProps) => {
   return <StyledFilterButton>{children}</StyledFilterButton>;
 };
 

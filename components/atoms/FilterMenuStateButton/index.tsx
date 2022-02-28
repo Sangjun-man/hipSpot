@@ -2,21 +2,22 @@ import React from "react";
 import styled from "@emotion/styled";
 import { IoIosArrowUp, IoMdReorder } from "react-icons/io";
 
-interface ModalStateButton {
+interface FilterMenuStateButtonProps {
   opened: boolean;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const ModalStateButton = ({ opened }: ModalStateButton) => {
+const FilterMenuStateButton = ({ opened }: FilterMenuStateButtonProps) => {
   return (
-    <StyledModalStateButton>
+    <StyledFilterMenuStateButton>
       {opened ? <IoIosArrowUp /> : <IoMdReorder />}
-    </StyledModalStateButton>
+    </StyledFilterMenuStateButton>
   );
 };
 
-export default ModalStateButton;
+export default FilterMenuStateButton;
 
-const StyledModalStateButton = styled.button`
+const StyledFilterMenuStateButton = styled.button`
   border-radius: 10px;
   background-color: #ffffff;
   display: flex;
