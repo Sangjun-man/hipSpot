@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-interface CardLayoutProps {
+export interface CardWrapperProps {
   children: React.ReactNode;
 }
 
-const CardLayout = ({ children }: CardLayoutProps) => {
-  return <CardWrapper>{children}</CardWrapper>;
+const CardWrapper = ({ children }: CardWrapperProps) => {
+  return <StyledCardWrapper>{children}</StyledCardWrapper>;
 };
 
-export default CardLayout;
-const CardWrapper = styled.div`
+export default CardWrapper;
+const StyledCardWrapper = styled.div`
   width: 340px;
   height: 120px;
   border-radius: 20px;

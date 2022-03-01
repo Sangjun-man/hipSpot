@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-interface PlaceInfoContentCssProps {
+export interface PlaceInfoContentCssProps {
   fontSize?: number | string;
 }
-interface PlaceInfoContentProps extends PlaceInfoContentCssProps {
+export interface PlaceInfoContentProps extends PlaceInfoContentCssProps {
   title: string;
 }
 

@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import React from "react";
 
-interface CardLabelProps {
+export interface CardLabelProps {
   placeType: string;
   distance: number;
   placeName: string;
@@ -32,7 +32,6 @@ const CardLabel = ({
 export default CardLabel;
 
 const CardLabelWrapper = styled.div`
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;

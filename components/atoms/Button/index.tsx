@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import { buttonTheme, buttonType } from "../../../commons/styles/theme";
 
-interface ButtonProps {
+export interface ButtonProps {
   children: React.ReactNode;
   theme?: buttonType;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;

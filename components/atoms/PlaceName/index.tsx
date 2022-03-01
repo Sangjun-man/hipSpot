@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 
-interface PlaceNameCssProps {
+export interface PlaceNameCssProps {
   fontSize?: number | string;
   color?: string;
 }
-interface PlaceNameProps extends PlaceNameCssProps {
+export interface PlaceNameProps extends PlaceNameCssProps {
   name: string;
 }
 

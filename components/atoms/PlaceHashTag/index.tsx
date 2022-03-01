@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-interface PlaceHashTagCssProps {
+export interface PlaceHashTagCssProps {
   fontSize?: number | string;
   color?: string;
 }
-interface PlaceHashTagProps extends PlaceHashTagCssProps {
+export interface PlaceHashTagProps extends PlaceHashTagCssProps {
   hashTag: string[];
 }
 

@@ -1,14 +1,14 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CardLayout from ".";
+import CardWrapper from ".";
 
 export default {
   title: " Atoms / Card / Layout",
-  component: CardLayout,
-} as ComponentMeta<typeof CardLayout>;
+  component: CardWrapper,
+} as ComponentMeta<typeof CardWrapper>;
 
-const Template: ComponentStory<typeof CardLayout> = (args) => (
-  <CardLayout {...args} />
+const Template: ComponentStory<typeof CardWrapper> = (args) => (
+  <CardWrapper {...args} />
 );
 
 export const Layout = Template.bind({});
