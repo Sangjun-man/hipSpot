@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import { useEffect } from "react";
-import { MapLayout } from "../components/layouts/MapLayout";
-import Map from "../components/Map";
+import Button from "../components/atoms/Button";
+import { MainLayout } from "../components/Templates/MainLayout";
+import { MapLayout } from "../components/Templates/MapLayout";
 
 const Main: NextPage = () => {
   useEffect(() => {
@@ -9,9 +10,9 @@ const Main: NextPage = () => {
   });
 
   return (
-    <MapLayout>
-      <Map />
-    </MapLayout>
+    <div>
+      <Button>dfasdf</Button>
+    </div>
   );
 };
 
