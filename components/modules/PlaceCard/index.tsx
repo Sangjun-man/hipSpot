@@ -3,16 +3,16 @@ import CardLabel, { CardLabelProps } from "../../atoms/Card/CardLabel";
 import CardWrapper from "../../atoms/Card/CardWrapper";
 import ImageComp, { ImageProps } from "../../atoms/ImageComp";
 
-interface PlaceInfoCardProps extends CardLabelProps, ImageProps {}
+interface PlaceCardProps extends CardLabelProps, ImageProps {}
 
-const PlaceInfoCard = ({
+const PlaceCard = ({
   src,
   alt,
   placeType,
   distance,
   placeName,
   description,
-}: PlaceInfoCardProps) => {
+}: PlaceCardProps) => {
   return (
     <CardWrapper>
       <ImageComp src={src} alt={alt}></ImageComp>
@@ -26,4 +26,4 @@ const PlaceInfoCard = ({
   );
 };
 
-export default PlaceInfoCard;
+export default PlaceCard;

@@ -1,24 +1,22 @@
 import React from "react";
 import FilterButton, { FilterButtonProps } from "../../atoms/FilterButton";
+import FilterButtonListWrapper from "../../atoms/FIlterButtonListWrapper";
 import FilterMenuStateButton, {
   FilterMenuStateButtonProps,
 } from "../../atoms/FilterMenuStateButton";
 
-import ModalHeader from "../../atoms/Modal/ModalHeader";
 interface FilterButtonListProps {
   filterList: string[];
 }
 
 const FilterButtonList = ({ filterList }: FilterButtonListProps) => {
-  const filteringList = ["heelll", "lllloooww", "teeee ", "ssstt"];
-
   return (
-    <ModalHeader>
+    <FilterButtonListWrapper>
       <FilterMenuStateButton opened={false} />
-      {filteringList.map((filtering, i) => (
+      {filterList.map((filtering, i) => (
         <FilterButton key={i}>{filtering}</FilterButton>
       ))}
-    </ModalHeader>
+    </FilterButtonListWrapper>
   );
 };
 

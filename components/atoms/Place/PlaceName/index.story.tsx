@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import PlaceName from ".";
 
 export default {
-  title: " Atoms / PlaceName",
+  title: " Atoms / Place / PlaceName",
   component: PlaceName,
 } as ComponentMeta<typeof PlaceName>;
 

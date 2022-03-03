@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import PlaceHashTag from ".";
 
 export default {
-  title: " Atoms / PlaceHashTag",
+  title: " Atoms / Place / PlaceHashTag",
   component: PlaceHashTag,
 } as ComponentMeta<typeof PlaceHashTag>;
 

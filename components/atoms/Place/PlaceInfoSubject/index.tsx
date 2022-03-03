@@ -4,17 +4,20 @@ import React from "react";
 export interface PlaceInfoTitleCssProps {
   fontSize?: number | string;
 }
-export interface PlaceInfoTitleProps extends PlaceInfoTitleCssProps {
+export interface PlaceInfoSubjectProps extends PlaceInfoTitleCssProps {
   title: string;
 }
 
-const PlaceInfoTitle = ({ fontSize = 0.875, title }: PlaceInfoTitleProps) => {
+const PlaceInfoSubject = ({
+  fontSize = 0.875,
+  title,
+}: PlaceInfoSubjectProps) => {
   return (
     <StyledPlaceInfoTitle fontSize={fontSize}>{title}</StyledPlaceInfoTitle>
   );
 };
 
-export default PlaceInfoTitle;
+export default PlaceInfoSubject;
 
 const StyledPlaceInfoTitle = styled.div<PlaceInfoTitleCssProps>`
   font-weight: 800;

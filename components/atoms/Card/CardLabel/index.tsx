@@ -36,8 +36,10 @@ const CardLabelWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 180px;
+  max-width: 240px;
   padding: 1rem;
+  box-sizing: border-box;
+  margin: auto;
 `;
 const PlaceType = styled.div`
   font-weight: 600;

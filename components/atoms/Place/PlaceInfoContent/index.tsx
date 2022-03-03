@@ -5,15 +5,17 @@ export interface PlaceInfoContentCssProps {
   fontSize?: number | string;
 }
 export interface PlaceInfoContentProps extends PlaceInfoContentCssProps {
-  title: string;
+  content: string;
 }
 
 const PlaceInfoContent = ({
   fontSize = 0.75,
-  title,
+  content,
 }: PlaceInfoContentProps) => {
   return (
-    <StyledPlaceInfoContent fontSize={fontSize}>{title}</StyledPlaceInfoContent>
+    <StyledPlaceInfoContent fontSize={fontSize}>
+      {content}
+    </StyledPlaceInfoContent>
   );
 };
 

@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import React, { useEffect } from "react";
 
-const Map = () => {
+const MapComp = () => {
   useEffect(() => {
     const mapOptions = {
       center: new naver.maps.LatLng(37.3595704, 127.105399),
@@ -17,9 +17,9 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default MapComp;
 
 const mapStyle = css`
   width: 100%;
-  height: 400px;
+  height: 100%;
 `;

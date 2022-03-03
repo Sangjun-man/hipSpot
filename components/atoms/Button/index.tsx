@@ -28,4 +28,9 @@ const StyledButton = styled.button`
   color: #ffffff;
   padding: 0.5rem 0.875rem;
   border: 0px;
+  display: flex;
+  align-items: center;
+  & > svg {
+    margin-left: 0.25rem;
+  }
 `;
