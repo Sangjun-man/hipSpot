@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import { buttonTheme, buttonType } from "../../../commons/styles/theme";
 
-interface ButtonProps {
+export interface ButtonProps {
   children: React.ReactNode;
   theme?: buttonType;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
@@ -28,4 +28,9 @@ const StyledButton = styled.button`
   color: #ffffff;
   padding: 0.5rem 0.875rem;
   border: 0px;
+  display: flex;
+  align-items: center;
+  & > svg {
+    margin-left: 0.25rem;
+  }
 `;

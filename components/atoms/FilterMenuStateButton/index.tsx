@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { IoIosArrowUp, IoMdReorder } from "react-icons/io";
 
-interface FilterMenuStateButtonProps {
+export interface FilterMenuStateButtonProps {
   opened: boolean;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }

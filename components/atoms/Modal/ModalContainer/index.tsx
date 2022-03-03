@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-interface ModalContainerProps {
+export interface ModalContainerProps {
   children: React.ReactNode;
 }
 

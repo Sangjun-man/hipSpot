@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import { useEffect } from "react";
-import MainTemplate from "../components/Templates/MainTemplate";
+import InfoWindowTemplate from "../components/Templates/InfoWindowTemplate";
 
 const Main: NextPage = () => {
   useEffect(() => {});
 
-  return <MainTemplate />;
+  return <InfoWindowTemplate />;
 };
 
 export default Main;

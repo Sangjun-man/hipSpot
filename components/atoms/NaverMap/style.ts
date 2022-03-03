@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 
-interface MapWrapper{
+export interface MapWrapper{
     mobile?: Boolean;
 }
 

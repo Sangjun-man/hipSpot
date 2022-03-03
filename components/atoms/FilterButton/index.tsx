@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-interface FilterButtonProps {
+export interface FilterButtonProps {
   children: React.ReactNode | string;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
