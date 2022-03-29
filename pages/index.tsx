@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import { useEffect } from "react";
-import MainTemplate from "../components/Templates/MainTemplate";
+import MainContainer from "../container/modules/Templates/MainContainer";
 
 const Main: NextPage = () => {
   useEffect(() => {});
 
-  return <MainTemplate />;
+  return <MainContainer />;
 };
 
 export default Main;

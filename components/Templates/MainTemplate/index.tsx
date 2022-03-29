@@ -1,8 +1,13 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { FilterState } from "../../../types/type";
 import MapComp from "../../atoms/MapComp";
 import FilterButtonList from "../../modules/FilterButtonList";
 import PlaceCard from "../../modules/PlaceCard";
+
+interface MainTemplateType {
+  filterState: FilterState;
+}
 
 const filterList = [
   "heelll",
@@ -28,7 +33,7 @@ const card = {
   description: ["태릉입구와 먹골역 화랑대역 사이에 있는", "서울 묵동 77-31"],
 };
 
-const MainTemplate = () => {
+const MainTemplate = ({ filterState }: MainTemplateType) => {
   const { src, alt, placeType, distance, placeName, description } = card;
   return (
     <MainLayout>
