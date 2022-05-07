@@ -18,6 +18,7 @@ export const buttonTheme: themeCSSTypes<buttonType> = {
     "secondary": {
         backgroundColor:"rgba(255, 65, 99, 0.85)",
     }
+    
 }
 
 

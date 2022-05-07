@@ -4,6 +4,7 @@ export const placeListAtom = atom({
     key: "atom/placeList",
     default:[],
 });
+
 export const currentMapPlaceList = atom({
     key: "placeList/current",
     default: []
@@ -22,6 +23,11 @@ export const getAllPlaceList = selector({
             return response;
         })
     },
+})
+
+export const isPlaceCardOpenAtom = atom<boolean>({
+    key: 'isPlaceCardOpenAtom',
+    default: false
 })
 
 

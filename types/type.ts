@@ -5,4 +5,19 @@ export type themeCSSTypes<theme extends string> = {
 
 
 
-export type FilterState = {categories:Array<String>, items:Array<String>}
+export type FilterList = {
+    categories: string[],
+    items: string[],
+    id?: string
+};
+
+
+export type ActiveFilterState = {
+    placeType: string;
+    name: string,
+    selected: boolean,
+}
+
+export type ActiveFilterList =  Array<ActiveFilterState>
+
+

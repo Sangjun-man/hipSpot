@@ -1,28 +1,18 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { FilterState } from "../../../types/type";
 import MapComp from "../../atoms/MapComp";
 import FilterButtonList from "../../modules/FilterButtonList";
+import FilterListWindow from "../FilterListWindowTemplate";
 import PlaceCard from "../../modules/PlaceCard";
+import FilterListWindowTemplate from "../FilterListWindowTemplate";
+import FilterListWindowTemplateContainer from "../../../container/Templates/FilterListWindowTemplateContainer";
+import { ActiveFilterList, ActiveFilterState } from "../../../types/type";
 
 interface MainTemplateType {
-  filterState: FilterState;
+  activeFilterList: ActiveFilterList;
+  // isPlaceCardOpen: boolean;
+  isFilterListOpen: boolean;
 }
-
-const filterList = [
-  "heelll",
-  "lllloooww",
-  "teeee ",
-  "ssstt",
-  "heelll",
-  "lllloooww",
-  "teeee ",
-  "ssstt",
-  "heelll",
-  "lllloooww",
-  "teeee ",
-  "ssstt",
-];
 
 const card = {
   src: "/image/testImg.png",
@@ -33,12 +23,21 @@ const card = {
   description: ["태릉입구와 먹골역 화랑대역 사이에 있는", "서울 묵동 77-31"],
 };
 
-const MainTemplate = ({ filterState }: MainTemplateType) => {
+const MainTemplate = ({
+  isFilterListOpen,
+  activeFilterList,
+}: MainTemplateType) => {
   const { src, alt, placeType, distance, placeName, description } = card;
   return (
     <MainLayout>
       <MapComp />
-      <FilterButtonList filterList={filterList} />
+      <FilterButtonList
+        isFilterListOpen={isFilterListOpen}
+        filterArray={activeFilterList}
+        displayActive={true}
+      />
+      <FilterListWindowTemplateContainer />
+
       <PlaceCard
         src={src}
         alt={alt}

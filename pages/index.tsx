@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useEffect } from "react";
-import MainContainer from "../container/modules/Templates/MainContainer";
+import MainContainer from "../container/Templates/MainTemplateContainer";
 
 const Main: NextPage = () => {
   useEffect(() => {});
