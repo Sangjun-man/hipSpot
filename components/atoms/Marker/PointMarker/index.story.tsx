@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import PointMarker from ".";
+import { PointMarker } from ".";
 
 export default {
   title: "Atoms / Marker / PointMarker",

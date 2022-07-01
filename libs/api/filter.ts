@@ -1,5 +1,5 @@
 export const getFilterList = async () => {
-       const url = "api/filter"
+       const url = "/api/filter"
        const option = {
         method: "GET",
        };

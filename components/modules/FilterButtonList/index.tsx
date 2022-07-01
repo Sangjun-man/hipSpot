@@ -1,4 +1,7 @@
 import React from "react";
+import { useRecoilState } from "recoil";
+import { activeFilterListSelector } from "../../../states/filter/filter";
+import { ActiveFilterList } from "../../../types/type";
 import FilterButton, { FilterButtonProps } from "../../atoms/FilterButton";
 import FilterButtonListWrapper from "../../atoms/FIlterButtonListWrapper";
 import FilterMenuStateButton, {
@@ -6,16 +9,51 @@ import FilterMenuStateButton, {
 } from "../../atoms/FilterMenuStateButton";
 
 interface FilterButtonListProps {
-  filterList: string[];
+  filterArray: ActiveFilterList;
+  isFilterListOpen?: boolean;
+  displayActive?: boolean;
+  // onClick?: () => void;
 }
 
-const FilterButtonList = ({ filterList }: FilterButtonListProps) => {
+const FilterButtonList = ({
+  filterArray,
+  isFilterListOpen,
+  displayActive = false,
+}: // onClick,
+FilterButtonListProps) => {
+  const [activeFilterList, setActiveFilterList] = useRecoilState(
+    activeFilterListSelector
+  );
+
+  const onClick = (name: string) => setActiveFilterList(name);
+
   return (
     <FilterButtonListWrapper>
-      <FilterMenuStateButton opened={false} />
-      {filterList.map((filtering, i) => (
-        <FilterButton key={i}>{filtering}</FilterButton>
-      ))}
+      {typeof isFilterListOpen === "boolean" ? (
+        <FilterMenuStateButton opened={isFilterListOpen} />
+      ) : (
+        <></>
+      )}
+
+      {displayActive
+        ? filterArray.map((filtering, i) =>
+            filtering.selected === true ? (
+              <FilterButton
+                key={i}
+                selected={filtering.selected}
+                onClick={() => onClick(filtering.name)}>
+                {filtering.name}
+              </FilterButton>
+            ) : null
+          )
+        : filterArray.map((filtering, i) => (
+            <FilterButton
+              key={i}
+              selected={filtering.selected}
+              onClick={() => onClick(filtering.name)}>
+              {filtering.name}
+            </FilterButton>
+          ))}
     </FilterButtonListWrapper>
   );
 };

@@ -11,15 +11,22 @@ const MapComp = () => {
   });
 
   return (
-    <>
-      <div id="map" css={mapStyle}></div>
-    </>
+    <div css={mapStyle}>
+      <div
+        id="map"
+        css={css`
+          width: 100%;
+          height: 100%;
+        `}
+      />
+    </div>
   );
 };
 
 export default MapComp;
 
 const mapStyle = css`
+  position: fixed;
   width: 100%;
   height: 100%;
 `;

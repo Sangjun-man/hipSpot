@@ -1,15 +1,23 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { IoIosArrowUp, IoMdReorder } from "react-icons/io";
+import { useRecoilState } from "recoil";
+import { isFilterListOpenAtom } from "../../../states/filter/filter";
 
 export interface FilterMenuStateButtonProps {
   opened: boolean;
-  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+  // onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const FilterMenuStateButton = ({ opened }: FilterMenuStateButtonProps) => {
+  const [isFilterListOpen, setIsFilterListOpen] =
+    useRecoilState(isFilterListOpenAtom);
+  const onMenuButtonClick = () => {
+    setIsFilterListOpen(!isFilterListOpen);
+  };
+
   return (
-    <StyledFilterMenuStateButton>
+    <StyledFilterMenuStateButton onClick={onMenuButtonClick}>
       {opened ? <IoIosArrowUp /> : <IoMdReorder />}
     </StyledFilterMenuStateButton>
   );

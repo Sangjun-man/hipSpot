@@ -15,7 +15,7 @@ const FilterButtonListWrapper = ({
 
 export default FilterButtonListWrapper;
 const StyledFilterButtonListWrapper = styled.div`
-  position: fixed;
+  position: relative;
   top: 0;
   z-index: 1;
   width: 100%;

@@ -13,4 +13,7 @@ const Template: ComponentStory<typeof FilterButtonList> = (args) => (
 
 export const FirstStory = Template.bind({});
 
-FirstStory.args = {};
+FirstStory.args = {
+  isFilterListOpen: false,
+  filterArray: ["a", "b", "c"],
+};

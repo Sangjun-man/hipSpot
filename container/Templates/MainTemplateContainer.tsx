@@ -34,7 +34,7 @@ const MainContainer = () => {
     const fetchData = async () => {
       const res: FilterList = await getFilterList();
       const { categories, items } = res;
-      setFilterList({ categories, items });
+      // setFilterList({ categories, items });
     };
 
     const mainContainerInit = async () => {

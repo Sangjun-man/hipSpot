@@ -3,18 +3,23 @@ import React from "react";
 
 export interface FilterButtonProps {
   children: React.ReactNode | string;
+  selected?: boolean;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const FilterButton = ({ children }: FilterButtonProps) => {
-  return <StyledFilterButton>{children}</StyledFilterButton>;
+const FilterButton = ({ children, selected, onClick }: FilterButtonProps) => {
+  return (
+    <StyledFilterButton onClick={onClick} selected={selected}>
+      {children}
+    </StyledFilterButton>
+  );
 };
 
 export default FilterButton;
 
-const StyledFilterButton = styled.button`
+const StyledFilterButton = styled.button<FilterButtonProps>`
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: ${(props) => (props.selected ? `#ffbcbc` : `#ffffff`)};
   display: flex;
   justify-content: center;
   align-items: center;
