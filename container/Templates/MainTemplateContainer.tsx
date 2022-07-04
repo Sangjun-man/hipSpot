@@ -13,6 +13,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { filterListToActiveList } from "../../libs/states/filterListToActivrList";
 import { getAllPlaceList } from "../../libs/api/place";
 import { getGeocode } from "../../libs/api/map";
+import { Place } from "../../types/place";
+import { placeListAtom } from "../../states/place/place";
 
 const MainContainer = () => {
   //main container의 useEffect 먼저 체크
@@ -24,6 +26,7 @@ const MainContainer = () => {
   const [activeFilterList, setActiveFilterList] = useRecoilState(
     activeFilterListSelector
   );
+  const [placeList, setPlaceList] = useRecoilState<Array<Place>>(placeListAtom);
   const categories = useRecoilValue(
     placeTypeActiveFilterListSelector("categories")
   );
@@ -32,21 +35,16 @@ const MainContainer = () => {
   // map 관련 state
   useEffect(() => {
     const fetchData = async () => {
-      const res: FilterList = await getFilterList();
-      const { categories, items } = res;
-      // setFilterList({ categories, items });
+      const filterList: FilterList = await getFilterList();
+      const { categories, items } = filterList;
+      setFilterList({ categories, items });
+      const placeList: Array<Place> = await getAllPlaceList();
+      setPlaceList(placeList);
     };
 
     const mainContainerInit = async () => {
       await fetchData();
-      await (async () => {
-        const place = await getAllPlaceList();
-        console.log(place);
-      })();
-      await (async () => {
-        const place = await getGeocode();
-        console.log(place);
-      })();
+      await (async () => {})();
       await (async () => {
         setIsinit(true);
       })();
@@ -54,12 +52,17 @@ const MainContainer = () => {
     mainContainerInit();
   }, []);
 
-  return (
-    <MainTemplate
-      activeFilterList={activeFilterList}
-      isFilterListOpen={isFilterListOpen}
-    />
-  );
+  if (!isInit) {
+    return <div></div>;
+  }
+  if (isInit) {
+    return (
+      <MainTemplate
+        activeFilterList={activeFilterList}
+        isFilterListOpen={isFilterListOpen}
+      />
+    );
+  }
 };
 
 export default MainContainer;

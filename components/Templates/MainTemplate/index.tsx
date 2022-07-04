@@ -31,7 +31,7 @@ const MainTemplate = ({
   const { src, alt, placeType, distance, placeName, description } = card;
   return (
     <MainLayout>
-      <MapComp />
+      <MapContainer />
       <FilterButtonList
         isFilterListOpen={isFilterListOpen}
         filterArray={activeFilterList}

@@ -1,15 +1,15 @@
 export type Place = {
-    id: string;
     placeName: string;
     categories: string[];
     items: string[];
     address: string;
     contactNum: string;
-    instagramId: string;
-    description: string;
-    parking: boolean;
+    instaId: string;
     businessDay: string[];
-    businessTime: string;
+    mapData: { lat: number, lng: number, _id: string };
+    naverMapUrl: string;
+    review: number;
+    borderColor: string;
 }
 
 
