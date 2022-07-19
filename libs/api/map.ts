@@ -1,5 +1,5 @@
-export const getGeocode = async () => {
-    const url = "api/map/all"
+export const getGeoJson = async () => {
+    const url = "api/map/GeoJson"
     const option = {
      method: "GET",
     };
@@ -7,3 +7,4 @@ export const getGeocode = async () => {
      return response.json();
  });
 }
+

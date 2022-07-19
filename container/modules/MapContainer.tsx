@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import MapComp from "../../components/atoms/MapComp";
+import MapComp from "../../components/atoms/MapComp/mapBoxGl";
 import { markerString } from "../../components/atoms/Marker/PointMarker";
 import { getAllPlaceList } from "../../libs/api/place";
 import { testImg } from "../../public/image/data64/testImg";
-import { markerListSelector } from "../../states/map/map";
+import { geoJsonAtom, markerListSelector } from "../../states/map/map";
 import { placeListAtom } from "../../states/place/place";
 import { Place } from "../../types/place";
 
@@ -17,7 +17,12 @@ export type MarkerState = {
 
 const MapContainer = () => {
   const markerList = useRecoilValue(markerListSelector);
-  return <MapComp markerList={markerList} />;
+  const geoJson = useRecoilValue(geoJsonAtom);
+  let placeListGeoJson;
+  useEffect(() => {
+    console.log(geoJson);
+  });
+  return <MapComp markerList={markerList} placeListGeoJson={geoJson} />;
 };
 
 export default MapContainer;

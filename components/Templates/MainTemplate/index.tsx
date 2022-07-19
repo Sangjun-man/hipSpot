@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import MapContainer from "../../../container/modules/MapContainer";
-import MapComp from "../../atoms/MapComp";
+import MapComp from "../../atoms/MapComp/naverMap";
 import FilterButtonList from "../../modules/FilterButtonList";
 import FilterListWindow from "../FilterListWindowTemplate";
 import PlaceCard from "../../modules/PlaceCard";
@@ -39,14 +39,14 @@ const MainTemplate = ({
       />
       <FilterListWindowTemplateContainer />
 
-      <PlaceCard
+      {/* <PlaceCard
         src={src}
         alt={alt}
         placeType={placeType}
         placeName={placeName}
         distance={distance}
         description={description}
-      />
+      /> */}
     </MainLayout>
   );
 };

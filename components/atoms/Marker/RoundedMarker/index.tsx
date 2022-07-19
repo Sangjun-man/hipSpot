@@ -14,7 +14,7 @@ export interface MarkerProps {
 const RoundedMarker = ({
   src,
   alt,
-  borderColor = "#000000",
+  borderColor = "#706f6f",
   width = 60,
   height = 60,
 }: MarkerProps) => {

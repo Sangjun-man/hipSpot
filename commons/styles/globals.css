@@ -18,3 +18,19 @@ body {
 * {
   box-sizing: border-box;
 }
+
+
+.mapgl-marker-animation {
+  animation: fadein .35s;
+  -moz-animation: fadein .35s; /* Firefox */
+  -webkit-animation: fadein .35s; /* Safari and Chrome */
+  -o-animation: fadein .35s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

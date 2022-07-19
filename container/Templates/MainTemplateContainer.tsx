@@ -12,9 +12,10 @@ import { FilterList } from "../../types/type";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { filterListToActiveList } from "../../libs/states/filterListToActivrList";
 import { getAllPlaceList } from "../../libs/api/place";
-import { getGeocode } from "../../libs/api/map";
+import { getGeoJson } from "../../libs/api/map";
 import { Place } from "../../types/place";
 import { placeListAtom } from "../../states/place/place";
+import { geoJsonAtom } from "../../states/map/map";
 
 const MainContainer = () => {
   //main container의 useEffect 먼저 체크
@@ -27,6 +28,7 @@ const MainContainer = () => {
     activeFilterListSelector
   );
   const [placeList, setPlaceList] = useRecoilState<Array<Place>>(placeListAtom);
+  const [geoJson, setGeoJson] = useRecoilState(geoJsonAtom);
   const categories = useRecoilValue(
     placeTypeActiveFilterListSelector("categories")
   );
@@ -40,6 +42,20 @@ const MainContainer = () => {
       setFilterList({ categories, items });
       const placeList: Array<Place> = await getAllPlaceList();
       setPlaceList(placeList);
+      const geoJson = await getGeoJson();
+      const placeListGeoJson = {
+        type: "FeatureCollection",
+        crs: {
+          type: "name",
+          properties: {
+            name: "urn:ogc:def:crs:OGC:1.3:CRS84",
+          },
+        },
+        features: geoJson,
+      };
+      setGeoJson(placeListGeoJson);
+      console.log(geoJson);
+      console.log(placeList);
     };
 
     const mainContainerInit = async () => {
