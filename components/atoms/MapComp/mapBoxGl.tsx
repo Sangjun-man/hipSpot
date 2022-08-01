@@ -1,10 +1,13 @@
 import { css } from "@emotion/react";
 import React, { useEffect } from "react";
 import { testImg } from "../../../public/image/data64/testImg";
-import { markerString, PointMarker } from "../Marker/PointMarker";
-import mapboxgl from "mapbox-gl"; // or "const mapboxgl = require('mapbox-gl');"
+import { PointMarkerString, PointMarker } from "../Marker/PointMarker";
+import mapboxgl, { GeoJSONSource } from "mapbox-gl"; // or "const mapboxgl = require('mapbox-gl');"
 import { clusterLeavesMarker } from "./lib/clusterLeavesInfo";
 import { updateMarkers } from "./lib/updateMarkers";
+import { ClusterMarkerString, RoundedMarker } from "../Marker/ClusterMarker";
+import { renderMarkers } from "./lib/renderMarkers";
+import { removeMarkers } from "./lib/removeMarkers";
 
 export interface MapCompProps {
   markerList: Array<any>;
@@ -61,63 +64,87 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
           sourceId: "placeList",
           clusterLayerId: "placeList_circle",
         });
-
-        // map.addLayer({
-        //   id: "cluster-count",
-        //   type: "symbol",
-        //   source: "placeList",
-        //   filter: ["has", "point_count"],
-        //   layout: {
-        //     "text-field": "{point_count_abbreviated}",
-        //     "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
-        //     "text-size": 12,
-        //   },
-        // });
-        // map.addLayer({
-        //   id: "unclustered-point",
-        //   type: "circle",
-        //   source: "placeList",
-        //   filter: ["!", ["has", "point_count"]],
-        //   paint: {
-        //     "circle-color": "#11b4da",
-        //     "circle-radius": 4,
-        //     "circle-stroke-width": 1,
-        //     "circle-stroke-color": "#fff",
-        //     "circle-translate":[20,-20]
-        //   },
-        // });
+        map.on("click", (e) => {
+          console.log(e.lngLat, e.point);
+        });
       });
-      // map.on("wheel", () => {
-      //   console.log(map.getZoom());
-      // })
-      // objects for caching and keeping track of HTML marker objects (for performance)
-      const markers = {};
-      const markersOnScreen = {};
-      const clusterMarkers = {};
-      const clusterMarkersOnScreen = {};
-      // after the GeoJSON data is loaded, update markers on the screen on every frame
-      map.on("render", async () => {
-        // console.log("render");
 
+      const allPointMarkers = {};
+      const allClusterMarkers = {};
+      const clusterMarkers = {};
+      const markersOnScreen = {};
+      const clusterMarkersOnScreen = {};
+      let source = {};
+
+      map.on("sourcedata", async () => {
         if (!map.isSourceLoaded("placeList")) return;
-        // console.log(
+        source = map.getSource("placeList");
+        const allFeatures = source._data.features;
+        await (async () => {
+          for (const feature of allFeatures) {
+            const coords = feature.geometry.coordinates;
+            const props = feature.properties;
+            const { id, instaId, borderColor } = props;
+            if (!allPointMarkers[id]) {
+              const src = `/images/${instaId}/0.jpg`;
+              const el = document.createElement("div");
+              el.innerHTML = PointMarkerString({ src, borderColor });
+              allPointMarkers[id] = new mapboxgl.Marker({
+                element: el,
+              }).setLngLat(coords);
+            }
+            if (!allClusterMarkers[id]) {
+              const src = `/images/${id}/0.jpg`;
+              const el = document.createElement("div");
+              el.innerHTML = RoundedMarker({ src, borderColor });
+              allClusterMarkers[id] = new mapboxgl.Marker({
+                element: el,
+              }).setLngLat(coords);
+            }
+          }
+        })();
+
+        // await (async () => {
+        //   console.log(allPointMarkers, allClusterMarkers);
+        // })();
+      });
+
+      map.on("render", async () => {
+        if (!map.isSourceLoaded("placeList")) return;
+        if (!allPointMarkers[Object.keys(allPointMarkers).length - 1]) {
+          console.log("allPointMarkers");
+          return;
+        }
+
         const { newMarkers, newClusterMarkers } = await updateMarkers({
           map,
-          markers,
-          markersOnScreen,
+          allPointMarkers,
           clusterMarkers,
+          source,
+        });
+
+        await renderMarkers({
+          map,
+          newMarkers,
+          newClusterMarkers,
+          allPointMarkers,
+          clusterMarkers,
+          markersOnScreen,
           clusterMarkersOnScreen,
         });
-        // );
-        // console.log("updateEnd");
-        const update = async () => {
-          markersOnScreen = { ...newMarkers };
-          clusterMarkersOnScreen = { ...newClusterMarkers };
-        };
-        await update();
-        // await (async () => {
-        //   console.log("renderEnd");
-        // })();
+        await (async () =>
+          console.log(
+            newMarkers,
+            newClusterMarkers,
+            markersOnScreen,
+            clusterMarkersOnScreen
+          ))();
+        await removeMarkers({
+          newMarkers,
+          newClusterMarkers,
+          markersOnScreen,
+          clusterMarkersOnScreen,
+        });
       });
     }
   });

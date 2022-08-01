@@ -5,10 +5,9 @@ export interface MarkerProps {
   scale?: number;
   width?: number;
   height?: number;
-  pinStyle?: boolean;
 }
 
-export const markerString = ({
+export const PointMarkerString = ({
   src = "/images/@4fbhouse/0.jpg",
   alt,
   borderColor = "#000000",
@@ -34,7 +33,7 @@ export const PointMarker = ({
   width = 60,
   height = 60,
 }: MarkerProps) => {
-  const __html = markerString({ src, alt, borderColor, width, height });
+  const __html = PointMarkerString({ src, alt, borderColor, width, height });
 
   return <div dangerouslySetInnerHTML={{ __html: __html }}></div>;
 };

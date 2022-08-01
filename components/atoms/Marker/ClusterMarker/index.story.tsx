@@ -1,15 +1,13 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { PointMarker } from ".";
+import Marker from ".";
 
 export default {
-  title: "Atoms / Marker / PointMarker",
-  component: PointMarker,
-} as ComponentMeta<typeof PointMarker>;
+  title: "Atoms / Marker / RoundedMarker",
+  component: Marker,
+} as ComponentMeta<typeof Marker>;
 
-const Template: ComponentStory<typeof PointMarker> = (args) => (
-  <PointMarker {...args} />
-);
+const Template: ComponentStory<typeof Marker> = (args) => <Marker {...args} />;
 
 export const Defalut = Template.bind({});
 

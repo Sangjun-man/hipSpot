@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import MapComp from "../../components/atoms/MapComp/mapBoxGl";
-import { markerString } from "../../components/atoms/Marker/PointMarker";
+import { PointMarkerString } from "../../components/atoms/Marker/PointMarker";
 import { getAllPlaceList } from "../../libs/api/place";
 import { testImg } from "../../public/image/data64/testImg";
 import { geoJsonAtom, markerListSelector } from "../../states/map/map";

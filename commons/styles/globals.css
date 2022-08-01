@@ -34,3 +34,14 @@ body {
         opacity: 1;
     }
 }
+
+
+
+
+.mapgl-marker-cluster:hover + .cluster-0 {
+  transform : translate(0px, -60px);
+}
+
+.mapgl-marker-cluster:hover + .cluster-1 {
+  transform : translate(0px, +60px);
+}

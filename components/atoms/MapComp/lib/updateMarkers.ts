@@ -1,86 +1,76 @@
-import mapboxgl from "mapbox-gl";
-import { FeatureCollection, Geometry, GeoJsonProperties } from "geojson";
-import { markerString } from "../../Marker/PointMarker";
-// const markers : { [key: string | number]: mapboxgl.Marker }= {};
-// const markersOnScreen : { [key: string | number]: mapboxgl.Marker }= {};
-// const clusterMarkers : { [key: string | number]: mapboxgl.Marker }= {};
-// const clusterMarkersOnScreen : { [key: string | number]: mapboxgl.Marker }= {};
-// , markers, markersOnScreen, clusterMarkers, clusterMarkersOnScreen
-export const updateMarkers = async ({ map  , markers, markersOnScreen, clusterMarkers, clusterMarkersOnScreen}: {
+import mapboxgl, { GeoJSONSource } from "mapbox-gl";
+export const updateMarkers = async ({ map  , allPointMarkers, clusterMarkers,source}: {
   map: mapboxgl.Map
-  markers: { [key: string | number]: mapboxgl.Marker },
-  markersOnScreen: { [key: string | number]: mapboxgl.Marker },
+  allPointMarkers: { [key: string | number]: mapboxgl.Marker },
   clusterMarkers: { [key: string | number]: mapboxgl.Marker },
-  clusterMarkersOnScreen: { [key: string | number]: mapboxgl.Marker },
+  source?: GeoJSONSource;
 }) => {
-  // console.log(markers,markersOnScreen,markers,clusterMarkers,clusterMarkersOnScreen)
-  const newMarkers: { [key: string | number]: mapboxgl.Marker } = {};
-  const newClusterMarkers: { [key: string | number]: mapboxgl.Marker } = {};
+
   const features = map.querySourceFeatures("placeList");
-  for (const feature of features) {
-    const coords = feature.geometry.coordinates;
-    const props = feature.properties;
-    if (!props?.cluster) {
-      //클러스터 안된 마커들 여기서 세팅 가능할듯
-      const id: string = feature.properties?.instaId;
-      // let marker;
-      if (!markers[id]) {
-        const src = `/images/${id}/0.jpg`
-        const el = document.createElement("div");
-        el.innerHTML = markerString({src,borderColor:"#ff00ff"});
-        markers[id] = new mapboxgl.Marker({
-          element: el,
-        }).setLngLat(coords);
+  // console.log(features,allPointMarkers);
+  const featureLoop = async () => {
+    const newMarkers: { [key: string | number]: mapboxgl.Marker } = {};
+    const newClusterMarkers: { [key: string | number]: mapboxgl.Marker } = {};
+    // console.log('feature 조회 시작')
+    for (const feature of features) {
+      // console.log("feature : ",feature)
+      const props = feature.properties;
+      const coord = feature.geometry.coordinates;
+      const { id } = props;
+      const clusterId = props.cluster_id;
+      
+      if (!props?.cluster) {
+        //클러스터 안된 마커들 여기서 세팅, 미리 만들어진 마커들 불러오기
+        newMarkers[id] = allPointMarkers[id];
+        continue
       }
+      else {
+        //클러스팅 된 마커들은 api 써서 만들어야한다
 
-      newMarkers[id] = markers[id];4
 
-      if (!markersOnScreen[id]) {
-        // console.log(marker);
-        // console.log("=]\-[ddId : ", id);
-        markers[id].addTo(map);
-      }
-      continue;
+        const clusterId = props.cluster_id
+        // console.log("cluster? : ", coord, clusterId, clusterMarkers);
+        //없으면 새로 만들고, clusterMarkers객체에 추가
+        if (!clusterMarkers[clusterId]) {
+          clusterMarkers[clusterId] = await addClusterLeaves(map, source, clusterMarkers, { id, clusterId, coord })
+          continue;
+        }
+        //있으면 그냥 넣어주기
+        else {
+          newClusterMarkers[clusterId] = clusterMarkers[clusterId]
+        }
+
+        }
     }
-    const id = props.cluster_id;
-
-    // let marker = clusterMarkers[id];
-    if (!clusterMarkers[id]) {
-      console.log(feature);
-      const el = document.createElement("div");
-      el.innerHTML = markerString({ src: "", borderColor: "#ffffff" });
-      clusterMarkers[id] = new mapboxgl.Marker({
-        element: el,
-      }).setLngLat(coords);
-    }
-
-    newClusterMarkers[id] = clusterMarkers[id];
-
-    if (!clusterMarkersOnScreen[id]) {
-      console.log("addId : ", id);
-      clusterMarkers[id].addTo(map);
-    }
+    return {newMarkers,newClusterMarkers}
   }
-
-  // for every marker we've added previously, remove those that are no longer visible
-  for (const id in markersOnScreen) {
-    // console.log('remove 왜 안돼', id)
-    if (!newMarkers[id]) {
-      // console.log("remove Id : ", id);
-      markersOnScreen[id].remove();
-    }
-  }
-  for (const id in clusterMarkersOnScreen) {
-    if (!newClusterMarkers[id]) {
-      // console.log("remove Id : ", id);
-      clusterMarkersOnScreen[id].remove();
-    }
-  }
-  // console.log(
-  //   "update complete : ", markersOnScreen, clusterMarkersOnScreen, newMarkers, newClusterMarkers)
-  // markersOnScreen = {...newMarkers};
-  // clusterMarkersOnScreen = {...newClusterMarkers};
-  return { newClusterMarkers, newMarkers }
-  
-
+  //비동기처리 해주려고 await 리턴
+  return await featureLoop();
 };
+
+
+
+async function addClusterLeaves(map, source, clusterMarkers, { clusterId, coord }) {
+  // console.log("클러스터 잎들 추가")
+  try {  
+    let marker = clusterMarkers[clusterId];
+    let prom = new Promise((resolve, reject) => {
+      source?.getClusterLeaves(clusterId, 6, 0, (err, aFeatures) => {
+        // console.log(clusterId, aFeatures, coord, clusterMarkers)
+        const el = document.createElement("div");
+        el.innerHTML = `<div>${clusterId}</div>`
+        marker = clusterMarkers[clusterId] = new mapboxgl.Marker({
+          element: el,
+        }).setLngLat(coord);
+        resolve(marker);
+      })
+    })
+    // console.log(marker);
+    return prom.then(marker=>marker);
+  
+  }
+  catch (err) {
+    console.log(err);
+  }  
+}
+
