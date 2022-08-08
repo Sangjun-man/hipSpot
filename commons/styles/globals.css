@@ -18,3 +18,52 @@ body {
 * {
   box-sizing: border-box;
 }
+
+
+.mapgl-marker-animation {
+  animation: fadein .35s;
+  -moz-animation: fadein .35s; /* Firefox */
+  -webkit-animation: fadein .35s; /* Safari and Chrome */
+  -o-animation: fadein .35s; /* Opera */
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.cluster-0 + .cl-active{
+  transform : translate(50%,-100%);
+  z-index:10;
+}
+
+.cluster-1 + .cl-active{
+  transform : translate(100%, 0%);
+  z-index:10;
+}
+
+.cluster-2 + .cl-active{
+  transform :translate(50%,+100%);
+  z-index:10;
+}
+
+.cluster-3 + .cl-active{
+  transform : translate(-50%,+100%);
+  z-index:10;
+}
+
+.cluster-4 + .cl-active{ 
+  transform : translate(-100%, 0%);
+  z-index:10;
+}
+
+.cluster-5 + .cl-active{
+  transform : translate(-50%, -100%);
+  z-index:10;
+
+}

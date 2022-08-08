@@ -1,1 +1,1 @@
-export {default as PopOutArrow} from './PopOutArrow.svg'
+export {default as PopOutArrow} from './popOutArrow.svg'
