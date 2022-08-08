@@ -8,6 +8,8 @@ import { updateMarkers } from "./lib/updateMarkers";
 import { ClusterMarkerString, RoundedMarker } from "../Marker/ClusterMarker";
 import { renderMarkers } from "./lib/renderMarkers";
 import { removeMarkers } from "./lib/removeMarkers";
+import { addClusterMarkerEvents } from "../Marker/ClusterMarker/AddClusterMarkerEvents";
+import { AddPointMarkerEvents } from "../Marker/PointMarker/pointMarkerAddEvents";
 
 export interface MapCompProps {
   markerList: Array<any>;
@@ -86,9 +88,12 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
             const props = feature.properties;
             const { id, instaId, borderColor } = props;
             if (!allPointMarkers[id]) {
-              const src = `/images/${instaId}/0.jpg`;
+              // const src = `/images/${instaId}/0.jpg`;
               const el = document.createElement("div");
-              el.innerHTML = PointMarkerString({ src, borderColor });
+              const marker = document.createElement("div");
+              marker.innerHTML = PointMarkerString({ instaId, borderColor });
+              el.appendChild(marker);
+              AddPointMarkerEvents(el);
               allPointMarkers[id] = new mapboxgl.Marker({
                 element: el,
               }).setLngLat(coords);
@@ -96,7 +101,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
             if (!allClusterMarkers[id]) {
               const src = `/images/${id}/0.jpg`;
               const el = document.createElement("div");
-              el.innerHTML = RoundedMarker({ src, borderColor });
+              el.innerHTML = RoundedMarker(feature);
               allClusterMarkers[id] = new mapboxgl.Marker({
                 element: el,
               }).setLngLat(coords);
@@ -112,7 +117,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
       map.on("render", async () => {
         if (!map.isSourceLoaded("placeList")) return;
         if (!allPointMarkers[Object.keys(allPointMarkers).length - 1]) {
-          console.log("allPointMarkers");
+          // console.log("allPointMarkers");
           return;
         }
 
@@ -132,13 +137,13 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
           markersOnScreen,
           clusterMarkersOnScreen,
         });
-        await (async () =>
-          console.log(
-            newMarkers,
-            newClusterMarkers,
-            markersOnScreen,
-            clusterMarkersOnScreen
-          ))();
+        // await (async () =>
+        //   console.log(
+        //     newMarkers,
+        //     newClusterMarkers,
+        //     markersOnScreen,
+        //     clusterMarkersOnScreen
+        //   ))();
         await removeMarkers({
           newMarkers,
           newClusterMarkers,
