@@ -1,7 +1,7 @@
 export const removeMarkers = async ({ newMarkers, newClusterMarkers, markersOnScreen, clusterMarkersOnScreen }) => {
 
 
-    console.log("마커 업데이트이전 :", newMarkers, markersOnScreen, newClusterMarkers,clusterMarkersOnScreen)
+    // console.log("마커 업데이트이전 :", newMarkers, markersOnScreen, newClusterMarkers,clusterMarkersOnScreen)
     
     for (const id of Object.keys(markersOnScreen)) {
         // console.log(id)

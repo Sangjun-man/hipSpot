@@ -1,4 +1,6 @@
 import mapboxgl, { GeoJSONSource } from "mapbox-gl";
+import {ClusterMarkerSeal, ClusterMarkerString, PointCountBadge, RoundedMarker } from "../../Marker/ClusterMarker";
+import { addClusterMarkerEvents } from "../../Marker/ClusterMarker/AddClusterMarkerEvents";
 export const updateMarkers = async ({ map  , allPointMarkers, clusterMarkers,source}: {
   map: mapboxgl.Map
   allPointMarkers: { [key: string | number]: mapboxgl.Marker },
@@ -17,7 +19,6 @@ export const updateMarkers = async ({ map  , allPointMarkers, clusterMarkers,sou
       const props = feature.properties;
       const coord = feature.geometry.coordinates;
       const { id } = props;
-      const clusterId = props.cluster_id;
       
       if (!props?.cluster) {
         //클러스터 안된 마커들 여기서 세팅, 미리 만들어진 마커들 불러오기
@@ -29,10 +30,12 @@ export const updateMarkers = async ({ map  , allPointMarkers, clusterMarkers,sou
 
 
         const clusterId = props.cluster_id
+        const pointCount = props.point_count
         // console.log("cluster? : ", coord, clusterId, clusterMarkers);
         //없으면 새로 만들고, clusterMarkers객체에 추가
+        
         if (!clusterMarkers[clusterId]) {
-          clusterMarkers[clusterId] = await addClusterLeaves(map, source, clusterMarkers, { id, clusterId, coord })
+          clusterMarkers[clusterId] = await addClusterLeaves( source, clusterMarkers, { id, clusterId, coord,pointCount })
           continue;
         }
         //있으면 그냥 넣어주기
@@ -50,15 +53,14 @@ export const updateMarkers = async ({ map  , allPointMarkers, clusterMarkers,sou
 
 
 
-async function addClusterLeaves(map, source, clusterMarkers, { clusterId, coord }) {
+async function addClusterLeaves(source, clusterMarkers, { clusterId, coord, id, pointCount }) {
   // console.log("클러스터 잎들 추가")
-  try {  
     let marker = clusterMarkers[clusterId];
     let prom = new Promise((resolve, reject) => {
       source?.getClusterLeaves(clusterId, 6, 0, (err, aFeatures) => {
         // console.log(clusterId, aFeatures, coord, clusterMarkers)
-        const el = document.createElement("div");
-        el.innerHTML = `<div>${clusterId}</div>`
+        let el = createClusterMarkerElem(aFeatures,clusterId, pointCount);
+ 
         marker = clusterMarkers[clusterId] = new mapboxgl.Marker({
           element: el,
         }).setLngLat(coord);
@@ -66,11 +68,22 @@ async function addClusterLeaves(map, source, clusterMarkers, { clusterId, coord 
       })
     })
     // console.log(marker);
+
     return prom.then(marker=>marker);
-  
-  }
-  catch (err) {
-    console.log(err);
-  }  
 }
 
+
+
+function createClusterMarkerElem(aFeatures,clusterId, pointCount) :HTMLElement {
+
+
+  const el = document.createElement("div");
+  const markers = document.createElement("div");
+  markers.innerHTML = ClusterMarkerSeal(pointCount, aFeatures.length) + ClusterMarkerString(aFeatures);
+  el.appendChild(markers);
+
+  // el.innerHTML = ClusterMarkerSeal
+  addClusterMarkerEvents(el);
+  return el;
+
+}
