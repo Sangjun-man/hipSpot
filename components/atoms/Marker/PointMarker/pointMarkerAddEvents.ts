@@ -11,8 +11,9 @@ export const AddPointMarkerEvents = (el: HTMLElement) => {
 
 function mouseOverListenerFunction(this: HTMLElement, e: Event) {
   e.preventDefault();
-  const child  = this.firstChild as Element
-  if (this.firstChild) {
+  this.style.zIndex = "10";
+  const child = this.firstElementChild as Element
+  if (this.firstElementChild) {
     child.classList.remove(mouseOut)
     child.classList.add(mouseOver)
   };
@@ -20,8 +21,9 @@ function mouseOverListenerFunction(this: HTMLElement, e: Event) {
 
 function mouseOutListenerFunction(this: HTMLElement, e: Event) {
   e.preventDefault();
-  const child  = this.firstChild as Element
-  if (this.firstChild) {
+  this.style.zIndex = "0";
+   const child  = this.firstElementChild as Element
+  if (this.firstElementChild) {
     child.classList.remove(mouseOver)
     child.classList.add(mouseOut)
   };

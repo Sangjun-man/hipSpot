@@ -25,7 +25,8 @@ export const PointMarkerString = ({
     wrapperStyle: css`
       box-sizing: border-box;
       background-size: cover;
-      transition: 0.5s;
+      width: 60px;
+      height: 68px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -33,6 +34,7 @@ export const PointMarkerString = ({
 
     markerWrapperStyle: css`
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      width: 100%;
     `.styles,
     maskImgWrapperStyle: css`
       position: absolute;
@@ -55,7 +57,7 @@ export const PointMarkerString = ({
     placeNameStyle: css`
       position: absolute;
       text-align: center;
-      transform: translate(30px, -100%);
+      transform: translate(0, -100%);
       white-space: nowrap;
       color: #000000;
       font-weight: 500;
