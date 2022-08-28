@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { themeCSSTypes } from "../../types/type";
+import { themeCSSTypes } from "../types/type";
 declare module "@emotion/react" {
     export interface Theme extends CSSProperties{
     }

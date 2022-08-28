@@ -1,8 +1,9 @@
 import React from "react";
+import InfoWindowTemplate from "../../components/Templates/InfoWindowTemplate";
 import MainTemplate from "../../components/Templates/MainTemplate";
 
 const InfoWindowContainer = () => {
-  // return <MainTemplate />;
+  return <InfoWindowTemplate />;
 };
 
 export default InfoWindowContainer;

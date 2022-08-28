@@ -6,7 +6,7 @@ import {
   filterListAtom,
   filterStateAtom,
   placeTypeActiveFilterListSelector,
-} from "../../states/filter/filter";
+} from "../../libs/states/filter/filter";
 import { getFilterList } from "../../libs/api/filter";
 import { FilterList } from "../../types/type";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -14,8 +14,8 @@ import { filterListToActiveList } from "../../libs/states/filterListToActivrList
 import { getAllPlaceList } from "../../libs/api/place";
 import { getGeoJson } from "../../libs/api/map";
 import { Place } from "../../types/place";
-import { placeListAtom } from "../../states/place/place";
-import { geoJsonAtom } from "../../states/map/map";
+import { placeListAtom } from "../../libs/states/place/place";
+import { geoJsonAtom } from "../../libs/states/map/map";
 
 const MainContainer = () => {
   //main container의 useEffect 먼저 체크

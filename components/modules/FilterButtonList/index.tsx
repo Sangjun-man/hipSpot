@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
-import { activeFilterListSelector } from "../../../states/filter/filter";
-import { ActiveFilterList } from "../../../types/type";
+import { activeFilterListSelector } from "../../../libs/states/filter/filter";
+import { ActiveFilterList } from "../../../libs/types/type";
 import FilterButton, { FilterButtonProps } from "../../atoms/FilterButton";
 import FilterButtonListWrapper from "../../atoms/FIlterButtonListWrapper";
 import FilterMenuStateButton, {
@@ -41,7 +41,8 @@ FilterButtonListProps) => {
               <FilterButton
                 key={i}
                 selected={filtering.selected}
-                onClick={() => onClick(filtering.name)}>
+                onClick={() => onClick(filtering.name)}
+              >
                 {filtering.name}
               </FilterButton>
             ) : null
@@ -50,7 +51,8 @@ FilterButtonListProps) => {
             <FilterButton
               key={i}
               selected={filtering.selected}
-              onClick={() => onClick(filtering.name)}>
+              onClick={() => onClick(filtering.name)}
+            >
               {filtering.name}
             </FilterButton>
           ))}
