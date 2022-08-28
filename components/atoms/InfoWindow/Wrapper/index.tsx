@@ -1,17 +1,17 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-interface PlaceInfoWrapper {
+interface Wrapper {
   children: React.ReactNode;
 }
 
-const PlaceInfoWrapper = ({ children }: PlaceInfoWrapper) => {
-  return <StyledPlaceInfoWrapper>{children}</StyledPlaceInfoWrapper>;
+const Wrapper = ({ children }: Wrapper) => {
+  return <StyledWrapper>{children}</StyledWrapper>;
 };
 
-export default PlaceInfoWrapper;
+export default Wrapper;
 
-const StyledPlaceInfoWrapper = styled.div`
+const StyledWrapper = styled.div`
   position: relative;
   border-left: 4px solid rgba(5, 5, 5, 0.7);
   padding: 0.75rem;
