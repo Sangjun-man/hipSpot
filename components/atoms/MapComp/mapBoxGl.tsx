@@ -8,7 +8,7 @@ import { updateMarkers } from "./lib/updateMarkers";
 import { ClusterMarkerString, RoundedMarker } from "../Marker/ClusterMarker";
 import { renderMarkers } from "./lib/renderMarkers";
 import { removeMarkers } from "./lib/removeMarkers";
-import { addClusterMarkerEvents } from "../Marker/ClusterMarker/AddClusterMarkerEvents";
+import { addClusterMarkerEvents } from "../Marker/ClusterMarker/addClusterMarkerEvents";
 import { AddPointMarkerEvents } from "../Marker/PointMarker/pointMarkerAddEvents";
 
 export interface MapCompProps {
@@ -160,24 +160,15 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
   });
 
   return (
-    <div css={mapStyle}>
-      <div
-        id="map"
-        css={css`
-          width: 100%;
-          max-width: 1200px;
-          height: 100%;
-          position: absolute;
-        `}
-      />
-    </div>
+    <div
+      id="map"
+      css={css`
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      `}
+    />
   );
 };
 
 export default MapComp;
-
-const mapStyle = css`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-`;
