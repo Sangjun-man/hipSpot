@@ -1,9 +1,12 @@
 import { css } from "@emotion/react";
 import React from "react";
 import Button from "../../atoms/Button";
-import { InfoWindowLayout, MainLayout } from "../../layouts";
+import PlaceName from "../../atoms/InfoWindow/Title";
+import ImageSlide from "../../modules/ImageSlide/ImageSlide";
 import InfoWindowContents from "../../modules/InfoWindowContents";
 import InfoWindowTitle from "../../modules/InfoWindowTitle";
+import * as C from "../../atoms/InfoWindow/index";
+import * as S from "./style";
 
 const titleArgs = {
   name: "시몬스 그로서리 스토어",
@@ -18,26 +21,33 @@ const contentsArgs = {
   instagram: "sa_ng_ju_n2",
 };
 
+const imageList = [
+  { src: "/image/testImg.png" },
+  { src: "/image/testImg2.png" },
+  { src: "/image/testImg3.png" },
+  { src: "/image/testImg.png" },
+  { src: "/image/testImg2.png" },
+  { src: "/image/testImg3.png" },
+  { src: "/image/testImg.png" },
+  { src: "/image/testImg2.png" },
+  { src: "/image/testImg3.png" },
+];
+
 const InfoWindowTemplate = () => {
   const { name, hashTag } = titleArgs;
   const { infoList, instagram } = contentsArgs;
-
   return (
-    <MainLayout>
-      <InfoWindowLayout>
-        <InfoWindowTitle name={name} hashTag={hashTag} />
-        <div css={giveBackgroudColor}>
-          <InfoWindowContents infoList={infoList} />
-        </div>
-        <div>인스타들어갈예정</div>
-        <Button theme="secondary">@{instagram}</Button>
-      </InfoWindowLayout>
-    </MainLayout>
+    <S.InfoWindowLayout>
+      <S.InfoWindowWrapper>
+        <C.Title name="상준" />
+        {/* {ImageTabstate && <C.Tab />} */}
+        <ImageSlide imageList={imageList} size={400} />
+        <C.Menu title="menu"></C.Menu>
+        <Button>길찾기</Button>
+        <Button>길찾기</Button>
+      </S.InfoWindowWrapper>
+    </S.InfoWindowLayout>
   );
 };
 
 export default InfoWindowTemplate;
-
-const giveBackgroudColor = css`
-  background-color: rgba(255, 234, 240, 0.12);
-`;

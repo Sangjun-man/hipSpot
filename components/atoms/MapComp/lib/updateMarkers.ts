@@ -1,6 +1,6 @@
 import mapboxgl, { GeoJSONSource } from "mapbox-gl";
 import {ClusterMarkerSeal, ClusterMarkerString, PointCountBadge, RoundedMarker } from "../../Marker/ClusterMarker";
-import { addClusterMarkerEvents } from "../../Marker/ClusterMarker/AddClusterMarkerEvents";
+import { addClusterMarkerEvents } from "../../Marker/ClusterMarker/addClusterMarkerEvents";
 export const updateMarkers = async ({ map  , allPointMarkers, clusterMarkers,source}: {
   map: mapboxgl.Map
   allPointMarkers: { [key: string | number]: mapboxgl.Marker },

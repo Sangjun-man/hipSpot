@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
 import React from "react";
-import { buttonTheme, buttonType } from "../../../commons/styles/theme";
+import { buttonTheme, buttonType } from "../../../libs/styles/theme";
 
 export interface ButtonProps {
   children: React.ReactNode;

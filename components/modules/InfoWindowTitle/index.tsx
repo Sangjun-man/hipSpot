@@ -1,8 +1,6 @@
 import React from "react";
-import PlaceHashTag, {
-  PlaceHashTagProps,
-} from "../../atoms/Place/PlaceHashTag";
-import PlaceName, { PlaceNameProps } from "../../atoms/Place/PlaceName";
+import PlaceHashTag, { PlaceHashTagProps } from "../../atoms/InfoWindow/Tab";
+import PlaceName, { PlaceNameProps } from "../../atoms/InfoWindow/Title";
 
 interface InfoWindowTitleProps extends PlaceHashTagProps, PlaceNameProps {}
 

@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import React from "react";
 import { PopOutArrow } from "../../../public/svg";
 import Button from "../../atoms/Button";
-import PlaceInfoContent from "../../atoms/Place/PlaceInfoContent";
-import PlaceInfoSubject from "../../atoms/Place/PlaceInfoSubject";
-import PlaceInfoWrapper from "../../atoms/Place/PlaceInfoWrapper";
+import PlaceInfoContent from "../../atoms/InfoWindow/Content";
+import PlaceInfoSubject from "../../atoms/InfoWindow/Menu";
+import PlaceInfoWrapper from "../../atoms/InfoWindow/Wrapper";
 import { css } from "@emotion/react";
 
 export interface PlaceInfo {

@@ -1,4 +1,4 @@
-import "../commons/styles/globals.css";
+import "../libs/styles/globals.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";

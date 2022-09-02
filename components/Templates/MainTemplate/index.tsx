@@ -8,11 +8,12 @@ import PlaceCard from "../../modules/PlaceCard";
 import FilterListWindowTemplate from "../FilterListWindowTemplate";
 import FilterListWindowTemplateContainer from "../../../container/Templates/FilterListWindowTemplateContainer";
 import { ActiveFilterList, ActiveFilterState } from "../../../types/type";
-
+import InfoWindowContainer from "../../../container/Templates/InfoWindowTemplateContainer";
+import * as S from "./style";
 interface MainTemplateType {
-  activeFilterList: ActiveFilterList;
-  // isPlaceCardOpen: boolean;
-  isFilterListOpen: boolean;
+  // activeFilterList: ActiveFilterList;
+  // // isPlaceCardOpen: boolean;
+  // isFilterListOpen: boolean;
 }
 
 const card = {
@@ -24,38 +25,13 @@ const card = {
   description: ["태릉입구와 먹골역 화랑대역 사이에 있는", "서울 묵동 77-31"],
 };
 
-const MainTemplate = ({
-  isFilterListOpen,
-  activeFilterList,
-}: MainTemplateType) => {
-  const { src, alt, placeType, distance, placeName, description } = card;
+const MainTemplate = ({}: MainTemplateType) => {
+  // const { src, alt, placeType, distance, placeName, description } = card;
   return (
-    <MainLayout>
+    <S.MainTemplateLayout>
       <MapContainer />
-      <FilterButtonList
-        isFilterListOpen={isFilterListOpen}
-        filterArray={activeFilterList}
-        displayActive={true}
-      />
-      <FilterListWindowTemplateContainer />
-
-      {/* <PlaceCard
-        src={src}
-        alt={alt}
-        placeType={placeType}
-        placeName={placeName}
-        distance={distance}
-        description={description}
-      /> */}
-    </MainLayout>
+    </S.MainTemplateLayout>
   );
 };
 
 export default MainTemplate;
-
-const MainLayout = styled.div`
-  width: 100vw;
-  height: 100vh;
-  max-width: 1200px;
-  margin: auto;
-`;

@@ -4,9 +4,8 @@ import MapComp from "../../components/atoms/MapComp/mapBoxGl";
 import { PointMarkerString } from "../../components/atoms/Marker/PointMarker";
 import { getAllPlaceList } from "../../libs/api/place";
 import { testImg } from "../../public/image/data64/testImg";
-import { geoJsonAtom, markerListSelector } from "../../states/map/map";
-import { placeListAtom } from "../../states/place/place";
-import { Place } from "../../types/place";
+import { geoJsonAtom, markerListSelector } from "../../libs/states/map/map";
+import { placeListAtom } from "../../libs/states/place/place";
 
 export type MarkerState = {
   src: StaticImageData | HTMLImageElement | string;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { IoIosArrowUp, IoMdReorder } from "react-icons/io";
 import { useRecoilState } from "recoil";
-import { isFilterListOpenAtom } from "../../../states/filter/filter";
+import { isFilterListOpenAtom } from "../../../libs/states/filter/filter";
 
 export interface FilterMenuStateButtonProps {
   opened: boolean;
