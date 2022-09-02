@@ -21,7 +21,6 @@ function mouseOverListenerFunction(this: HTMLElement, e: Event) {
   };
   
 
-  console.log(child.children);
   for (let i = 0; i < child.children.length; i++) {
     let leaf = child.children[i]
     leaf.classList.add('cl-active')

@@ -86,16 +86,21 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
           for (const feature of allFeatures) {
             const coords = feature.geometry.coordinates;
             const props = feature.properties;
-            const { id, instaId, borderColor } = props;
+            const { id, instaId, borderColor, placeName } = props;
             if (!allPointMarkers[id]) {
               // const src = `/images/${instaId}/0.jpg`;
+              // const el = document.createElement("div");
               const el = document.createElement("div");
-              const marker = document.createElement("div");
-              marker.innerHTML = PointMarkerString({ instaId, borderColor });
-              el.appendChild(marker);
+              el.innerHTML = PointMarkerString({
+                instaId,
+                borderColor,
+                placeName,
+              });
+              // el.appendChild(marker);
               AddPointMarkerEvents(el);
               allPointMarkers[id] = new mapboxgl.Marker({
                 element: el,
+                anchor: "bottom",
               }).setLngLat(coords);
             }
             if (!allClusterMarkers[id]) {
