@@ -9,7 +9,7 @@ const Main: NextPage = () => {
 
   return (
     <MainLayout>
-      <InfoWindowContainer />
+      {/* <InfoWindowContainer /> */}
       <MainContainer />
     </MainLayout>
   );

@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { PopOutArrow } from "../../../public/svg";
-import Button from "../../atoms/Button";
-import PlaceInfoContent from "../../atoms/InfoWindow/Content";
-import PlaceInfoSubject from "../../atoms/InfoWindow/Menu";
-import PlaceInfoWrapper from "../../atoms/InfoWindow/Wrapper";
+import { PopOutArrow } from "../../../../public/svg";
+import Button from "../../../atoms/Button";
+import PlaceInfoContent from "../../../atoms/InfoWindow/Content";
+import PlaceInfoSubject from "../../../atoms/InfoWindow/Menu";
+import PlaceInfoWrapper from "../../../atoms/InfoWindow/Wrapper";
 import { css } from "@emotion/react";
 
 export interface PlaceInfo {
@@ -15,7 +15,7 @@ interface InfoWindowContentProps {
   infoList: PlaceInfo[];
 }
 
-const InfoWindowContents = ({ infoList }: InfoWindowContentProps) => {
+const Info = ({ infoList }: InfoWindowContentProps) => {
   return (
     <PlaceInfoWrapper>
       {infoList.map((info: PlaceInfo, i: number) => (
@@ -34,7 +34,7 @@ const InfoWindowContents = ({ infoList }: InfoWindowContentProps) => {
   );
 };
 
-export default InfoWindowContents;
+export default Info;
 
 const ButtonWrapper = styled.div`
   position: absolute;

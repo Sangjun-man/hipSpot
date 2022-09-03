@@ -6,6 +6,5 @@ export const MainTemplateLayout = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  max-width: 1200px;
   margin: auto;
 `;

@@ -1,15 +1,13 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import InfoWindowContents from ".";
+import Info from "./Info";
 
 export default {
-  title: "Modules / InfoWindowContents",
-  component: InfoWindowContents,
-} as ComponentMeta<typeof InfoWindowContents>;
+  title: "Modules / InfoWindow / Info",
+  component: Info,
+} as ComponentMeta<typeof Info>;
 
-const Template: ComponentStory<typeof InfoWindowContents> = (args) => (
-  <InfoWindowContents {...args} />
-);
+const Template: ComponentStory<typeof Info> = (args) => <Info {...args} />;
 
 export const FirstStory = Template.bind({});
 

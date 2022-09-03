@@ -3,8 +3,8 @@ import React from "react";
 import Button from "../../atoms/Button";
 import PlaceName from "../../atoms/InfoWindow/Title";
 import ImageSlide from "../../modules/ImageSlide/ImageSlide";
-import InfoWindowContents from "../../modules/InfoWindowContents";
-import InfoWindowTitle from "../../modules/InfoWindowTitle";
+import InfoWindowContents from "../../modules/InfoWindow/Info/Info";
+import InfoWindowTitle from "../../modules/InfoWindow/InfoWindowTitle";
 import * as C from "../../atoms/InfoWindow/index";
 import * as S from "./style";
 

@@ -1,18 +1,19 @@
 import React from "react";
+import { PopUpWindowState } from "../../../container/modules/PopUpWindowContainer";
 import ImageComp, { ImageCompProps } from "../../atoms/ImageComp";
 import * as S from "./style";
 
 export interface ImageSlideProps {
   imageList: Array<ImageCompProps>;
-  size: number;
+  popUpstate: PopUpWindowState;
 }
 
-function ImageSlide({ imageList, size = 100 }: ImageSlideProps) {
+function ImageSlide({ imageList, popUpstate = "thumbNail" }: ImageSlideProps) {
   return (
     <S.ImageSlideWrapper>
       <S.ImageListWrapper>
         {imageList.map(({ src }, i) => (
-          <ImageComp src={src} width={size} height={size} key={`${i}_${src}`} />
+          <ImageComp src={src} popUpstate={popUpstate} key={`${i}_${src}`} />
         ))}
       </S.ImageListWrapper>
     </S.ImageSlideWrapper>
