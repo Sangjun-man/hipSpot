@@ -12,6 +12,15 @@ export const TabBackground = styled.div<TabCssProps>`
   border: 1px solid ${GrayColor[1]};
   border-radius: 20px;
   display:inline-block;
+  transition: 0.1s ease-in-out;
+  &:hover{
+   ${ props => props.selected ||
+   `
+    background-color: ${GrayColor[2]};
+    & > div{
+      color:black
+      }`}
+  }
 `
 
 export const Tab = styled.div<TabCssProps>`

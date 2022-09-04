@@ -7,7 +7,6 @@ import FilterListWindow from "../FilterListWindowTemplate";
 import PlaceCard from "../../modules/PlaceCard";
 import FilterListWindowTemplate from "../FilterListWindowTemplate";
 import FilterListWindowTemplateContainer from "../../../container/Templates/FilterListWindowTemplateContainer";
-import { ActiveFilterList, ActiveFilterState } from "../../../types/type";
 import InfoWindowContainer from "../../../container/Templates/InfoWindowTemplateContainer";
 import * as S from "./style";
 interface MainTemplateType {

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import MenuTable from "./MenuTable";
 
 export default {
-  title: "Modules / MenuTableWindow / MenuTable",
+  title: "Modules / InfoWindow / MenuTable",
   component: MenuTable,
 } as ComponentMeta<typeof MenuTable>;
 

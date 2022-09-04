@@ -39,7 +39,7 @@ const InfoWindowTemplate = () => {
   return (
     <S.InfoWindowLayout>
       <S.InfoWindowWrapper>
-        <C.Title name="상준" />
+        <C.Title>상준</C.Title>
         {/* {ImageTabstate && <C.Tab />} */}
         <ImageSlide imageList={imageList} size={400} />
         <C.Menu title="menu"></C.Menu>

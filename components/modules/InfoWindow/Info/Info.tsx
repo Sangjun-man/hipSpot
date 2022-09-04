@@ -1,12 +1,6 @@
-import styled from "@emotion/styled";
 import React from "react";
-import { PopOutArrow } from "../../../../public/svg";
-import Button from "../../../atoms/Button";
-import PlaceInfoContent from "../../../atoms/InfoWindow/Content";
-import PlaceInfoSubject from "../../../atoms/InfoWindow/Menu";
-import PlaceInfoWrapper from "../../../atoms/InfoWindow/Wrapper";
-import { css } from "@emotion/react";
-
+import * as S from "./style";
+import * as I from "../../../atoms/InfoWindow/index";
 export interface PlaceInfo {
   title: string;
   content: string;
@@ -17,28 +11,15 @@ interface InfoWindowContentProps {
 
 const Info = ({ infoList }: InfoWindowContentProps) => {
   return (
-    <PlaceInfoWrapper>
-      {infoList.map((info: PlaceInfo, i: number) => (
-        <div key={i}>
-          <PlaceInfoSubject title={info.title} />
-          <PlaceInfoContent content={info.content} />
-        </div>
+    <S.ImageTabListWrapper>
+      {infoList.map((info, i) => (
+        <S.InfoWrapper key={i}>
+          <I.SubTitle>{info.title}</I.SubTitle>
+          <I.Content content={info.content} />
+        </S.InfoWrapper>
       ))}
-      <ButtonWrapper>
-        <Button>
-          길찾기
-          <PopOutArrow />
-        </Button>
-      </ButtonWrapper>
-    </PlaceInfoWrapper>
+    </S.ImageTabListWrapper>
   );
 };
 
 export default Info;
-
-const ButtonWrapper = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  transform: translateX(1.5rem);
-`;
