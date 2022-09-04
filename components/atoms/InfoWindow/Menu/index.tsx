@@ -4,15 +4,12 @@ import * as S from "./style";
 export interface MenuCssProps {
   fontSize?: number | string;
 }
-export interface InfoWIndowInfoSubjectProps extends MenuCssProps {
-  title: string;
+export interface MenuProps extends MenuCssProps {
+  menu: string;
 }
 
-const InfoWIndowInfoSubject = ({
-  fontSize = 0.875,
-  title,
-}: InfoWIndowInfoSubjectProps) => {
-  return <S.Menu fontSize={fontSize}>{title}</S.Menu>;
+const Menu = ({ fontSize = 0.875, menu }: MenuProps) => {
+  return <S.Menu fontSize={fontSize}>{menu}</S.Menu>;
 };
 
-export default InfoWIndowInfoSubject;
+export default Menu;

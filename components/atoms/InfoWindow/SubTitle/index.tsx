@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ReactChildren, ReactNode } from "react";
 import * as S from "./style";
 
 export interface SubTitleCssProps {
@@ -6,11 +7,11 @@ export interface SubTitleCssProps {
   color?: string;
 }
 export interface SubTitleProps extends SubTitleCssProps {
-  name: string;
+  children: ReactChildren | ReactNode;
 }
 
-const SubTitle = ({ name }: SubTitleProps) => {
-  return <S.SubTitle>{name}</S.SubTitle>;
+const SubTitle = ({ children }: SubTitleProps) => {
+  return <S.SubTitle>{children}</S.SubTitle>;
 };
 
 export default SubTitle;
