@@ -8,8 +8,12 @@ interface PopUpWindowProps {
   popUpState: PopUpWindowState;
   children: React.ReactChildren;
 }
+export interface TabState {
+  onHandling: boolean;
+  top: number;
+}
 
-let tabState: { onHandling: boolean; top: number } = {
+let tabState: TabState = {
   onHandling: false,
   top: window.innerHeight - 20,
 };
@@ -27,6 +31,7 @@ const PopUpWindow = ({ popUpState, children }: PopUpWindowProps) => {
   };
   const onMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
     const { onHandling } = tabState;
+
     console.log("마우스 움직임", onHandling);
     if (onHandling) {
       tabState = {
@@ -63,7 +68,11 @@ const PopUpWindow = ({ popUpState, children }: PopUpWindowProps) => {
     target.style.setProperty("top", "0px");
     // e.target.parentElement.style.setProperty("top", `${endPointTabstate.top}`);
 
-    await smoothMove(tabState, e.target.parentElement, endPointTabstate);
+    smoothMove({
+      tabState,
+      parentElement: e.target.parentElement,
+      endPointTabstate,
+    });
     tabState = endPointTabstate;
   };
 
@@ -74,6 +83,7 @@ const PopUpWindow = ({ popUpState, children }: PopUpWindowProps) => {
         onMouseUp={onMouseUp}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
+        onMouseOut={onMouseUp}
       />
     </S.Layout>
   );
