@@ -3,25 +3,27 @@ import React, {
   ReactChildren,
   ReactNode,
   TouchEventHandler,
+  useEffect,
 } from "react";
-import { PopUpWindowState } from "../../../../container/modules/InfoWindowContainer";
+import { VscGrabber } from "react-icons/vsc";
+import { TabState } from "../../../../libs/types/infowindow";
 import smoothMove from "./smoothMove";
 import * as S from "./style";
 
 export interface PopUpWindowProps {
-  popUpState: PopUpWindowState;
   tabState: TabState;
   children: ReactChildren | ReactNode;
 }
-export interface TabState {
-  onHandling: boolean;
-  top: number;
-}
 
-const PopUpWindow = ({ popUpState, tabState, children }: PopUpWindowProps) => {
-  let smoothLoopId: { id: number } = { id: null };
-
-  console.log(smoothLoopId);
+const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
+  let smoothLoopId: { id: number } = { id: -1 };
+  const popUpHeights = {
+    top: 0,
+    middle: window.innerHeight / 2,
+    thumbnail: window.innerHeight - 140,
+    bottom: window.innerHeight - 30,
+  };
+  // console.log(smoothLoopId);
 
   const onMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
     console.log("mouseDown");
@@ -35,7 +37,7 @@ const PopUpWindow = ({ popUpState, tabState, children }: PopUpWindowProps) => {
       ...tabState,
       onHandling: true,
     };
-    target.style.setProperty("padding", "100vh");
+    target.style.setProperty("padding", "100vh 0");
   };
   const onTouchStart: TouchEventHandler<HTMLDivElement> = (e) => {
     console.log("touch");
@@ -49,7 +51,7 @@ const PopUpWindow = ({ popUpState, tabState, children }: PopUpWindowProps) => {
       ...tabState,
       onHandling: true,
     };
-    target.style.setProperty("padding", "100vh");
+    target.style.setProperty("padding", "100vh 0");
   };
 
   const onMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -61,8 +63,13 @@ const PopUpWindow = ({ popUpState, tabState, children }: PopUpWindowProps) => {
         ...tabState,
         top: e.clientY,
       };
-      e.target.parentElement.style.setProperty("top", `${e.clientY}px`);
-      console.log(e.clientY);
+      e.target.parentElement.style.setProperty("top", `${e.clientY - 15}px`);
+      // console.log(e.clientY);
+
+      const slideEvent = new Event("forSlide");
+      slideEvent.clientY = e.clientY;
+      document.getElementById("slide")?.dispatchEvent(slideEvent);
+
       return;
     }
   };
@@ -77,9 +84,14 @@ const PopUpWindow = ({ popUpState, tabState, children }: PopUpWindowProps) => {
       };
       e.target.parentElement.style.setProperty(
         "top",
-        `${e.touches[0].clientY}px`
+        `${e.touches[0].clientY - 15}px`
       );
       // console.log(e.touches[0].clientY);
+
+      const slideEvent = new Event("forSlide");
+      slideEvent.clientY = e.touches[0].clientY;
+      document.getElementById("slide")?.dispatchEvent(slideEvent);
+
       return;
     }
   };
@@ -94,20 +106,18 @@ const PopUpWindow = ({ popUpState, tabState, children }: PopUpWindowProps) => {
     console.log(e.target, ratio);
 
     if (ratio < 0.3) {
-      endPointTabstate.top = 0;
+      endPointTabstate.top = popUpHeights.top;
       endPointTabstate.onHandling = false;
     } else if (ratio >= 0.3 && ratio < 0.8) {
-      endPointTabstate.top = window.innerHeight / 2;
-      endPointTabstate.onHandling = false;
+      (endPointTabstate.top = popUpHeights.middle),
+        (endPointTabstate.onHandling = false);
     } else {
-      endPointTabstate.top = window.innerHeight - 20;
+      endPointTabstate.top = popUpHeights.bottom;
       endPointTabstate.onHandling = false;
     }
 
     target.style.setProperty("padding", "0px");
     target.style.setProperty("top", "0px");
-    // e.target.parentElement.style.setProperty("top", `${endPointTabstate.top}`);
-
     smoothMove({
       tabState,
       parentElement: e.target.parentElement,
@@ -132,7 +142,7 @@ const PopUpWindow = ({ popUpState, tabState, children }: PopUpWindowProps) => {
       endPointTabstate.top = window.innerHeight / 2;
       endPointTabstate.onHandling = false;
     } else {
-      endPointTabstate.top = window.innerHeight - 20;
+      endPointTabstate.top = window.innerHeight - 30;
       endPointTabstate.onHandling = false;
     }
 
@@ -147,10 +157,16 @@ const PopUpWindow = ({ popUpState, tabState, children }: PopUpWindowProps) => {
     });
     tabState = endPointTabstate;
   };
-
+  // useEffect(() => {
+  //   console.log(document.getElementById("slide"));
+  // });
   return (
-    <S.Layout popUpState={popUpState}>
+    <S.Layout>
       <S.Wrapper>{children}</S.Wrapper>
+      <S.ResizeSideStyle>
+        <VscGrabber />
+      </S.ResizeSideStyle>
+
       <S.ResizeSide
         onMouseUp={onMouseUp}
         onMouseDown={onMouseDown}

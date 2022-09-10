@@ -1,19 +1,47 @@
-import React from "react";
-import { PopUpWindowState } from "../../../container/modules/PopUpWindowContainer";
-import ImageComp, { ImageCompProps } from "../../atoms/ImageComp";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { ImageCompProps } from "../../atoms/ImageComp";
 import * as S from "./style";
 
 export interface ImageSlideProps {
   imageList: Array<ImageCompProps>;
-  popUpstate: PopUpWindowState;
+  // popUpstate: PopUpWindowState;
 }
 
-function ImageSlide({ imageList, popUpstate = "thumbNail" }: ImageSlideProps) {
+function ImageSlide({ imageList }: ImageSlideProps) {
+  const imageSize = { base: 260, full: 400 };
+  const [size, setSize] = useState<number>(imageSize.base);
+  function slideEventListener(e: any) {
+    const y = e.clientY;
+    const calcRatio = 1 - y / window.innerHeight;
+
+    const slideWrapperElem = document.getElementById("slide")!;
+    slideWrapperElem.removeEventListener("forSlide", slideEventListener);
+
+    if (calcRatio < 0.5) {
+      setSize(imageSize.base);
+    } else if (calcRatio >= 0.5 && calcRatio < 1) {
+      const calcHeight =
+        imageSize.base +
+        (imageSize.full - imageSize.base) * (calcRatio - 0.5) * 2;
+      setSize(calcHeight);
+    } else {
+      setSize(imageSize.full);
+    }
+    slideWrapperElem.addEventListener("forSlide", slideEventListener);
+  }
+  useEffect(() => {
+    const slideWrapperElem = document.getElementById("slide")!;
+    slideWrapperElem.addEventListener("forSlide", slideEventListener);
+  });
+
   return (
     <S.ImageSlideWrapper>
-      <S.ImageListWrapper>
-        {imageList.map(({ src }, i) => (
-          <ImageComp src={src} popUpstate={popUpstate} key={`${i}_${src}`} />
+      <S.ImageListWrapper id="slide">
+        {imageList.map(({ src, alt }, i) => (
+          <S.ImageWrapper size={size} key={i}>
+            <Image src={src} alt={alt} layout="fill"></Image>
+          </S.ImageWrapper>
         ))}
       </S.ImageListWrapper>
     </S.ImageSlideWrapper>
@@ -21,21 +49,3 @@ function ImageSlide({ imageList, popUpstate = "thumbNail" }: ImageSlideProps) {
 }
 
 export default ImageSlide;
-
-//   const imageListWidth = imageList.length * 60 + (imageList.length - 1) * 4;
-//   const scrollData = {
-//     scrollWidth: imageListWidth,
-//     scrollAbleWidth: 0,
-//     scrollLeft: 0,
-//     scrollRatio: 0,
-//   };
-//     onScroll={(e) => {
-//       scrollData.scrollLeft = e.target.scrollLeft;
-//       scrollData.scrollAbleWidth =
-//         scrollData.scrollWidth - e.target.offsetWidth;
-//       scrollData.scrollRatio =
-//         ((scrollData.scrollAbleWidth -
-//           (scrollData.scrollAbleWidth - scrollData.scrollLeft)) /
-//           scrollData.scrollAbleWidth) *
-//         100;
-//     }}

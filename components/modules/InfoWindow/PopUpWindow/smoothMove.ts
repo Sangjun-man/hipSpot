@@ -23,8 +23,8 @@ export default function smoothMove({tabState, parentElement, endPointTabstate,sm
         
         
         const check = ((curY - endPointTabstate.top) > -1) && ((curY - endPointTabstate.top) < 1);
-        console.log(debounce, check);
-        console.log(smoothLoopId);
+        // console.log(debounce, check);
+        // console.log(smoothLoopId);
         if (debounce <= 1 || check) {
             return parentElement.style.setProperty(
             "top",

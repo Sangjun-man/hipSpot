@@ -1,12 +1,10 @@
 import React from "react";
 import * as S from "./style";
 import * as I from "../../../atoms/InfoWindow/index";
-export interface PlaceInfo {
-  name: string;
-  selected: boolean;
-}
+import { ImageTabList } from "../../../../libs/states/infoWindowState";
+
 interface InfoWindowContentProps {
-  imageTabList: PlaceInfo[];
+  imageTabList: ImageTabList[];
 }
 
 const ImageTabList = ({ imageTabList }: InfoWindowContentProps) => {

@@ -1,45 +1,42 @@
 import styled from "@emotion/styled";
+import { GrayColor } from "../../../libs/styles/colors";
+import { FS_Title } from "../../../libs/styles/fonts";
 
-export const InfoWindowLayout = styled.div`
-  position: fixed;
-  top:0;
-  left:50%;
-  transform: translate(-50%);
-  margin:auto;
-  z-index:1;
-  height:100%;
-  width:1000px;
-  max-width: 1200px;
-  margin: auto;
-  background-color: transparent;
-  @media (max-width: 1200px) and (min-width: 729px) {
-    max-width:640px;
+export const ResizeHandler = styled.div`
+  width:100%;
+  height : 20px;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+`
+
+export const TopBarWrapper = styled.div`
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  `
+export const PlaceName = styled.div`
+  ${FS_Title}
+  `
+export const CloseIconWrapper = styled.div`
+  &>svg{
+    width:20px;
+    height:20px;}
+   `
+
+export const ImageListWrapper = styled.div`
+  margin-top:12px;
+  & > div+ div {
+    margin-top:8px;
   }
-  @media (max-width: 728px) {
-    width:100%;
+`
+export const InfoWrapper = styled.div`
+  margin-top:24px;
+  & > div{
+    margin-top:16px;
   }
-`;
+`
+export const BottomWrapper = styled.div`
+margin-top:24px;
 
-export const InfoWindowWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  background-color: #ffffff;
-  text-align: left;
-  overflow: hidden;
-  & > div {
-    margin-top: 1rem;
-    padding: 0 1rem;
-  }
-  & > button {
-    margin: auto;
-  }
-`;
-
-
-
-export const GiveBackgroudColor = styled.div`
-  background-color: rgba(255, 234, 240, 0.12);
-`;
+`

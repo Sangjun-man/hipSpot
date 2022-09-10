@@ -11,14 +11,14 @@ interface InfoWindowContentProps {
 
 const Info = ({ infoList }: InfoWindowContentProps) => {
   return (
-    <S.ImageTabListWrapper>
+    <S.InfoListWrapper>
       {infoList.map((info, i) => (
         <S.InfoWrapper key={i}>
           <I.SubTitle>{info.title}</I.SubTitle>
           <I.Content content={info.content} />
         </S.InfoWrapper>
       ))}
-    </S.ImageTabListWrapper>
+    </S.InfoListWrapper>
   );
 };
 

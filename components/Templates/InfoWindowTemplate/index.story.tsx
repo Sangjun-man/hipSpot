@@ -8,7 +8,11 @@ export default {
 } as ComponentMeta<typeof InfoWindowTemplate>;
 
 const Template: ComponentStory<typeof InfoWindowTemplate> = (args) => (
-  <InfoWindowTemplate />
+  <InfoWindowTemplate {...args} />
 );
 
 export const FirstStory = Template.bind({});
+
+FirstStory.args = {
+  tabState: { onHandling: false, top: window.innerHeight - 20 },
+};

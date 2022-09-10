@@ -17,7 +17,6 @@ export type MarkerState = {
 const MapContainer = () => {
   const markerList = useRecoilValue(markerListSelector);
   const geoJson = useRecoilValue(geoJsonAtom);
-  let placeListGeoJson;
   useEffect(() => {
     console.log(geoJson);
   });

@@ -6,9 +6,10 @@ export const ImageSlideWrapper = styled.div`
 
 export const ImageListWrapper = styled.div`
 display:flex;
+width:100%;
+height: 100%;
 overflow-x: scroll;
-/* -ms-overflow-style: none;
-scrollbar-width:none;*/
+overflow-y:hidden;
 &::-webkit-scrollbar{
     background-color:#f0f0f0;
     height:6px;
@@ -21,15 +22,14 @@ scrollbar-width:none;*/
 
 
 }
-& > div{
+ & > div{ 
     flex-shrink:0;
-}
-& > div + div{
-    margin-left: 4px;
-}
-
+} 
 `
 
 
-export const IndexBar = styled.div``
-
+export const ImageWrapper = styled.div<{size:number}>`
+    width:${props => props.size}px;
+    height:${props => props.size}px;
+    position:relative;
+`

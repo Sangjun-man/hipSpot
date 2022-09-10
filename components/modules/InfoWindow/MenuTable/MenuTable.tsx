@@ -14,6 +14,7 @@ interface MenuTableProps {
 const MenuTable = ({ menuInfoList }: MenuTableProps) => {
   return (
     <S.MenuTableWrapper>
+      <C.SubTitle> 메뉴 </C.SubTitle>
       {menuInfoList.map((info: MenuInfo, i: number) => (
         <S.MenuWrapper key={i}>
           <C.Menu menu={`${info.menu}`} />
@@ -25,10 +26,3 @@ const MenuTable = ({ menuInfoList }: MenuTableProps) => {
 };
 
 export default MenuTable;
-
-const ButtonWrapper = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  transform: translateX(1.5rem);
-`;
