@@ -11,7 +11,7 @@ export const Layout = styled.div`
 
     transform : translateX(calc(50vw - 50%));
     /* transition: 0.4s ease-in-out; */
-    top: calc(100% - 20px);
+    top: calc(100% - 30px);
     width:100%;
     z-index:11;
 `

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { ImageCompProps } from "../../components/atoms/ImageComp";
 import InfoWindowTemplate from "../../components/Templates/InfoWindowTemplate";
-import { screenSizeStateAtom } from "../../libs/states/infoWindowState";
+import {
+  screenSizeStateAtom,
+  tabStateAtom,
+} from "../../libs/states/infoWindowState";
 import { TabState } from "../../libs/types/infowindow";
 
 const popUpState = ["thumNail", "half", "full"];
@@ -56,11 +59,7 @@ function InfoWindowContainer() {
   const [init, setInit] = useState<boolean>(false);
   const [screenSizeState, setScreenSizeState] =
     useRecoilState(screenSizeStateAtom);
-  const [tabState, setTabState] = useState<TabState>({
-    top: 0,
-    onHandling: false,
-    popUpState: "thumbNail",
-  });
+  const [tabState, setTabState] = useRecoilState<TabState>(tabStateAtom);
 
   const [infoProps, setInfoProps] = useState<any>(initInfoProps);
 

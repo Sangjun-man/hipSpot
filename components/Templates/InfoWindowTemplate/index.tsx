@@ -34,7 +34,9 @@ const InfoWindowTemplate = ({
         </S.CloseIconWrapper>
       </S.TopBarWrapper>
       <S.ImageListWrapper>
-        <ImageTabList imageTabList={imageTabList}></ImageTabList>
+        {tabState.popUpState === "full" && (
+          <ImageTabList imageTabList={imageTabList} />
+        )}
         <ImageSlide imageList={imageList} />
       </S.ImageListWrapper>
 

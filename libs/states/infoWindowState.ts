@@ -1,6 +1,7 @@
 import { atom } from "recoil";
 import { ImageCompProps } from "../../components/atoms/ImageComp";
 import { MenuInfo } from "../../components/modules/InfoWindow/MenuTable/MenuTable";
+import { TabState } from "../types/infowindow";
 
 
 export type ScreenSizeStateType = {
@@ -26,11 +27,27 @@ export type InfoPropsStateType =
 }
 
 
+export type popUpHeightsType = {
+    top: number;
+    middle: number;
+    thumbnail: number;
+    bottom: number;
+}
+
 export const screenSizeStateAtom = atom({
     key: "atom / screenSizeState",
     default: {
         innerWidth: 0,
         innerHeight:0,
+    }
+})
+
+export const tabStateAtom = atom<TabState>({ 
+    key: "atom / tabState",
+    default: {
+        top: 10000,
+        onHandling: false,
+        popUpState: "thumbNail"
     }
 })
 

@@ -6,6 +6,8 @@ import React, {
   useEffect,
 } from "react";
 import { VscGrabber } from "react-icons/vsc";
+import { useSetRecoilState } from "recoil";
+import { tabStateAtom } from "../../../../libs/states/infoWindowState";
 import { TabState } from "../../../../libs/types/infowindow";
 import smoothMove from "./smoothMove";
 import * as S from "./style";
@@ -16,6 +18,7 @@ export interface PopUpWindowProps {
 }
 
 const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
+  const setTabState = useSetRecoilState(tabStateAtom);
   let smoothLoopId: { id: number } = { id: -1 };
   const popUpHeights = {
     top: 0,
@@ -23,12 +26,9 @@ const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
     thumbnail: window.innerHeight - 140,
     bottom: window.innerHeight - 30,
   };
-  // console.log(smoothLoopId);
 
   const onMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
-    console.log("mouseDown");
     if (smoothLoopId) {
-      console.log("cancel");
       cancelAnimationFrame(smoothLoopId.id);
     }
 
@@ -40,7 +40,6 @@ const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
     target.style.setProperty("padding", "100vh 0");
   };
   const onTouchStart: TouchEventHandler<HTMLDivElement> = (e) => {
-    console.log("touch");
     if (smoothLoopId) {
       console.log("cancel");
       cancelAnimationFrame(smoothLoopId.id);
@@ -57,14 +56,12 @@ const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
   const onMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
     const { onHandling } = tabState;
 
-    // console.log("마우스 움직임", onHandling);
     if (onHandling) {
       tabState = {
         ...tabState,
         top: e.clientY,
       };
       e.target.parentElement.style.setProperty("top", `${e.clientY - 15}px`);
-      // console.log(e.clientY);
 
       const slideEvent = new Event("forSlide");
       slideEvent.clientY = e.clientY;
@@ -76,7 +73,6 @@ const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
   const onTouchMove: TouchEventHandler<HTMLDivElement> = (e) => {
     const { onHandling } = tabState;
 
-    // console.log("마우스 움직임", onHandling);
     if (onHandling) {
       tabState = {
         ...tabState,
@@ -86,7 +82,6 @@ const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
         "top",
         `${e.touches[0].clientY - 15}px`
       );
-      // console.log(e.touches[0].clientY);
 
       const slideEvent = new Event("forSlide");
       slideEvent.clientY = e.touches[0].clientY;
@@ -98,22 +93,23 @@ const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
 
   const onMouseUp: MouseEventHandler<HTMLDivElement> = async (e) => {
     const target = e.target as HTMLDivElement;
-    // console.log("마우스 들어올림", tabState.onHandling);
     const { top } = tabState;
-    const endPointTabstate = { ...tabState };
+    const endPointTabState = { ...tabState };
     const h = window.innerHeight;
     const ratio = top / h;
-    console.log(e.target, ratio);
 
     if (ratio < 0.3) {
-      endPointTabstate.top = popUpHeights.top;
-      endPointTabstate.onHandling = false;
+      endPointTabState.top = popUpHeights.top;
+      endPointTabState.onHandling = false;
+      endPointTabState.popUpState = "full";
     } else if (ratio >= 0.3 && ratio < 0.8) {
-      (endPointTabstate.top = popUpHeights.middle),
-        (endPointTabstate.onHandling = false);
+      endPointTabState.top = popUpHeights.middle;
+      endPointTabState.onHandling = false;
+      endPointTabState.popUpState = "half";
     } else {
-      endPointTabstate.top = popUpHeights.bottom;
-      endPointTabstate.onHandling = false;
+      endPointTabState.top = popUpHeights.bottom;
+      endPointTabState.onHandling = false;
+      endPointTabState.popUpState = "half";
     }
 
     target.style.setProperty("padding", "0px");
@@ -121,29 +117,30 @@ const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
     smoothMove({
       tabState,
       parentElement: e.target.parentElement,
-      endPointTabstate,
+      endPointTabState,
       smoothLoopId,
     });
-    tabState = endPointTabstate;
+    setTabState(endPointTabState);
   };
   const onTouchEnd: TouchEventHandler<HTMLDivElement> = async (e) => {
     const target = e.target as HTMLDivElement;
-    // console.log("마우스 들어올림", tabState.onHandling);
     const { top } = tabState;
-    const endPointTabstate = { ...tabState };
+    const endPointTabState = { ...tabState };
     const h = window.innerHeight;
     const ratio = top / h;
-    // console.log(e.target, ratio);
 
     if (ratio < 0.3) {
-      endPointTabstate.top = 0;
-      endPointTabstate.onHandling = false;
+      endPointTabState.top = popUpHeights.top;
+      endPointTabState.onHandling = false;
+      endPointTabState.popUpState = "full";
     } else if (ratio >= 0.3 && ratio < 0.8) {
-      endPointTabstate.top = window.innerHeight / 2;
-      endPointTabstate.onHandling = false;
+      endPointTabState.top = popUpHeights.middle;
+      endPointTabState.onHandling = false;
+      endPointTabState.popUpState = "half";
     } else {
-      endPointTabstate.top = window.innerHeight - 30;
-      endPointTabstate.onHandling = false;
+      endPointTabState.top = popUpHeights.bottom;
+      endPointTabState.onHandling = false;
+      endPointTabState.popUpState = "half";
     }
 
     target.style.setProperty("padding", "0px");
@@ -152,14 +149,14 @@ const PopUpWindow = ({ tabState, children }: PopUpWindowProps) => {
     smoothMove({
       tabState,
       parentElement: e.target.parentElement,
-      endPointTabstate,
+      endPointTabState,
       smoothLoopId,
     });
-    tabState = endPointTabstate;
+    setTabState(endPointTabState);
   };
-  // useEffect(() => {
-  //   console.log(document.getElementById("slide"));
-  // });
+  useEffect(() => {
+    console.log(tabState);
+  });
   return (
     <S.Layout>
       <S.Wrapper>{children}</S.Wrapper>
