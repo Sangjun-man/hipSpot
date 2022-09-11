@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { PopUpWindowState } from '.';
 import { GrayColor } from '../../../../libs/styles/colors';
 
 export const Layout = styled.div`
@@ -10,7 +9,6 @@ export const Layout = styled.div`
     box-sizing: border-box;
 
     transform : translateX(calc(50vw - 50%));
-    /* transition: 0.4s ease-in-out; */
     top: calc(100% - 30px);
     width:100%;
     z-index:11;

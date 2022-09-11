@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { GrayColor } from "../../../libs/styles/colors";
 import { FS_Title } from "../../../libs/styles/fonts";
 
 export const ResizeHandler = styled.div`

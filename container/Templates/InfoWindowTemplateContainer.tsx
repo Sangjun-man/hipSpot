@@ -66,35 +66,45 @@ function InfoWindowContainer() {
   useEffect(() => {
     const screenSize = async () => {
       const { innerHeight, innerWidth } = window;
-      setScreenSizeState({
-        innerWidth,
-        innerHeight,
-      });
       window.addEventListener("resize", (e) => {
         setScreenSizeState({
           innerHeight,
           innerWidth,
         });
       });
-
-      setTabState({
+      setScreenSizeState({
+        innerWidth,
+        innerHeight,
+      });
+      return { innerHeight, innerWidth };
+    };
+    const tabState = async ({
+      innerHeight,
+      innerWidth,
+    }: {
+      innerHeight: number;
+      innerWidth: number;
+    }) => {
+      return setTabState({
         onHandling: false,
-        top: screenSizeState.innerHeight - 20,
+        top: innerHeight - 30,
         popUpState: "thumbNail",
       });
     };
+    const init = async () => {
+      setInit(true);
+    };
 
     (async () => {
-      await screenSize();
-      await (async () => {
-        setInit(true);
-      })();
+      const { innerHeight, innerWidth } = await screenSize();
+      await tabState({ innerHeight, innerWidth });
+      await init();
     })();
   }, []);
 
   if (!init) return <div></div>;
   else {
-    return <InfoWindowTemplate tabState={tabState} infoProps={infoProps} />;
+    return <InfoWindowTemplate infoProps={infoProps} />;
   }
 }
 
