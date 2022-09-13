@@ -40,7 +40,7 @@ function ImageSlide({ imageList }: ImageSlideProps) {
       <S.ImageListWrapper id="slide">
         {imageList.map(({ src, alt }, i) => (
           <S.ImageWrapper size={size} key={i}>
-            <Image src={src} alt={alt} layout="fill"></Image>
+            {<Image src={src} alt={alt} layout="fill" />}
           </S.ImageWrapper>
         ))}
       </S.ImageListWrapper>

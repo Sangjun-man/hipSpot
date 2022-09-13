@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ImageSlide from "../../modules/ImageSlide/ImageSlide";
 import * as A from "../../atoms/InfoWindow/index";
 import * as M from "./";
 import * as S from "./style";
-import { ImageCompProps } from "../../atoms/ImageComp";
 import Info from "../../modules/InfoWindow/Info/Info";
 import MenuTable from "../../modules/InfoWindow/MenuTable/MenuTable";
 import FindWay from "../../modules/InfoWindow/FindWay/FindWay";
 import PopUpWindow from "../../modules/InfoWindow/PopUpWindow";
 import {
+  infoPropsStateAtom,
+  InfoPropsStateType,
   screenSizeStateAtom,
-  ScreenSizeStateType,
   tabStateAtom,
 } from "../../../libs/states/infoWindowState";
 import ImageTabList from "../../modules/InfoWindow/ImageTabList/ImageTabList";
@@ -19,25 +19,28 @@ import { VscGrabber } from "react-icons/vsc";
 import { TabState } from "../../../libs/types/infowindow";
 import { useRecoilState, useRecoilValue } from "recoil";
 export interface InfoWindowTemplateProps {
-  infoProps: any;
+  infoProps: InfoPropsStateType;
+  tabState: TabState;
+  setTabState: (TabState: TabState) => void;
+  screenSizeState: { innerWidth: number; innerHeight: number };
 }
 
-const InfoWindowTemplate = ({ infoProps }: InfoWindowTemplateProps) => {
-  const [tabState, setTabState] = useRecoilState<TabState>(tabStateAtom);
-  const screesSizeState = useRecoilValue(screenSizeStateAtom);
-
-  const { imageList, contentsArgs, menuInfoList, imageTabList, popUpState } =
-    infoProps;
-  const { infoList, instagram, placeName } = contentsArgs;
+const InfoWindowTemplate = ({
+  tabState,
+  setTabState,
+  screenSizeState,
+  infoProps,
+}: InfoWindowTemplateProps) => {
+  console.log(infoProps);
   return (
     <PopUpWindow tabState={tabState} id="popUpWindow">
       <S.TopBarWrapper>
-        <S.PlaceName>{placeName}</S.PlaceName>
+        <S.PlaceName>{infoProps.contentsArgs.placeName}</S.PlaceName>
         <S.CloseIconWrapper
           onClick={() => {
             const returnTabState: TabState = {
               ...tabState,
-              top: screesSizeState.innerHeight - 30,
+              top: screenSizeState.innerHeight - 30,
               popUpState: "thumbNail",
             };
             setTabState(returnTabState);
@@ -48,14 +51,14 @@ const InfoWindowTemplate = ({ infoProps }: InfoWindowTemplateProps) => {
       </S.TopBarWrapper>
       <S.ImageListWrapper>
         {tabState.popUpState === "full" && (
-          <ImageTabList imageTabList={imageTabList} />
+          <ImageTabList imageTabList={infoProps.imageTabList} />
         )}
-        <ImageSlide imageList={imageList} />
+        <ImageSlide imageList={infoProps.imageList} />
       </S.ImageListWrapper>
 
       <S.InfoWrapper>
-        <Info infoList={infoList} />
-        <MenuTable menuInfoList={menuInfoList}></MenuTable>
+        <Info infoList={infoProps.contentsArgs.infoList} />
+        <MenuTable menuInfoList={infoProps.menuInfoList}></MenuTable>
       </S.InfoWrapper>
       <S.BottomWrapper>
         <FindWay />

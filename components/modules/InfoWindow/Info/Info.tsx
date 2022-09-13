@@ -1,10 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import * as I from "../../../atoms/InfoWindow/index";
-export interface PlaceInfo {
-  title: string;
-  content: string;
-}
+import { PlaceInfo } from "../../../../libs/states/infoWindowState";
 interface InfoWindowContentProps {
   infoList: PlaceInfo[];
 }

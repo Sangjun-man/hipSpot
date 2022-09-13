@@ -5,7 +5,7 @@ export const Layout = styled.div`
     position:fixed;
     min-width:300px;
     max-width:600px;
-    height:100vh;
+    height:calc(100vh + 30px);
     box-sizing: border-box;
 
     transform : translateX(calc(50vw - 50%));

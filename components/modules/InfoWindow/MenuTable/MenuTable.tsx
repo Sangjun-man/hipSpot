@@ -2,11 +2,8 @@ import styled from "@emotion/styled";
 import React from "react";
 import * as S from "./style";
 import * as C from "../../../atoms/InfoWindow/index";
+import { MenuInfo } from "../../../../libs/states/infoWindowState";
 
-export interface MenuInfo {
-  menu: string;
-  price: number | string;
-}
 interface MenuTableProps {
   menuInfoList: MenuInfo[];
 }

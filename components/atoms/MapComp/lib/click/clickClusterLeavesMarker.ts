@@ -6,10 +6,8 @@ export type clusterLeavesInfoParam = {
     // clusterLayerId: string,
 }
 
-export const clusterLeavesMarker = ({ map, sourceId,  } : clusterLeavesInfoParam) => {
+export const clickClusterLeavesMarker = ({ map, sourceId,  } : clusterLeavesInfoParam) => {
     map.on("click", /* cluster layer id */ (e) => {
-        
-        console.log('12312312')
         const bbox = [
             [e.point.x - 30, e.point.y - 30],
             [e.point.x + 30, e.point.y + 30]

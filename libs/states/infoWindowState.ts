@@ -1,8 +1,12 @@
 import { atom } from "recoil";
 import { ImageCompProps } from "../../components/atoms/ImageComp";
-import { MenuInfo } from "../../components/modules/InfoWindow/MenuTable/MenuTable";
 import { TabState } from "../types/infowindow";
 
+
+export interface PlaceInfo {
+    title: string;
+    content: string;
+  }
 
 export type ScreenSizeStateType = {
     innerHeight: number;
@@ -18,7 +22,7 @@ export type InfoPropsStateType =
 {
     contentsArgs: {
         placeName: string,
-        infoList:[],
+        infoList:PlaceInfo[],
         instagram: string,
     },
     imageList: ImageCompProps[],
@@ -27,10 +31,15 @@ export type InfoPropsStateType =
 }
 
 
+export interface MenuInfo {
+    menu: string;
+    price: number | string;
+  }
+
 export type popUpHeightsType = {
     top: number;
     middle: number;
-    thumbnail: number;
+    thumbnail?: number;
     bottom: number;
 }
 
@@ -65,3 +74,4 @@ export const infoPropsStateAtom = atom({
           imageTabList:[]
     }
 })
+

@@ -1,14 +1,15 @@
+import { stringify } from "querystring";
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { ImageCompProps } from "../../components/atoms/ImageComp";
 import InfoWindowTemplate from "../../components/Templates/InfoWindowTemplate";
 import {
+  infoPropsStateAtom,
   screenSizeStateAtom,
   tabStateAtom,
 } from "../../libs/states/infoWindowState";
 import { TabState } from "../../libs/types/infowindow";
 
-const popUpState = ["thumNail", "half", "full"];
 const initInfoProps = {
   contentsArgs: {
     placeName: "시몬스 그로서리 스토어",
@@ -24,8 +25,8 @@ const initInfoProps = {
     { src: "/image/testImg.png" },
     { src: "/image/testImg2.png" },
     { src: "/image/testImg3.png" },
+    { src: "/image/testImg4.png" },
     { src: "/image/testImg.png" },
-    { src: "/image/testImg2.png" },
     { src: "/image/testImg3.png" },
     { src: "/image/testImg.png" },
     { src: "/image/testImg2.png" },
@@ -61,23 +62,9 @@ function InfoWindowContainer() {
     useRecoilState(screenSizeStateAtom);
   const [tabState, setTabState] = useRecoilState<TabState>(tabStateAtom);
 
-  const [infoProps, setInfoProps] = useState<any>(initInfoProps);
+  const [infoProps, setInfoProps] = useRecoilState<any>(infoPropsStateAtom);
 
   useEffect(() => {
-    const screenSize = async () => {
-      const { innerHeight, innerWidth } = window;
-      window.addEventListener("resize", (e) => {
-        setScreenSizeState({
-          innerHeight,
-          innerWidth,
-        });
-      });
-      setScreenSizeState({
-        innerWidth,
-        innerHeight,
-      });
-      return { innerHeight, innerWidth };
-    };
     const tabState = async ({
       innerHeight,
       innerWidth,
@@ -91,21 +78,27 @@ function InfoWindowContainer() {
         popUpState: "thumbNail",
       });
     };
+
     const init = async () => {
+      setInfoProps(initInfoProps);
       setInit(true);
     };
 
     (async () => {
-      const { innerHeight, innerWidth } = await screenSize();
-      await tabState({ innerHeight, innerWidth });
+      await tabState(screenSizeState);
       await init();
     })();
   }, []);
 
   if (!init) return <div></div>;
-  else {
-    return <InfoWindowTemplate infoProps={infoProps} />;
-  }
+  return (
+    <InfoWindowTemplate
+      infoProps={infoProps}
+      tabState={tabState}
+      setTabState={setTabState}
+      screenSizeState={screenSizeState}
+    />
+  );
 }
 
 export default InfoWindowContainer;

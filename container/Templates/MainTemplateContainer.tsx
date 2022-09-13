@@ -14,6 +14,11 @@ import { placeListAtom } from "../../libs/states/place/place";
 import { geoJsonAtom } from "../../libs/states/map/map";
 import { FilterList } from "../../libs/types/type";
 import { Place } from "../../libs/types/place";
+import {
+  screenSizeStateAtom,
+  tabStateAtom,
+} from "../../libs/states/infoWindowState";
+import { TabState } from "../../libs/types/infowindow";
 
 const MainContainer = () => {
   //main container의 useEffect 먼저 체크
@@ -25,6 +30,9 @@ const MainContainer = () => {
   // const [activeFilterList, setActiveFilterList] = useRecoilState(
   //   activeFilterListSelector
   // );
+  const [screenSizeState, setScreenSizeState] =
+    useRecoilState(screenSizeStateAtom);
+  const [tabState, setTabState] = useRecoilState<TabState>(tabStateAtom);
   const [placeList, setPlaceList] = useRecoilState<Array<Place>>(placeListAtom);
   const [geoJson, setGeoJson] = useRecoilState<any>(geoJsonAtom);
   const categories = useRecoilValue(
@@ -34,10 +42,22 @@ const MainContainer = () => {
 
   // map 관련 state
   useEffect(() => {
+    const screenSize = async () => {
+      const { innerHeight, innerWidth } = window;
+      window.addEventListener("resize", (e) => {
+        setScreenSizeState({
+          innerHeight,
+          innerWidth,
+        });
+      });
+      setScreenSizeState({
+        innerWidth,
+        innerHeight,
+      });
+      return { innerHeight, innerWidth };
+    };
+
     const fetchData = async () => {
-      // const filterList: FilterList = await getFilterList();
-      // const { categories, items } = filterList;
-      // setFilterList({ categories, items });
       const placeList: Array<Place> = await getAllPlaceList();
       setPlaceList(placeList);
       const geoJson = await getGeoJson();
@@ -54,13 +74,13 @@ const MainContainer = () => {
       setGeoJson(placeListGeoJson);
     };
 
-    const mainContainerInit = async () => {
+    (async () => {
       await fetchData();
+      await screenSize();
       await (async () => {
         setIsinit(true);
       })();
-    };
-    mainContainerInit();
+    })();
   }, []);
 
   if (!isInit) {
