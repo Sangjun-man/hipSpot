@@ -19,5 +19,4 @@ FirstStory.args = {
     items: ["x", "y", "z"],
   },
   isFilterListOpen: true,
-  },
 };

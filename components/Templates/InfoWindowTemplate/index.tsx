@@ -1,43 +1,70 @@
-import { css } from "@emotion/react";
-import React from "react";
-import Button from "../../atoms/Button";
-import { InfoWindowLayout, MainLayout } from "../../layouts";
-import InfoWindowContents from "../../modules/InfoWindowContents";
-import InfoWindowTitle from "../../modules/InfoWindowTitle";
+import React, { useEffect, useState } from "react";
+import ImageSlide from "../../modules/ImageSlide/ImageSlide";
+import * as A from "../../atoms/InfoWindow/index";
+import * as M from "./";
+import * as S from "./style";
+import Info from "../../modules/InfoWindow/Info/Info";
+import MenuTable from "../../modules/InfoWindow/MenuTable/MenuTable";
+import FindWay from "../../modules/InfoWindow/FindWay/FindWay";
+import PopUpWindow from "../../modules/InfoWindow/PopUpWindow";
+import {
+  infoPropsStateAtom,
+  InfoPropsStateType,
+  screenSizeStateAtom,
+  tabStateAtom,
+} from "../../../libs/states/infoWindowState";
+import ImageTabList from "../../modules/InfoWindow/ImageTabList/ImageTabList";
+import { MdClear } from "react-icons/md";
+import { VscGrabber } from "react-icons/vsc";
+import { TabState } from "../../../libs/types/infowindow";
+import { useRecoilState, useRecoilValue } from "recoil";
+export interface InfoWindowTemplateProps {
+  infoProps: InfoPropsStateType;
+  tabState: TabState;
+  setTabState: (TabState: TabState) => void;
+  screenSizeState: { innerWidth: number; innerHeight: number };
+}
 
-const titleArgs = {
-  name: "시몬스 그로서리 스토어",
-  hashTag: ["시몬스", "침대", "편해요?"],
-};
-const contentsArgs = {
-  infoList: [
-    { title: "영업시간", content: "월~일 10:00 - 19:00" },
-    { title: "주소", content: "사랑시 고백구 행복동" },
-    { title: "전화번호", content: "010-7272-8403" },
-  ],
-  instagram: "sa_ng_ju_n2",
-};
-
-const InfoWindowTemplate = () => {
-  const { name, hashTag } = titleArgs;
-  const { infoList, instagram } = contentsArgs;
-
+const InfoWindowTemplate = ({
+  tabState,
+  setTabState,
+  screenSizeState,
+  infoProps,
+}: InfoWindowTemplateProps) => {
+  console.log(infoProps);
   return (
-    <MainLayout>
-      <InfoWindowLayout>
-        <InfoWindowTitle name={name} hashTag={hashTag} />
-        <div css={giveBackgroudColor}>
-          <InfoWindowContents infoList={infoList} />
-        </div>
-        <div>인스타들어갈예정</div>
-        <Button theme="secondary">@{instagram}</Button>
-      </InfoWindowLayout>
-    </MainLayout>
+    <PopUpWindow tabState={tabState} id="popUpWindow">
+      <S.TopBarWrapper>
+        <S.PlaceName>{infoProps.contentsArgs.placeName}</S.PlaceName>
+        <S.CloseIconWrapper
+          onClick={() => {
+            const returnTabState: TabState = {
+              ...tabState,
+              top: screenSizeState.innerHeight - 30,
+              popUpState: "thumbNail",
+            };
+            setTabState(returnTabState);
+          }}
+        >
+          <MdClear />
+        </S.CloseIconWrapper>
+      </S.TopBarWrapper>
+      <S.ImageListWrapper>
+        {tabState.popUpState === "full" && (
+          <ImageTabList imageTabList={infoProps.imageTabList} />
+        )}
+        <ImageSlide imageList={infoProps.imageList} />
+      </S.ImageListWrapper>
+
+      <S.InfoWrapper>
+        <Info infoList={infoProps.contentsArgs.infoList} />
+        <MenuTable menuInfoList={infoProps.menuInfoList}></MenuTable>
+      </S.InfoWrapper>
+      <S.BottomWrapper>
+        <FindWay />
+      </S.BottomWrapper>
+    </PopUpWindow>
   );
 };
 
 export default InfoWindowTemplate;
-
-const giveBackgroudColor = css`
-  background-color: rgba(255, 234, 240, 0.12);
-`;

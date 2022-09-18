@@ -16,4 +16,5 @@ export const Defalut = Template.bind({});
 Defalut.args = {
   src: "/image/testImg.png",
   alt: "test",
+  popUpstate: "thumbNail",
 };

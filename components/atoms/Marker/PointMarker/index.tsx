@@ -101,18 +101,3 @@ export const PointMarker = ({
 
   return <div dangerouslySetInnerHTML={{ __html: __html }}></div>;
 };
-
-// <div class="mapgl-marker-animation" style="${wrapperStyle}">
-//   <div style="${placeNameStyle}">${placeName}</div>
-//   <div>
-//     <svg width="${width}"viewBox="0 0 60 68" fill="none"  style="position:absolute;" xmlns="http://www.w3.org/2000/svg">
-//     <defs>
-//       <pattern id="id_${src}" x="0" y="0"patternUnits="userSpaceOnUse" width="80" height="80">
-//         <image href=${src} preserveAspectRatio="none" width="100%" height="100%" />
-//       </pattern>
-//       </defs>
-//       <path d="M37.8875 60.9271L30 67.5L22.6341 61.0006C21.9033 60.3558 20.9622 60 19.9876 60H4C1.79086 60 0 58.2091 0 56V4C0 1.79086 1.79086 0 4 0H56C58.2091 0 60 1.79086 60 4V56C60 58.2091 58.2091 60 56 60H40.4482C39.5125 60 38.6063 60.3281 37.8875 60.9271Z" fill="url(#id_${src})"/>
-//     </svg>
-
-//   </div>
-// </div>

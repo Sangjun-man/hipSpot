@@ -8,7 +8,7 @@ import {
   filterListAtom,
   isFilterListOpenAtom,
   placeTypeActiveFilterListSelector,
-} from "../../states/filter/filter";
+} from "../../libs/states/filter/filter";
 
 const FilterListWindowTemplateContainer = () => {
   //Atoms

@@ -1,4 +1,4 @@
-import { ActiveFilterList, FilterList } from "../../types/type";
+import { ActiveFilterList, FilterList } from "../types/type";
 
 export const filterListToActiveList = ( filterList : FilterList) => {
     const activeFilterList: ActiveFilterList = [];

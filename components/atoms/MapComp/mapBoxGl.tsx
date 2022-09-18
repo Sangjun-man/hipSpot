@@ -3,13 +3,18 @@ import React, { useEffect } from "react";
 import { testImg } from "../../../public/image/data64/testImg";
 import { PointMarkerString, PointMarker } from "../Marker/PointMarker";
 import mapboxgl, { GeoJSONSource } from "mapbox-gl"; // or "const mapboxgl = require('mapbox-gl');"
-import { clusterLeavesMarker } from "./lib/clusterLeavesInfo";
-import { updateMarkers } from "./lib/updateMarkers";
-import { ClusterMarkerString, RoundedMarker } from "../Marker/ClusterMarker";
-import { renderMarkers } from "./lib/renderMarkers";
-import { removeMarkers } from "./lib/removeMarkers";
-import { addClusterMarkerEvents } from "../Marker/ClusterMarker/AddClusterMarkerEvents";
+import { clickClusterLeavesMarker } from "./lib/click/clickClusterLeavesMarker";
+import { updateMarkers } from "./lib/render/updateMarkers";
+import { RoundedMarker } from "../Marker/ClusterMarker";
+import { renderMarkers } from "./lib/render/renderMarkers";
+import { removeMarkers } from "./lib/render/removeMarkers";
 import { AddPointMarkerEvents } from "../Marker/PointMarker/pointMarkerAddEvents";
+import { clickPointMarker } from "./lib/click/clickPointMarker";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import {
+  infoPropsStateAtom,
+  tabStateAtom,
+} from "../../../libs/states/infoWindowState";
 
 export interface MapCompProps {
   markerList: Array<any>;
@@ -17,6 +22,9 @@ export interface MapCompProps {
 }
 
 const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
+  const setInfoProps = useSetRecoilState(infoPropsStateAtom);
+  const [tabState, setTabState] = useRecoilState(tabStateAtom);
+
   useEffect(() => {
     mapboxgl.accessToken = `${process.env.MAPBOX_MAP_ALL_ACCESS_TOKKEN}`;
     if (!mapboxgl.supported())
@@ -25,6 +33,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
       );
 
     if (document.getElementById("map")!.childNodes.length <= 0) {
+      console.log("mapLoad");
       const map = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
@@ -48,26 +57,27 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
           data: placeListGeoJson,
           cluster: true,
           // clusterMinPoints: 10,
-          clusterMaxZoom: 17,
+          clusterMaxZoom: 16,
           clusterRadius: 60,
         });
+
         map.addLayer({
-          id: "placeList_circle",
+          id: "placeList",
           type: "circle",
           source: "placeList",
-          filter: ["has", "point_count"],
+          // filter: ["has", "point_count"],
           paint: {
             "circle-opacity": 0,
           },
         });
 
-        clusterLeavesMarker({
+        clickPointMarker({
           map,
           sourceId: "placeList",
-          clusterLayerId: "placeList_circle",
-        });
-        map.on("click", (e) => {
-          console.log(e.lngLat, e.point);
+          clusterLayerId: "placeList",
+          setInfoProps,
+          tabState,
+          setTabState,
         });
       });
 
@@ -88,15 +98,12 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
             const props = feature.properties;
             const { id, instaId, borderColor, placeName } = props;
             if (!allPointMarkers[id]) {
-              // const src = `/images/${instaId}/0.jpg`;
-              // const el = document.createElement("div");
               const el = document.createElement("div");
               el.innerHTML = PointMarkerString({
                 instaId,
                 borderColor,
                 placeName,
               });
-              // el.appendChild(marker);
               AddPointMarkerEvents(el);
               allPointMarkers[id] = new mapboxgl.Marker({
                 element: el,
@@ -113,16 +120,11 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
             }
           }
         })();
-
-        // await (async () => {
-        //   console.log(allPointMarkers, allClusterMarkers);
-        // })();
       });
 
       map.on("render", async () => {
         if (!map.isSourceLoaded("placeList")) return;
         if (!allPointMarkers[Object.keys(allPointMarkers).length - 1]) {
-          // console.log("allPointMarkers");
           return;
         }
 
@@ -142,13 +144,6 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
           markersOnScreen,
           clusterMarkersOnScreen,
         });
-        // await (async () =>
-        //   console.log(
-        //     newMarkers,
-        //     newClusterMarkers,
-        //     markersOnScreen,
-        //     clusterMarkersOnScreen
-        //   ))();
         await removeMarkers({
           newMarkers,
           newClusterMarkers,
@@ -160,24 +155,15 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
   });
 
   return (
-    <div css={mapStyle}>
-      <div
-        id="map"
-        css={css`
-          width: 100%;
-          max-width: 1200px;
-          height: 100%;
-          position: absolute;
-        `}
-      />
-    </div>
+    <div
+      id="map"
+      css={css`
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      `}
+    />
   );
 };
 
 export default MapComp;
-
-const mapStyle = css`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-`;
