@@ -35,8 +35,3 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-
-#이미지파일
-/public/images
-
-.env
