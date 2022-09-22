@@ -1,0 +1,47 @@
+{
+	"instaId": "@sunnybreadkr",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@sunnybreadkr/store/4.jpg"
+				},
+				{
+					"src": "/images/@sunnybreadkr/store/2.jpg"
+				},
+				{
+					"src": "/images/@sunnybreadkr/store/3.jpg"
+				},
+				{
+					"src": "/images/@sunnybreadkr/store/1.jpg"
+				},
+				{
+					"src": "/images/@sunnybreadkr/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@sunnybreadkr/menu/4.jpg"
+				},
+				{
+					"src": "/images/@sunnybreadkr/menu/2.jpg"
+				},
+				{
+					"src": "/images/@sunnybreadkr/menu/3.jpg"
+				},
+				{
+					"src": "/images/@sunnybreadkr/menu/1.jpg"
+				},
+				{
+					"src": "/images/@sunnybreadkr/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

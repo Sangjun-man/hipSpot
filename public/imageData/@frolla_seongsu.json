@@ -1,0 +1,47 @@
+{
+	"instaId": "@frolla_seongsu",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@frolla_seongsu/store/4.jpg"
+				},
+				{
+					"src": "/images/@frolla_seongsu/store/2.jpg"
+				},
+				{
+					"src": "/images/@frolla_seongsu/store/3.jpg"
+				},
+				{
+					"src": "/images/@frolla_seongsu/store/1.jpg"
+				},
+				{
+					"src": "/images/@frolla_seongsu/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@frolla_seongsu/menu/4.jpg"
+				},
+				{
+					"src": "/images/@frolla_seongsu/menu/2.jpg"
+				},
+				{
+					"src": "/images/@frolla_seongsu/menu/3.jpg"
+				},
+				{
+					"src": "/images/@frolla_seongsu/menu/1.jpg"
+				},
+				{
+					"src": "/images/@frolla_seongsu/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

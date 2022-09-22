@@ -1,0 +1,41 @@
+{
+	"instaId": "@5ff_coffee",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@5ff_coffee/store/4.jpg"
+				},
+				{
+					"src": "/images/@5ff_coffee/store/2.jpg"
+				},
+				{
+					"src": "/images/@5ff_coffee/store/3.jpg"
+				},
+				{
+					"src": "/images/@5ff_coffee/store/1.jpg"
+				},
+				{
+					"src": "/images/@5ff_coffee/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@5ff_coffee/menu/2.jpg"
+				},
+				{
+					"src": "/images/@5ff_coffee/menu/1.jpg"
+				},
+				{
+					"src": "/images/@5ff_coffee/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

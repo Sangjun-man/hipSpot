@@ -1,0 +1,47 @@
+{
+	"instaId": "@psgcoffee_",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@psgcoffee_/store/4.jpg"
+				},
+				{
+					"src": "/images/@psgcoffee_/store/2.jpg"
+				},
+				{
+					"src": "/images/@psgcoffee_/store/3.jpg"
+				},
+				{
+					"src": "/images/@psgcoffee_/store/1.jpg"
+				},
+				{
+					"src": "/images/@psgcoffee_/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@psgcoffee_/menu/4.jpg"
+				},
+				{
+					"src": "/images/@psgcoffee_/menu/2.jpg"
+				},
+				{
+					"src": "/images/@psgcoffee_/menu/3.jpg"
+				},
+				{
+					"src": "/images/@psgcoffee_/menu/1.jpg"
+				},
+				{
+					"src": "/images/@psgcoffee_/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

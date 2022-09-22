@@ -1,0 +1,47 @@
+{
+	"instaId": "@h_coffee_roasters",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@h_coffee_roasters/store/4.jpg"
+				},
+				{
+					"src": "/images/@h_coffee_roasters/store/2.jpg"
+				},
+				{
+					"src": "/images/@h_coffee_roasters/store/3.jpg"
+				},
+				{
+					"src": "/images/@h_coffee_roasters/store/1.jpg"
+				},
+				{
+					"src": "/images/@h_coffee_roasters/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@h_coffee_roasters/menu/4.jpg"
+				},
+				{
+					"src": "/images/@h_coffee_roasters/menu/2.jpg"
+				},
+				{
+					"src": "/images/@h_coffee_roasters/menu/3.jpg"
+				},
+				{
+					"src": "/images/@h_coffee_roasters/menu/1.jpg"
+				},
+				{
+					"src": "/images/@h_coffee_roasters/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

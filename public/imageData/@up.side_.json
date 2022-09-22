@@ -1,0 +1,47 @@
+{
+	"instaId": "@up.side_",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@up.side_/store/4.jpg"
+				},
+				{
+					"src": "/images/@up.side_/store/2.jpg"
+				},
+				{
+					"src": "/images/@up.side_/store/3.jpg"
+				},
+				{
+					"src": "/images/@up.side_/store/1.jpg"
+				},
+				{
+					"src": "/images/@up.side_/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@up.side_/menu/4.jpg"
+				},
+				{
+					"src": "/images/@up.side_/menu/2.jpg"
+				},
+				{
+					"src": "/images/@up.side_/menu/3.jpg"
+				},
+				{
+					"src": "/images/@up.side_/menu/1.jpg"
+				},
+				{
+					"src": "/images/@up.side_/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

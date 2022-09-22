@@ -1,0 +1,44 @@
+{
+	"instaId": "@cafeknotted",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@cafeknotted/store/2.jpg"
+				},
+				{
+					"src": "/images/@cafeknotted/store/3.jpg"
+				},
+				{
+					"src": "/images/@cafeknotted/store/1.jpg"
+				},
+				{
+					"src": "/images/@cafeknotted/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@cafeknotted/menu/4.jpg"
+				},
+				{
+					"src": "/images/@cafeknotted/menu/2.jpg"
+				},
+				{
+					"src": "/images/@cafeknotted/menu/3.jpg"
+				},
+				{
+					"src": "/images/@cafeknotted/menu/1.jpg"
+				},
+				{
+					"src": "/images/@cafeknotted/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

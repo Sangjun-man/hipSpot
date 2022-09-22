@@ -1,0 +1,47 @@
+{
+	"instaId": "@rudiment.kr",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@rudiment.kr/store/4.jpg"
+				},
+				{
+					"src": "/images/@rudiment.kr/store/2.jpg"
+				},
+				{
+					"src": "/images/@rudiment.kr/store/3.jpg"
+				},
+				{
+					"src": "/images/@rudiment.kr/store/1.jpg"
+				},
+				{
+					"src": "/images/@rudiment.kr/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@rudiment.kr/menu/4.jpg"
+				},
+				{
+					"src": "/images/@rudiment.kr/menu/2.jpg"
+				},
+				{
+					"src": "/images/@rudiment.kr/menu/3.jpg"
+				},
+				{
+					"src": "/images/@rudiment.kr/menu/1.jpg"
+				},
+				{
+					"src": "/images/@rudiment.kr/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

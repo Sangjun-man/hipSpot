@@ -52,6 +52,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
       });
 
       map.on("load", () => {
+        // console.log("mapbox geoJSON :", placeListGeoJson);
         map.addSource("placeList", {
           type: "geojson",
           data: placeListGeoJson,
@@ -89,11 +90,17 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
       let source = {};
 
       map.on("sourcedata", async () => {
+        // console.log("sourcedata");
         if (!map.isSourceLoaded("placeList")) return;
+        if (allPointMarkers[0] && allClusterMarkers[0]) return;
+        // console.log("placeListLoaded");
+
         source = map.getSource("placeList");
         const allFeatures = source._data.features;
         await (async () => {
+          console.log("makemarker");
           for (const feature of allFeatures) {
+            // console.log("feature", feature);
             const coords = feature.geometry.coordinates;
             const props = feature.properties;
             const { id, instaId, borderColor, placeName } = props;
@@ -119,6 +126,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
               }).setLngLat(coords);
             }
           }
+          // console.log(allClusterMarkers, allPointMarkers);
         })();
       });
 
@@ -127,7 +135,6 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
         if (!allPointMarkers[Object.keys(allPointMarkers).length - 1]) {
           return;
         }
-
         const { newMarkers, newClusterMarkers } = await updateMarkers({
           map,
           allPointMarkers,

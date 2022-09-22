@@ -1,0 +1,47 @@
+{
+	"instaId": "@halff_coffeeroasters",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@halff_coffeeroasters/store/4.jpg"
+				},
+				{
+					"src": "/images/@halff_coffeeroasters/store/2.jpg"
+				},
+				{
+					"src": "/images/@halff_coffeeroasters/store/3.jpg"
+				},
+				{
+					"src": "/images/@halff_coffeeroasters/store/1.jpg"
+				},
+				{
+					"src": "/images/@halff_coffeeroasters/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@halff_coffeeroasters/menu/4.jpg"
+				},
+				{
+					"src": "/images/@halff_coffeeroasters/menu/2.jpg"
+				},
+				{
+					"src": "/images/@halff_coffeeroasters/menu/3.jpg"
+				},
+				{
+					"src": "/images/@halff_coffeeroasters/menu/1.jpg"
+				},
+				{
+					"src": "/images/@halff_coffeeroasters/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

@@ -1,0 +1,47 @@
+{
+	"instaId": "@gelateria.cotati",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@gelateria.cotati/store/4.jpg"
+				},
+				{
+					"src": "/images/@gelateria.cotati/store/2.jpg"
+				},
+				{
+					"src": "/images/@gelateria.cotati/store/3.jpg"
+				},
+				{
+					"src": "/images/@gelateria.cotati/store/1.jpg"
+				},
+				{
+					"src": "/images/@gelateria.cotati/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@gelateria.cotati/menu/4.jpg"
+				},
+				{
+					"src": "/images/@gelateria.cotati/menu/2.jpg"
+				},
+				{
+					"src": "/images/@gelateria.cotati/menu/3.jpg"
+				},
+				{
+					"src": "/images/@gelateria.cotati/menu/1.jpg"
+				},
+				{
+					"src": "/images/@gelateria.cotati/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

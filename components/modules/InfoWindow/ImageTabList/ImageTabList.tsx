@@ -8,6 +8,7 @@ interface InfoWindowContentProps {
 }
 
 const ImageTabList = ({ imageTabList }: InfoWindowContentProps) => {
+  console.log(imageTabList);
   return (
     <S.ImageTabListWrapper>
       {imageTabList.map((tab, i) => (

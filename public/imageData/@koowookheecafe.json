@@ -1,0 +1,47 @@
+{
+	"instaId": "@koowookheecafe",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@koowookheecafe/store/4.jpg"
+				},
+				{
+					"src": "/images/@koowookheecafe/store/2.jpg"
+				},
+				{
+					"src": "/images/@koowookheecafe/store/3.jpg"
+				},
+				{
+					"src": "/images/@koowookheecafe/store/1.jpg"
+				},
+				{
+					"src": "/images/@koowookheecafe/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@koowookheecafe/menu/4.jpg"
+				},
+				{
+					"src": "/images/@koowookheecafe/menu/2.jpg"
+				},
+				{
+					"src": "/images/@koowookheecafe/menu/3.jpg"
+				},
+				{
+					"src": "/images/@koowookheecafe/menu/1.jpg"
+				},
+				{
+					"src": "/images/@koowookheecafe/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

@@ -1,0 +1,47 @@
+{
+	"instaId": "@greenlab_seoulforest",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@greenlab_seoulforest/store/4.jpg"
+				},
+				{
+					"src": "/images/@greenlab_seoulforest/store/2.jpg"
+				},
+				{
+					"src": "/images/@greenlab_seoulforest/store/3.jpg"
+				},
+				{
+					"src": "/images/@greenlab_seoulforest/store/1.jpg"
+				},
+				{
+					"src": "/images/@greenlab_seoulforest/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@greenlab_seoulforest/menu/4.jpg"
+				},
+				{
+					"src": "/images/@greenlab_seoulforest/menu/2.jpg"
+				},
+				{
+					"src": "/images/@greenlab_seoulforest/menu/3.jpg"
+				},
+				{
+					"src": "/images/@greenlab_seoulforest/menu/1.jpg"
+				},
+				{
+					"src": "/images/@greenlab_seoulforest/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

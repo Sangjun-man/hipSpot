@@ -1,0 +1,47 @@
+{
+	"instaId": "@ephemera.seoul",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@ephemera.seoul/store/4.jpg"
+				},
+				{
+					"src": "/images/@ephemera.seoul/store/2.jpg"
+				},
+				{
+					"src": "/images/@ephemera.seoul/store/3.jpg"
+				},
+				{
+					"src": "/images/@ephemera.seoul/store/1.jpg"
+				},
+				{
+					"src": "/images/@ephemera.seoul/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@ephemera.seoul/menu/4.jpg"
+				},
+				{
+					"src": "/images/@ephemera.seoul/menu/2.jpg"
+				},
+				{
+					"src": "/images/@ephemera.seoul/menu/3.jpg"
+				},
+				{
+					"src": "/images/@ephemera.seoul/menu/1.jpg"
+				},
+				{
+					"src": "/images/@ephemera.seoul/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

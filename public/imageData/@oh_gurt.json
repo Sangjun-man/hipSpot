@@ -1,0 +1,47 @@
+{
+	"instaId": "@oh_gurt",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@oh_gurt/store/4.jpg"
+				},
+				{
+					"src": "/images/@oh_gurt/store/2.jpg"
+				},
+				{
+					"src": "/images/@oh_gurt/store/3.jpg"
+				},
+				{
+					"src": "/images/@oh_gurt/store/1.jpg"
+				},
+				{
+					"src": "/images/@oh_gurt/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@oh_gurt/menu/4.jpg"
+				},
+				{
+					"src": "/images/@oh_gurt/menu/2.jpg"
+				},
+				{
+					"src": "/images/@oh_gurt/menu/3.jpg"
+				},
+				{
+					"src": "/images/@oh_gurt/menu/1.jpg"
+				},
+				{
+					"src": "/images/@oh_gurt/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

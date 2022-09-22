@@ -1,0 +1,47 @@
+{
+	"instaId": "@bbb_coffee_",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@bbb_coffee_/store/4.jpg"
+				},
+				{
+					"src": "/images/@bbb_coffee_/store/2.jpg"
+				},
+				{
+					"src": "/images/@bbb_coffee_/store/3.jpg"
+				},
+				{
+					"src": "/images/@bbb_coffee_/store/1.jpg"
+				},
+				{
+					"src": "/images/@bbb_coffee_/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@bbb_coffee_/menu/4.jpg"
+				},
+				{
+					"src": "/images/@bbb_coffee_/menu/2.jpg"
+				},
+				{
+					"src": "/images/@bbb_coffee_/menu/3.jpg"
+				},
+				{
+					"src": "/images/@bbb_coffee_/menu/1.jpg"
+				},
+				{
+					"src": "/images/@bbb_coffee_/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

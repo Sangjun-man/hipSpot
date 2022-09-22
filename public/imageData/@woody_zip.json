@@ -1,0 +1,47 @@
+{
+	"instaId": "@woody_zip",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@woody_zip/store/4.jpg"
+				},
+				{
+					"src": "/images/@woody_zip/store/2.jpg"
+				},
+				{
+					"src": "/images/@woody_zip/store/3.jpg"
+				},
+				{
+					"src": "/images/@woody_zip/store/1.jpg"
+				},
+				{
+					"src": "/images/@woody_zip/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@woody_zip/menu/4.jpg"
+				},
+				{
+					"src": "/images/@woody_zip/menu/2.jpg"
+				},
+				{
+					"src": "/images/@woody_zip/menu/3.jpg"
+				},
+				{
+					"src": "/images/@woody_zip/menu/1.jpg"
+				},
+				{
+					"src": "/images/@woody_zip/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

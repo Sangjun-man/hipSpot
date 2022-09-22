@@ -1,0 +1,47 @@
+{
+	"instaId": "@v.etiver",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@v.etiver/store/4.jpg"
+				},
+				{
+					"src": "/images/@v.etiver/store/2.jpg"
+				},
+				{
+					"src": "/images/@v.etiver/store/3.jpg"
+				},
+				{
+					"src": "/images/@v.etiver/store/1.jpg"
+				},
+				{
+					"src": "/images/@v.etiver/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@v.etiver/menu/4.jpg"
+				},
+				{
+					"src": "/images/@v.etiver/menu/2.jpg"
+				},
+				{
+					"src": "/images/@v.etiver/menu/3.jpg"
+				},
+				{
+					"src": "/images/@v.etiver/menu/1.jpg"
+				},
+				{
+					"src": "/images/@v.etiver/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

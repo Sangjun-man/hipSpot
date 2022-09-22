@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { tabStateAtom } from "../../../libs/states/infoWindowState";
 import { ImageCompProps } from "../../atoms/ImageComp";
 import * as S from "./style";
 
@@ -9,8 +11,11 @@ export interface ImageSlideProps {
 }
 
 function ImageSlide({ imageList }: ImageSlideProps) {
+  console.log(imageList);
   const imageSize = { base: 260, full: 400 };
   const [size, setSize] = useState<number>(imageSize.base);
+  const tabStateProps = useRecoilValue(tabStateAtom);
+
   function slideEventListener(e: any) {
     const y = e.clientY;
     const calcRatio = 1 - y / window.innerHeight;
@@ -33,7 +38,7 @@ function ImageSlide({ imageList }: ImageSlideProps) {
   useEffect(() => {
     const slideWrapperElem = document.getElementById("slide")!;
     slideWrapperElem.addEventListener("forSlide", slideEventListener);
-  });
+  }, []);
 
   return (
     <S.ImageSlideWrapper>

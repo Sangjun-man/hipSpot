@@ -1,0 +1,35 @@
+{
+	"instaId": "@rafre_fruit",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@rafre_fruit/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@rafre_fruit/menu/4.jpg"
+				},
+				{
+					"src": "/images/@rafre_fruit/menu/2.jpg"
+				},
+				{
+					"src": "/images/@rafre_fruit/menu/3.jpg"
+				},
+				{
+					"src": "/images/@rafre_fruit/menu/1.jpg"
+				},
+				{
+					"src": "/images/@rafre_fruit/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

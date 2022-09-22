@@ -1,0 +1,38 @@
+{
+	"instaId": "@affaircoffee_",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@affaircoffee_/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@affaircoffee_/menu/4.jpg"
+				},
+				{
+					"src": "/images/@affaircoffee_/menu/5.jpg"
+				},
+				{
+					"src": "/images/@affaircoffee_/menu/2.jpg"
+				},
+				{
+					"src": "/images/@affaircoffee_/menu/3.jpg"
+				},
+				{
+					"src": "/images/@affaircoffee_/menu/1.jpg"
+				},
+				{
+					"src": "/images/@affaircoffee_/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

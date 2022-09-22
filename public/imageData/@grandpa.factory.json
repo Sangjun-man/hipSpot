@@ -1,0 +1,47 @@
+{
+	"instaId": "@grandpa.factory",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@grandpa.factory/store/4.jpg"
+				},
+				{
+					"src": "/images/@grandpa.factory/store/2.jpg"
+				},
+				{
+					"src": "/images/@grandpa.factory/store/3.jpg"
+				},
+				{
+					"src": "/images/@grandpa.factory/store/1.jpg"
+				},
+				{
+					"src": "/images/@grandpa.factory/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@grandpa.factory/menu/4.jpg"
+				},
+				{
+					"src": "/images/@grandpa.factory/menu/2.jpg"
+				},
+				{
+					"src": "/images/@grandpa.factory/menu/3.jpg"
+				},
+				{
+					"src": "/images/@grandpa.factory/menu/1.jpg"
+				},
+				{
+					"src": "/images/@grandpa.factory/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

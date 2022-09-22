@@ -1,0 +1,47 @@
+{
+	"instaId": "@meshcoffee",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@meshcoffee/store/4.jpg"
+				},
+				{
+					"src": "/images/@meshcoffee/store/2.jpg"
+				},
+				{
+					"src": "/images/@meshcoffee/store/3.jpg"
+				},
+				{
+					"src": "/images/@meshcoffee/store/1.jpg"
+				},
+				{
+					"src": "/images/@meshcoffee/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@meshcoffee/menu/4.jpg"
+				},
+				{
+					"src": "/images/@meshcoffee/menu/2.jpg"
+				},
+				{
+					"src": "/images/@meshcoffee/menu/3.jpg"
+				},
+				{
+					"src": "/images/@meshcoffee/menu/1.jpg"
+				},
+				{
+					"src": "/images/@meshcoffee/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

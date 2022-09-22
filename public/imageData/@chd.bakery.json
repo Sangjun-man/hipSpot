@@ -1,0 +1,47 @@
+{
+	"instaId": "@chd.bakery",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@chd.bakery/store/4.jpg"
+				},
+				{
+					"src": "/images/@chd.bakery/store/2.jpg"
+				},
+				{
+					"src": "/images/@chd.bakery/store/3.jpg"
+				},
+				{
+					"src": "/images/@chd.bakery/store/1.jpg"
+				},
+				{
+					"src": "/images/@chd.bakery/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@chd.bakery/menu/4.jpg"
+				},
+				{
+					"src": "/images/@chd.bakery/menu/2.jpg"
+				},
+				{
+					"src": "/images/@chd.bakery/menu/3.jpg"
+				},
+				{
+					"src": "/images/@chd.bakery/menu/1.jpg"
+				},
+				{
+					"src": "/images/@chd.bakery/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

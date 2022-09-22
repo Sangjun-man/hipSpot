@@ -1,0 +1,47 @@
+{
+	"instaId": "@comoff__",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@comoff__/store/4.jpg"
+				},
+				{
+					"src": "/images/@comoff__/store/2.jpg"
+				},
+				{
+					"src": "/images/@comoff__/store/3.jpg"
+				},
+				{
+					"src": "/images/@comoff__/store/1.jpg"
+				},
+				{
+					"src": "/images/@comoff__/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@comoff__/menu/4.jpg"
+				},
+				{
+					"src": "/images/@comoff__/menu/2.jpg"
+				},
+				{
+					"src": "/images/@comoff__/menu/3.jpg"
+				},
+				{
+					"src": "/images/@comoff__/menu/1.jpg"
+				},
+				{
+					"src": "/images/@comoff__/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

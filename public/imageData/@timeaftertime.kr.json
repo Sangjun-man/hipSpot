@@ -1,0 +1,47 @@
+{
+	"instaId": "@timeaftertime.kr",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@timeaftertime.kr/store/4.jpg"
+				},
+				{
+					"src": "/images/@timeaftertime.kr/store/2.jpg"
+				},
+				{
+					"src": "/images/@timeaftertime.kr/store/3.jpg"
+				},
+				{
+					"src": "/images/@timeaftertime.kr/store/1.jpg"
+				},
+				{
+					"src": "/images/@timeaftertime.kr/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@timeaftertime.kr/menu/4.jpg"
+				},
+				{
+					"src": "/images/@timeaftertime.kr/menu/2.jpg"
+				},
+				{
+					"src": "/images/@timeaftertime.kr/menu/3.jpg"
+				},
+				{
+					"src": "/images/@timeaftertime.kr/menu/1.jpg"
+				},
+				{
+					"src": "/images/@timeaftertime.kr/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}
