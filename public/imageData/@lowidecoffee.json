@@ -1,0 +1,47 @@
+{
+	"instaId": "@lowidecoffee",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@lowidecoffee/store/4.jpg"
+				},
+				{
+					"src": "/images/@lowidecoffee/store/2.jpg"
+				},
+				{
+					"src": "/images/@lowidecoffee/store/3.jpg"
+				},
+				{
+					"src": "/images/@lowidecoffee/store/1.jpg"
+				},
+				{
+					"src": "/images/@lowidecoffee/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@lowidecoffee/menu/4.jpg"
+				},
+				{
+					"src": "/images/@lowidecoffee/menu/2.jpg"
+				},
+				{
+					"src": "/images/@lowidecoffee/menu/3.jpg"
+				},
+				{
+					"src": "/images/@lowidecoffee/menu/1.jpg"
+				},
+				{
+					"src": "/images/@lowidecoffee/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

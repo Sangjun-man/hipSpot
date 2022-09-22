@@ -7,17 +7,11 @@ import Info from "../../modules/InfoWindow/Info/Info";
 import MenuTable from "../../modules/InfoWindow/MenuTable/MenuTable";
 import FindWay from "../../modules/InfoWindow/FindWay/FindWay";
 import PopUpWindow from "../../modules/InfoWindow/PopUpWindow";
-import {
-  infoPropsStateAtom,
-  InfoPropsStateType,
-  screenSizeStateAtom,
-  tabStateAtom,
-} from "../../../libs/states/infoWindowState";
+import { InfoPropsStateType } from "../../../libs/states/infoWindowState";
 import ImageTabList from "../../modules/InfoWindow/ImageTabList/ImageTabList";
 import { MdClear } from "react-icons/md";
-import { VscGrabber } from "react-icons/vsc";
 import { TabState } from "../../../libs/types/infowindow";
-import { useRecoilState, useRecoilValue } from "recoil";
+import ImageSlideContainer from "../../../container/modules/ImageSlideContainer";
 export interface InfoWindowTemplateProps {
   infoProps: InfoPropsStateType;
   tabState: TabState;
@@ -31,7 +25,6 @@ const InfoWindowTemplate = ({
   screenSizeState,
   infoProps,
 }: InfoWindowTemplateProps) => {
-  console.log(infoProps);
   return (
     <PopUpWindow tabState={tabState} id="popUpWindow">
       <S.TopBarWrapper>
@@ -50,10 +43,10 @@ const InfoWindowTemplate = ({
         </S.CloseIconWrapper>
       </S.TopBarWrapper>
       <S.ImageListWrapper>
-        {tabState.popUpState === "full" && (
-          <ImageTabList imageTabList={infoProps.imageTabList} />
-        )}
-        <ImageSlide imageList={infoProps.imageList} />
+        <ImageSlideContainer
+          instaId={infoProps.contentsArgs.instaId}
+          tabState={tabState}
+        />
       </S.ImageListWrapper>
 
       <S.InfoWrapper>

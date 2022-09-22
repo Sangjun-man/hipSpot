@@ -1,0 +1,47 @@
+{
+	"instaId": "@editiondenmark",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@editiondenmark/store/4.jpg"
+				},
+				{
+					"src": "/images/@editiondenmark/store/2.jpg"
+				},
+				{
+					"src": "/images/@editiondenmark/store/3.jpg"
+				},
+				{
+					"src": "/images/@editiondenmark/store/1.jpg"
+				},
+				{
+					"src": "/images/@editiondenmark/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@editiondenmark/menu/4.jpg"
+				},
+				{
+					"src": "/images/@editiondenmark/menu/2.jpg"
+				},
+				{
+					"src": "/images/@editiondenmark/menu/3.jpg"
+				},
+				{
+					"src": "/images/@editiondenmark/menu/1.jpg"
+				},
+				{
+					"src": "/images/@editiondenmark/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

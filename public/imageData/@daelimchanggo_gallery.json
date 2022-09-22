@@ -1,0 +1,31 @@
+{
+	"instaId": "@daelimchanggo_gallery",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@daelimchanggo_gallery/store/4.jpg"
+				},
+				{
+					"src": "/images/@daelimchanggo_gallery/store/2.jpg"
+				},
+				{
+					"src": "/images/@daelimchanggo_gallery/store/3.jpg"
+				},
+				{
+					"src": "/images/@daelimchanggo_gallery/store/1.jpg"
+				},
+				{
+					"src": "/images/@daelimchanggo_gallery/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [],
+			"name": "메뉴"
+		}
+	]
+}

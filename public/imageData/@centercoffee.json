@@ -1,0 +1,47 @@
+{
+	"instaId": "@centercoffee",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@centercoffee/store/4.jpg"
+				},
+				{
+					"src": "/images/@centercoffee/store/2.jpg"
+				},
+				{
+					"src": "/images/@centercoffee/store/3.jpg"
+				},
+				{
+					"src": "/images/@centercoffee/store/1.jpg"
+				},
+				{
+					"src": "/images/@centercoffee/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@centercoffee/menu/4.jpg"
+				},
+				{
+					"src": "/images/@centercoffee/menu/2.jpg"
+				},
+				{
+					"src": "/images/@centercoffee/menu/3.jpg"
+				},
+				{
+					"src": "/images/@centercoffee/menu/1.jpg"
+				},
+				{
+					"src": "/images/@centercoffee/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

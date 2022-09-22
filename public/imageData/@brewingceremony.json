@@ -1,0 +1,41 @@
+{
+	"instaId": "@brewingceremony",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@brewingceremony/store/4.jpg"
+				},
+				{
+					"src": "/images/@brewingceremony/store/2.jpg"
+				},
+				{
+					"src": "/images/@brewingceremony/store/3.jpg"
+				},
+				{
+					"src": "/images/@brewingceremony/store/1.jpg"
+				},
+				{
+					"src": "/images/@brewingceremony/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@brewingceremony/menu/2.jpg"
+				},
+				{
+					"src": "/images/@brewingceremony/menu/1.jpg"
+				},
+				{
+					"src": "/images/@brewingceremony/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

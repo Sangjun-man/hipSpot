@@ -1,0 +1,31 @@
+{
+	"instaId": "@maison_popular",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@maison_popular/store/4.jpg"
+				},
+				{
+					"src": "/images/@maison_popular/store/2.jpg"
+				},
+				{
+					"src": "/images/@maison_popular/store/3.jpg"
+				},
+				{
+					"src": "/images/@maison_popular/store/1.jpg"
+				},
+				{
+					"src": "/images/@maison_popular/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [],
+			"name": "메뉴"
+		}
+	]
+}

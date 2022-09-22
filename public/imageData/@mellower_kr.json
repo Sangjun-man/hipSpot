@@ -1,0 +1,47 @@
+{
+	"instaId": "@mellower_kr",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@mellower_kr/store/4.jpg"
+				},
+				{
+					"src": "/images/@mellower_kr/store/2.jpg"
+				},
+				{
+					"src": "/images/@mellower_kr/store/3.jpg"
+				},
+				{
+					"src": "/images/@mellower_kr/store/1.jpg"
+				},
+				{
+					"src": "/images/@mellower_kr/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@mellower_kr/menu/4.jpg"
+				},
+				{
+					"src": "/images/@mellower_kr/menu/2.jpg"
+				},
+				{
+					"src": "/images/@mellower_kr/menu/3.jpg"
+				},
+				{
+					"src": "/images/@mellower_kr/menu/1.jpg"
+				},
+				{
+					"src": "/images/@mellower_kr/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

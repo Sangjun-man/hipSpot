@@ -1,0 +1,47 @@
+{
+	"instaId": "@saddlerhaus_bakery",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@saddlerhaus_bakery/store/4.jpg"
+				},
+				{
+					"src": "/images/@saddlerhaus_bakery/store/2.jpg"
+				},
+				{
+					"src": "/images/@saddlerhaus_bakery/store/3.jpg"
+				},
+				{
+					"src": "/images/@saddlerhaus_bakery/store/1.jpg"
+				},
+				{
+					"src": "/images/@saddlerhaus_bakery/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@saddlerhaus_bakery/menu/4.jpg"
+				},
+				{
+					"src": "/images/@saddlerhaus_bakery/menu/2.jpg"
+				},
+				{
+					"src": "/images/@saddlerhaus_bakery/menu/3.jpg"
+				},
+				{
+					"src": "/images/@saddlerhaus_bakery/menu/1.jpg"
+				},
+				{
+					"src": "/images/@saddlerhaus_bakery/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

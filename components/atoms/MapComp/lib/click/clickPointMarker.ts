@@ -1,5 +1,6 @@
 import mapboxgl, { GeoJSONSource } from "mapbox-gl";
 import { useSetRecoilState } from "recoil";
+import { getImageDataJson } from "../../../../../libs/api/image";
 import { getOnePlaceInfo } from "../../../../../libs/api/place";
 import { infoPropsStateAtom, InfoPropsStateType } from "../../../../../libs/states/infoWindowState";
 import { TabState } from "../../../../../libs/types/infowindow";
@@ -37,6 +38,7 @@ export const clickPointMarker = ({ map, sourceId, clusterLayerId, setInfoProps =
             const { instaId } = feature.properties!
             const info = await getOnePlaceInfo(instaId);
             const { address, businessDay, contactNum, kakaoMapUrl, naverMapUrl, menu, placeName, review } = info;
+            
             const infoProps: InfoPropsStateType = {
                 contentsArgs: {
                     placeName,
@@ -45,25 +47,14 @@ export const clickPointMarker = ({ map, sourceId, clusterLayerId, setInfoProps =
                         { title: "주소", content: address },
                         { title: '전화번호', content: contactNum },
                     ],
-                    instagram: instaId
+                    instaId
                 },
-                imageList: [
-                    { src: `/images/${instaId}/0.jpg` },
-                    { src: `/images/${instaId}/1.jpg` },
-                    { src: `/images/${instaId}/2.jpg` },
-                    { src: `/images/${instaId}/3.jpg` },
-                    { src: `/images/${instaId}/4.jpg` },
-                    { src: `/images/${instaId}/5.jpg` },
-                    { src: `/images/${instaId}/6.jpg` },
-                    { src: `/images/${instaId}/7.jpg` },
-                ],
+          
                 menuInfoList: [],
-                imageTabList: [],
             }
+            console.log(infoProps)
             setInfoProps(infoProps);
-            
-
-            const midTabState = { ...tabState, top: popUpHeights.middle };
+            const midTabState = { onHandling:false, top: popUpHeights.middle ,popUpState:"middle"};
 
             setTabState(midTabState)
 

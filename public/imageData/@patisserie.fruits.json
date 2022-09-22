@@ -1,0 +1,47 @@
+{
+	"instaId": "@patisserie.fruits",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@patisserie.fruits/store/4.jpg"
+				},
+				{
+					"src": "/images/@patisserie.fruits/store/2.jpg"
+				},
+				{
+					"src": "/images/@patisserie.fruits/store/3.jpg"
+				},
+				{
+					"src": "/images/@patisserie.fruits/store/1.jpg"
+				},
+				{
+					"src": "/images/@patisserie.fruits/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@patisserie.fruits/menu/4.jpg"
+				},
+				{
+					"src": "/images/@patisserie.fruits/menu/2.jpg"
+				},
+				{
+					"src": "/images/@patisserie.fruits/menu/3.jpg"
+				},
+				{
+					"src": "/images/@patisserie.fruits/menu/1.jpg"
+				},
+				{
+					"src": "/images/@patisserie.fruits/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

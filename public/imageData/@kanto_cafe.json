@@ -1,0 +1,47 @@
+{
+	"instaId": "@kanto_cafe",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@kanto_cafe/store/4.jpg"
+				},
+				{
+					"src": "/images/@kanto_cafe/store/2.jpg"
+				},
+				{
+					"src": "/images/@kanto_cafe/store/3.jpg"
+				},
+				{
+					"src": "/images/@kanto_cafe/store/1.jpg"
+				},
+				{
+					"src": "/images/@kanto_cafe/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@kanto_cafe/menu/4.jpg"
+				},
+				{
+					"src": "/images/@kanto_cafe/menu/2.jpg"
+				},
+				{
+					"src": "/images/@kanto_cafe/menu/3.jpg"
+				},
+				{
+					"src": "/images/@kanto_cafe/menu/1.jpg"
+				},
+				{
+					"src": "/images/@kanto_cafe/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

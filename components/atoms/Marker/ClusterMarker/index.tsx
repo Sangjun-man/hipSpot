@@ -3,7 +3,7 @@ import styles from "./cluster.module.css";
 
 export const RoundedMarker = (feature, index: number) => {
   const { borderColor = "", id, instaId } = feature.properties;
-  const src = `/images/${instaId}/0.jpg`;
+  const src = `/images/${instaId}/store/0.jpg`;
   const [width, height] = [60, 60];
 
   const classList = ["mapgl-marker-cluster", `cluster-${index + 1}`].join(" ");

@@ -1,0 +1,41 @@
+{
+	"instaId": "@5to7__seongsu",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@5to7__seongsu/store/4.jpg"
+				},
+				{
+					"src": "/images/@5to7__seongsu/store/2.jpg"
+				},
+				{
+					"src": "/images/@5to7__seongsu/store/3.jpg"
+				},
+				{
+					"src": "/images/@5to7__seongsu/store/1.jpg"
+				},
+				{
+					"src": "/images/@5to7__seongsu/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@5to7__seongsu/menu/2.jpg"
+				},
+				{
+					"src": "/images/@5to7__seongsu/menu/1.jpg"
+				},
+				{
+					"src": "/images/@5to7__seongsu/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

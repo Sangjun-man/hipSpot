@@ -1,0 +1,47 @@
+{
+	"instaId": "@we_sweets_",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@we_sweets_/store/4.jpg"
+				},
+				{
+					"src": "/images/@we_sweets_/store/2.jpg"
+				},
+				{
+					"src": "/images/@we_sweets_/store/3.jpg"
+				},
+				{
+					"src": "/images/@we_sweets_/store/1.jpg"
+				},
+				{
+					"src": "/images/@we_sweets_/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@we_sweets_/menu/4.jpg"
+				},
+				{
+					"src": "/images/@we_sweets_/menu/2.jpg"
+				},
+				{
+					"src": "/images/@we_sweets_/menu/3.jpg"
+				},
+				{
+					"src": "/images/@we_sweets_/menu/1.jpg"
+				},
+				{
+					"src": "/images/@we_sweets_/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

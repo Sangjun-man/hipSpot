@@ -20,7 +20,7 @@ export const PointMarkerString = ({
   scale = 1,
   placeName = "",
 }: MarkerProps) => {
-  const src = instaId ? `/images/${instaId}/0.jpg` : "/images/@4fbhouse/0.jpg";
+  const src = `/images/${instaId}/store/0.jpg`;
   const componentCss = {
     wrapperStyle: css`
       box-sizing: border-box;

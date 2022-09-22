@@ -1,0 +1,47 @@
+{
+	"instaId": "@yeonmujang",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@yeonmujang/store/4.jpg"
+				},
+				{
+					"src": "/images/@yeonmujang/store/2.jpg"
+				},
+				{
+					"src": "/images/@yeonmujang/store/3.jpg"
+				},
+				{
+					"src": "/images/@yeonmujang/store/1.jpg"
+				},
+				{
+					"src": "/images/@yeonmujang/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@yeonmujang/menu/4.jpg"
+				},
+				{
+					"src": "/images/@yeonmujang/menu/2.jpg"
+				},
+				{
+					"src": "/images/@yeonmujang/menu/3.jpg"
+				},
+				{
+					"src": "/images/@yeonmujang/menu/1.jpg"
+				},
+				{
+					"src": "/images/@yeonmujang/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

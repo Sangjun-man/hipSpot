@@ -1,0 +1,47 @@
+{
+	"instaId": "@finz.seoul",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@finz.seoul/store/4.jpg"
+				},
+				{
+					"src": "/images/@finz.seoul/store/2.jpg"
+				},
+				{
+					"src": "/images/@finz.seoul/store/3.jpg"
+				},
+				{
+					"src": "/images/@finz.seoul/store/1.jpg"
+				},
+				{
+					"src": "/images/@finz.seoul/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@finz.seoul/menu/4.jpg"
+				},
+				{
+					"src": "/images/@finz.seoul/menu/2.jpg"
+				},
+				{
+					"src": "/images/@finz.seoul/menu/3.jpg"
+				},
+				{
+					"src": "/images/@finz.seoul/menu/1.jpg"
+				},
+				{
+					"src": "/images/@finz.seoul/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

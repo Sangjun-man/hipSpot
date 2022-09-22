@@ -1,0 +1,47 @@
+{
+	"instaId": "@bnhrcoffee",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@bnhrcoffee/store/4.jpg"
+				},
+				{
+					"src": "/images/@bnhrcoffee/store/2.jpg"
+				},
+				{
+					"src": "/images/@bnhrcoffee/store/3.jpg"
+				},
+				{
+					"src": "/images/@bnhrcoffee/store/1.jpg"
+				},
+				{
+					"src": "/images/@bnhrcoffee/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@bnhrcoffee/menu/4.jpg"
+				},
+				{
+					"src": "/images/@bnhrcoffee/menu/2.jpg"
+				},
+				{
+					"src": "/images/@bnhrcoffee/menu/3.jpg"
+				},
+				{
+					"src": "/images/@bnhrcoffee/menu/1.jpg"
+				},
+				{
+					"src": "/images/@bnhrcoffee/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

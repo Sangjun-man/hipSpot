@@ -1,0 +1,47 @@
+{
+	"instaId": "@rufruf_museum",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@rufruf_museum/store/4.jpg"
+				},
+				{
+					"src": "/images/@rufruf_museum/store/2.jpg"
+				},
+				{
+					"src": "/images/@rufruf_museum/store/3.jpg"
+				},
+				{
+					"src": "/images/@rufruf_museum/store/1.jpg"
+				},
+				{
+					"src": "/images/@rufruf_museum/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@rufruf_museum/menu/4.jpg"
+				},
+				{
+					"src": "/images/@rufruf_museum/menu/2.jpg"
+				},
+				{
+					"src": "/images/@rufruf_museum/menu/3.jpg"
+				},
+				{
+					"src": "/images/@rufruf_museum/menu/1.jpg"
+				},
+				{
+					"src": "/images/@rufruf_museum/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

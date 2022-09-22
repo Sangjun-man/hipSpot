@@ -1,0 +1,47 @@
+{
+	"instaId": "@marelle.official",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@marelle.official/store/4.jpg"
+				},
+				{
+					"src": "/images/@marelle.official/store/2.jpg"
+				},
+				{
+					"src": "/images/@marelle.official/store/3.jpg"
+				},
+				{
+					"src": "/images/@marelle.official/store/1.jpg"
+				},
+				{
+					"src": "/images/@marelle.official/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@marelle.official/menu/4.jpg"
+				},
+				{
+					"src": "/images/@marelle.official/menu/2.jpg"
+				},
+				{
+					"src": "/images/@marelle.official/menu/3.jpg"
+				},
+				{
+					"src": "/images/@marelle.official/menu/1.jpg"
+				},
+				{
+					"src": "/images/@marelle.official/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

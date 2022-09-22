@@ -1,0 +1,47 @@
+{
+	"instaId": "@goollimm",
+	"data": [
+		{
+			"type": "storeImage",
+			"name": "업체제공사진",
+			"imageList": [
+				{
+					"src": "/images/@goollimm/store/4.jpg"
+				},
+				{
+					"src": "/images/@goollimm/store/2.jpg"
+				},
+				{
+					"src": "/images/@goollimm/store/3.jpg"
+				},
+				{
+					"src": "/images/@goollimm/store/1.jpg"
+				},
+				{
+					"src": "/images/@goollimm/store/0.jpg"
+				}
+			]
+		},
+		{
+			"type": "menuImage",
+			"imageList": [
+				{
+					"src": "/images/@goollimm/menu/4.jpg"
+				},
+				{
+					"src": "/images/@goollimm/menu/2.jpg"
+				},
+				{
+					"src": "/images/@goollimm/menu/3.jpg"
+				},
+				{
+					"src": "/images/@goollimm/menu/1.jpg"
+				},
+				{
+					"src": "/images/@goollimm/menu/0.jpg"
+				}
+			],
+			"name": "메뉴"
+		}
+	]
+}

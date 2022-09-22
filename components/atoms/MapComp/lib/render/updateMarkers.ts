@@ -54,7 +54,7 @@ export const updateMarkers = async ({ map  , allPointMarkers, clusterMarkers,sou
 
 
 async function addClusterLeaves(source, clusterMarkers, { clusterId, coord, id, pointCount }) {
-  console.log("클러스터 잎들 추가")
+  // console.log("클러스터 잎들 추가")
     let marker = clusterMarkers[clusterId];
     let prom = new Promise((resolve, reject) => {
       source?.getClusterLeaves(clusterId, 6, 0, (err, aFeatures) => {
