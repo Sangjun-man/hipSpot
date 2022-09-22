@@ -13,28 +13,31 @@ export type ScreenSizeStateType = {
     innerWidth: number;
 }
 
-export interface ImageTabList {
+export interface ImageTabListType {
     name: string;
     selected: boolean;
-  }
+    type: string;
+}
 
-export type InfoPropsStateType = 
-{
+export type InfoPropsStateType = {
     contentsArgs: {
         placeName: string,
         infoList:PlaceInfo[],
         instaId: string,
     },
-    // imageList: ImageCompProps[],
     menuInfoList : MenuInfo[],
-    // imageTabList: ImageTabList[]
-    }
+}
 
 export type ImageSlidePropsStateType = {
     imageList: ImageCompProps[],
-    imageTabList: ImageTabList[]
-    }
+    imageTabList: ImageTabListType[]
+}
 
+export type ImageDataType = {
+        type: string;
+        name: string;
+        imageList:ImageCompProps[]
+}[]
 
 export interface MenuInfo {
     menu: string;
@@ -78,7 +81,7 @@ export const infoPropsStateAtom = atom({
     }
 })
 
-const initImageList = [
+const initImageList :ImageCompProps[]= [
     { src: "/image/testImg.png" },
     { src: "/image/testImg2.png" },
     { src: "/image/testImg3.png" },
@@ -89,7 +92,7 @@ const initImageList = [
     { src: "/image/testImg2.png" },
     { src: "/image/testImg3.png" },
   ];
-  const initTabListState = [
+  const initTabListState :ImageTabListType[] = [
     { name: "내부사진", type:'storeImage',selected: false },
     { name: "외부사진", type:'storeImage',selected: true },
     { name: "추가로",type:'storeImage', selected: false },
@@ -112,4 +115,9 @@ export const imageTabListStateAtom = atom({
 export const imageListStateAtom = atom({
     key: "atom / imageListState",
     default : initImageList
+})
+
+export const imageRenderStateAtom = atom({
+    key: "atom / imageRenderState",
+    default: false
 })

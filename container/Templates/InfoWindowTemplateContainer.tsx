@@ -36,6 +36,7 @@ function InfoWindowContainer() {
   const [infoProps, setInfoProps] = useRecoilState<any>(infoPropsStateAtom);
 
   useEffect(() => {
+    // console.log("infoWindowRender");
     const tabState = async ({
       innerHeight,
       innerWidth,
@@ -57,7 +58,6 @@ function InfoWindowContainer() {
 
     (async () => {
       await tabState(screenSizeState);
-      // await imageData(infoProps.contentsArgs.instaId || "@4fbhouse");
       await init();
     })();
   }, []);

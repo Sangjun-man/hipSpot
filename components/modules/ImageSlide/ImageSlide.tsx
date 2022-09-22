@@ -1,7 +1,10 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { tabStateAtom } from "../../../libs/states/infoWindowState";
+import {
+  imageRenderStateAtom,
+  tabStateAtom,
+} from "../../../libs/states/infoWindowState";
 import { ImageCompProps } from "../../atoms/ImageComp";
 import * as S from "./style";
 
@@ -11,10 +14,12 @@ export interface ImageSlideProps {
 }
 
 function ImageSlide({ imageList }: ImageSlideProps) {
-  console.log(imageList);
+  // console.log("imageList 전달값 : ", imageList);
   const imageSize = { base: 260, full: 400 };
   const [size, setSize] = useState<number>(imageSize.base);
-  const tabStateProps = useRecoilValue(tabStateAtom);
+
+  const tabState = useRecoilValue(tabStateAtom);
+  const imageRenderState = useRecoilValue(imageRenderStateAtom);
 
   function slideEventListener(e: any) {
     const y = e.clientY;
@@ -38,7 +43,16 @@ function ImageSlide({ imageList }: ImageSlideProps) {
   useEffect(() => {
     const slideWrapperElem = document.getElementById("slide")!;
     slideWrapperElem.addEventListener("forSlide", slideEventListener);
-  }, []);
+    if (tabState.popUpState === "thumbNail") {
+      setSize(imageSize.base);
+      slideWrapperElem.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
+  }, [tabState]);
+
+  useEffect(() => {
+    const slideWrapperElem = document.getElementById("slide")!;
+    slideWrapperElem.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [imageRenderState]);
 
   return (
     <S.ImageSlideWrapper>
