@@ -89,7 +89,7 @@ function ImageSlideContainer({ instaId, tabState }: ImageSlideContainerProps) {
           onChangeImageTab={onChangeImageTab}
         />
       )}
-      <ImageSlide imageList={imageListState}></ImageSlide>;
+      <ImageSlide imageList={imageListState}></ImageSlide>
     </>
   );
 }

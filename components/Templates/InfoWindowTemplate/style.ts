@@ -30,7 +30,7 @@ export const ImageListWrapper = styled.div`
   }
 `
 export const InfoWrapper = styled.div`
-  margin-top:24px;
+  margin-top:14px;
   & > div{
     margin-top:16px;
   }
