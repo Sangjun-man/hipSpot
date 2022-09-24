@@ -17,12 +17,21 @@ export interface PopUpWindowProps {
   id: string;
   tabState: TabState;
   children: ReactChildren | ReactNode;
+  smoothLoopId: { id: number };
 }
 
-const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
+const PopUpWindow = ({
+  id,
+  tabState,
+  children,
+  smoothLoopId,
+}: PopUpWindowProps) => {
   const setTabState = useSetRecoilState(tabStateAtom);
-  let smoothLoopId: { id: number } = { id: -1 };
   const modifyRef = useRef<number>(0);
+  const startCoord = useRef<{ startX: number; startY: number }>({
+    startX: 0,
+    startY: 0,
+  });
   const popUpHeights = {
     top: -30,
     middle: window.innerHeight / 2,
@@ -59,6 +68,7 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
     target.style.setProperty("padding", "calc(var(--vh,1vh) * 100) 0");
     modifyRef.current =
       target.parentElement.getBoundingClientRect().top - e.touches[0].clientY;
+    console.log(e.touches[0].clientY);
   };
 
   const onMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -160,6 +170,17 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       setTabState(endPointTabState);
     }
   };
+
+  const onPopUpTouchMove: TouchEventHandler<HTMLDivElement> = (e) => {
+    if (e.currentTarget.scrollTop < -100) {
+      if (smoothLoopId) cancelAnimationFrame(smoothLoopId.id);
+      const endPointTabState = { ...tabState };
+      endPointTabState.top = popUpHeights.bottom;
+      endPointTabState.onHandling = false;
+      endPointTabState.popUpState = "half";
+      setTabState(endPointTabState);
+    }
+  };
   useEffect(() => {
     smoothMove({
       parentElement: document.getElementById("popUpWindow") as HTMLDivElement,
@@ -169,7 +190,7 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
   });
   return (
     <S.Layout id={id} tabState={tabState}>
-      <S.Wrapper>{children}</S.Wrapper>
+      <S.Wrapper onTouchMove={onPopUpTouchMove}>{children}</S.Wrapper>
       <S.ResizeSideStyle>
         <VscGrabber />
       </S.ResizeSideStyle>

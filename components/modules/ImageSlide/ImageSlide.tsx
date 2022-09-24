@@ -1,5 +1,11 @@
 import Image from "next/image";
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  MouseEventHandler,
+  TouchEventHandler,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useRecoilValue } from "recoil";
 import {
   imageRenderStateAtom,

@@ -25,12 +25,18 @@ const InfoWindowTemplate = ({
   screenSizeState,
   infoProps,
 }: InfoWindowTemplateProps) => {
+  let smoothLoopId: { id: number } = { id: -1 };
   return (
-    <PopUpWindow tabState={tabState} id="popUpWindow">
+    <PopUpWindow
+      tabState={tabState}
+      id="popUpWindow"
+      smoothLoopId={smoothLoopId}
+    >
       <S.TopBarWrapper>
         <S.PlaceName>{infoProps.contentsArgs.placeName}</S.PlaceName>
         <S.CloseIconWrapper
           onClick={() => {
+            window.cancelAnimationFrame(smoothLoopId.id);
             const returnTabState: TabState = {
               ...tabState,
               top: screenSizeState.innerHeight - 30,
