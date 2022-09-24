@@ -4,6 +4,7 @@ import React, {
   ReactNode,
   TouchEventHandler,
   useEffect,
+  useRef,
 } from "react";
 import { VscGrabber } from "react-icons/vsc";
 import { useSetRecoilState } from "recoil";
@@ -21,6 +22,7 @@ export interface PopUpWindowProps {
 const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
   const setTabState = useSetRecoilState(tabStateAtom);
   let smoothLoopId: { id: number } = { id: -1 };
+  const modifyRef = useRef<number>(0);
   const popUpHeights = {
     top: -30,
     middle: window.innerHeight / 2,
@@ -38,7 +40,10 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       ...tabState,
       onHandling: true,
     };
-    target.style.setProperty("padding", "var(--vh,1vh) * 100 0");
+    target.style.setProperty("padding", "calc(var(--vh,1vh) * 100) 0");
+    console.log(target.parentElement.getBoundingClientRect().top, e.clientY);
+    modifyRef.current =
+      target.parentElement.getBoundingClientRect().top - e.clientY;
   };
   const onTouchStart: TouchEventHandler<HTMLDivElement> = (e) => {
     if (smoothLoopId) {
@@ -51,7 +56,9 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       ...tabState,
       onHandling: true,
     };
-    target.style.setProperty("padding", "var(--vh,1vh) * 100 0");
+    target.style.setProperty("padding", "calc(var(--vh,1vh) * 100) 0");
+    modifyRef.current =
+      target.parentElement.getBoundingClientRect().top - e.touches[0].clientY;
   };
 
   const onMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -62,7 +69,11 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
         ...tabState,
         top: e.clientY,
       };
-      e.target.parentElement.style.setProperty("top", `${e.clientY - 15}px`);
+      e.target.parentElement.style.setProperty(
+        "top",
+        `${e.clientY + modifyRef.current}px`
+      );
+      e.target.style.setProperty("tranform", "translateY(-50%)");
 
       const slideEvent = new Event("forSlide");
       slideEvent.clientY = e.clientY;
@@ -81,12 +92,13 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       };
       e.target.parentElement.style.setProperty(
         "top",
-        `${e.touches[0].clientY - 15}px`
+        `${e.touches[0].clientY + modifyRef.current}px`
       );
 
       const slideEvent = new Event("forSlide");
       slideEvent.clientY = e.touches[0].clientY;
       document.getElementById("slide")?.dispatchEvent(slideEvent);
+      e.target.style.setProperty("tranform", "translateY(-50%)");
 
       return;
     }

@@ -13,6 +13,8 @@ export const TopBarWrapper = styled.div`
   width:100%;
   display:flex;
   justify-content:space-between;
+  position:relative;
+  z-index:1;
   `
 export const PlaceName = styled.div`
   ${FS_Title}

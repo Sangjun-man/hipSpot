@@ -34,12 +34,12 @@ export const Wrapper = styled.div`
 
 export const ResizeSide = styled.div<{ tabState: TabState }>`
     position:absolute;
+    z-index:0;
     top:0;
     width:100%;
     height:${props => props.tabState.popUpState === 'half' ? 500 : 60 }px;
     transform:translateY(-50%);
     transform:${props => props.tabState.popUpState  === 'half' && `translateY(-30px)`};
-    background-color:transparent;
     &:hover{
         cursor:row-resize;
     }
