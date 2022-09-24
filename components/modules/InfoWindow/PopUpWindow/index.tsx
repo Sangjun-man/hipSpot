@@ -50,6 +50,8 @@ const PopUpWindow = ({
       onHandling: true,
     };
     target.style.setProperty("padding", "calc(var(--vh,1vh) * 100) 0");
+    target.style.setProperty("transform", "translateY(-50%)");
+
     console.log(target.parentElement.getBoundingClientRect().top, e.clientY);
     modifyRef.current =
       target.parentElement.getBoundingClientRect().top - e.clientY;
@@ -66,6 +68,8 @@ const PopUpWindow = ({
       onHandling: true,
     };
     target.style.setProperty("padding", "calc(var(--vh,1vh) * 100) 0");
+    target.style.setProperty("transform", "translateY(-50%)");
+
     modifyRef.current =
       target.parentElement.getBoundingClientRect().top - e.touches[0].clientY;
     console.log(e.touches[0].clientY);
@@ -83,7 +87,6 @@ const PopUpWindow = ({
         "top",
         `${e.clientY + modifyRef.current}px`
       );
-      e.target.style.setProperty("tranform", "translateY(-50%)");
 
       const slideEvent = new Event("forSlide");
       slideEvent.clientY = e.clientY;
@@ -108,8 +111,6 @@ const PopUpWindow = ({
       const slideEvent = new Event("forSlide");
       slideEvent.clientY = e.touches[0].clientY;
       document.getElementById("slide")?.dispatchEvent(slideEvent);
-      e.target.style.setProperty("tranform", "translateY(-50%)");
-
       return;
     }
   };
@@ -139,6 +140,8 @@ const PopUpWindow = ({
       }
 
       target.style.setProperty("padding", "0px");
+      target.style.removeProperty("transform");
+
       setTabState(endPointTabState);
     }
   };
@@ -167,6 +170,8 @@ const PopUpWindow = ({
       }
 
       target.style.setProperty("padding", "0px");
+      target.style.removeProperty("transform");
+
       setTabState(endPointTabState);
     }
   };

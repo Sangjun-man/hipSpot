@@ -14,7 +14,9 @@ export const TopBarWrapper = styled.div`
   display:flex;
   justify-content:space-between;
   position:relative;
+  &> div {
   z-index:1;
+  }
   `
 export const PlaceName = styled.div`
   ${FS_Title}
