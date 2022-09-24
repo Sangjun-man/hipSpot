@@ -24,7 +24,7 @@ export const CloseIconWrapper = styled.div`
    `
 
 export const ImageListWrapper = styled.div`
-  margin-top:12px;
+  margin-top:10px;
   & > div+ div {
     margin-top:8px;
   }

@@ -3,12 +3,12 @@ import { TabState } from "../../../../libs/types/infowindow";
 interface smoothMoveArgs {
     parentElement: HTMLDivElement;
     endPointTabState: TabState;
+    smoothLoopId: { id: number  };
 }
 
 
-export default function smoothMove({parentElement, endPointTabState }:smoothMoveArgs) {   
+export default function smoothMove({parentElement, endPointTabState, smoothLoopId }:smoothMoveArgs) {   
     let debounce = 60;
-    const smoothLoopId = { id: -1 };
     let curY = parentElement.getBoundingClientRect().y;
     function loop() {
 

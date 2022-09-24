@@ -38,7 +38,7 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       ...tabState,
       onHandling: true,
     };
-    target.style.setProperty("padding", "100vh 0");
+    target.style.setProperty("padding", "var(--vh,1vh) * 100 0");
   };
   const onTouchStart: TouchEventHandler<HTMLDivElement> = (e) => {
     if (smoothLoopId) {
@@ -51,7 +51,7 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       ...tabState,
       onHandling: true,
     };
-    target.style.setProperty("padding", "100vh 0");
+    target.style.setProperty("padding", "var(--vh,1vh) * 100 0");
   };
 
   const onMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -152,16 +152,18 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
     smoothMove({
       parentElement: document.getElementById("popUpWindow") as HTMLDivElement,
       endPointTabState: tabState,
+      smoothLoopId,
     });
   });
   return (
-    <S.Layout id={id}>
+    <S.Layout id={id} tabState={tabState}>
       <S.Wrapper>{children}</S.Wrapper>
       <S.ResizeSideStyle>
         <VscGrabber />
       </S.ResizeSideStyle>
 
       <S.ResizeSide
+        tabState={tabState}
         onMouseUp={onMouseUp}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}

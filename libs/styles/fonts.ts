@@ -4,8 +4,8 @@ import { css } from "@emotion/react";
 export const FS_Title = css`
   font-family: Pretendard Variable;
   font-size: 22px;
-  font-weight: bolder;
-  line-height: 26px;
+  font-weight: bold;
+  line-height: 24px;
   letter-spacing: -0.006em;
   text-align: left;
 `;

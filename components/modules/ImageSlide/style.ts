@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 
 
 export const ImageSlideWrapper = styled.div`
+    position: relative;
+    z-index:1;
 `
 
 export const ImageListWrapper = styled.div`

@@ -42,7 +42,7 @@ const InfoWindowTemplate = ({
           <MdClear />
         </S.CloseIconWrapper>
       </S.TopBarWrapper>
-      <S.ImageListWrapper>
+      <S.ImageListWrapper id="imageListWrapper">
         <ImageSlideContainer
           instaId={infoProps.contentsArgs.instaId}
           tabState={tabState}
