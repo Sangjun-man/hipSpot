@@ -1,9 +1,7 @@
 import { css } from "@emotion/react";
 import React, { useEffect } from "react";
-import { testImg } from "../../../public/image/data64/testImg";
 import { PointMarkerString, PointMarker } from "../Marker/PointMarker";
 import mapboxgl, { GeoJSONSource } from "mapbox-gl"; // or "const mapboxgl = require('mapbox-gl');"
-import { clickClusterLeavesMarker } from "./lib/click/clickClusterLeavesMarker";
 import { updateMarkers } from "./lib/render/updateMarkers";
 import { RoundedMarker } from "../Marker/ClusterMarker";
 import { renderMarkers } from "./lib/render/renderMarkers";
@@ -130,6 +128,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
         })();
       });
 
+      //
       map.on("render", async () => {
         if (!map.isSourceLoaded("placeList")) return;
         if (!allPointMarkers[Object.keys(allPointMarkers).length - 1]) {

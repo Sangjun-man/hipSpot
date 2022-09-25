@@ -1,9 +1,10 @@
 import mapboxgl, { GeoJSONSource } from "mapbox-gl";
-import { useSetRecoilState } from "recoil";
-import { getImageDataJson } from "../../../../../libs/api/image";
 import { getOnePlaceInfo } from "../../../../../libs/api/place";
-import { infoPropsStateAtom, InfoPropsStateType } from "../../../../../libs/states/infoWindowState";
+import {  InfoPropsStateType } from "../../../../../libs/states/infoWindowState";
 import { TabState } from "../../../../../libs/types/infowindow";
+import { clacRadAndDisToNewCoord } from "../../../../../libs/utils/clacRadAndDisToNewCoord";
+import { DISTANCE, RAD } from "../../../../../libs/utils/const/mapCamera";
+import markerFlytoOption from "../common/markerFlytoOption";
 
 export type clusterLeavesInfoParam = {
     map: mapboxgl.Map,
@@ -13,6 +14,8 @@ export type clusterLeavesInfoParam = {
     tabState: TabState;
     setTabState?: ( tabState : any )=>void;
 }
+
+
 
 export const clickPointMarker = ({ map, sourceId, clusterLayerId, setInfoProps = ()=>{console.log('error')} ,tabState, setTabState = ()=>{console.log('error')}}: clusterLeavesInfoParam) => {
     map.on("click", /* cluster layer id */ async (e) => {
@@ -30,14 +33,38 @@ export const clickPointMarker = ({ map, sourceId, clusterLayerId, setInfoProps =
         let features = map.queryRenderedFeatures(bbox, {
             layers: [clusterLayerId],
         });
+
+
+        
+        console.log(features)
         if (features.length === 0 || features === null) {
-            return console.log('features가 없어요')
+
+            console.log('features가 없어요')
+            console.log(e);
+       
         }
+
+
         else {
+
             const feature = features[0];
             const { instaId } = feature.properties!
+            const { coordinates } = feature.geometry
             const info = await getOnePlaceInfo(instaId);
             const { address, businessDay, contactNum, kakaoMapUrl, naverMapUrl, menu, placeName, review } = info;
+            
+            const newCoord = clacRadAndDisToNewCoord({
+                point: coordinates,
+                rad:RAD,
+                distance: DISTANCE,
+              });
+           
+            //   console.log(newCoord);
+            
+           //계산값이랑 좀 달라서 보정치 입힘 
+            map.flyTo(markerFlytoOption({coordinate:newCoord}));
+        
+        
             
             const infoProps: InfoPropsStateType = {
                 contentsArgs: {
@@ -52,13 +79,16 @@ export const clickPointMarker = ({ map, sourceId, clusterLayerId, setInfoProps =
           
                 menuInfoList: [],
             }
-            console.log(infoProps)
+  
+        
             setInfoProps(infoProps);
             const midTabState = { onHandling:false, top: popUpHeights.middle ,popUpState:"middle"};
-
             setTabState(midTabState)
 
 
         }
     });
 }
+
+
+
