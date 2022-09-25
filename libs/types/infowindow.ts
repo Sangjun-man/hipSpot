@@ -7,3 +7,7 @@ export interface TabState {
     popUpState: PopUpWindowState;
 }
   
+export interface CoordState{
+    startX: number;
+    startY: number;
+}

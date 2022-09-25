@@ -13,6 +13,10 @@ export const TopBarWrapper = styled.div`
   width:100%;
   display:flex;
   justify-content:space-between;
+  position:relative;
+  &> div {
+  z-index:1;
+  }
   `
 export const PlaceName = styled.div`
   ${FS_Title}
@@ -24,13 +28,13 @@ export const CloseIconWrapper = styled.div`
    `
 
 export const ImageListWrapper = styled.div`
-  margin-top:12px;
+  margin-top:10px;
   & > div+ div {
     margin-top:8px;
   }
 `
 export const InfoWrapper = styled.div`
-  margin-top:24px;
+  margin-top:14px;
   & > div{
     margin-top:16px;
   }

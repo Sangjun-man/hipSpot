@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { GrayColor } from '../../../../libs/styles/colors';
+import { TabState } from '../../../../libs/types/infowindow';
 
-export const Layout = styled.div`
+export const Layout = styled.div<{tabState:TabState}>`
     position:fixed;
     min-width:300px;
     max-width:600px;
-    height:calc(100vh + 30px);
+    height:${(props) =>props.tabState.popUpState ==='full' && `calc(100% + 30px)`};
     box-sizing: border-box;
-
     transform : translateX(calc(50vw - 50%));
     top: calc(100% - 30px);
     width:100%;
@@ -32,12 +32,14 @@ export const Wrapper = styled.div`
 `
 
 
-export const ResizeSide = styled.div`
+export const ResizeSide = styled.div<{ tabState: TabState }>`
     position:absolute;
+    z-index:0;
     top:0;
     width:100%;
-    height:60px;
+    height:${props => props.tabState.popUpState === 'half' ? 500 : 120 }px;
     transform:translateY(-50%);
+    transform:${props => !props.tabState.onHandling && `translateY(-60px)`};
     &:hover{
         cursor:row-resize;
     }

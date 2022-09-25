@@ -15,47 +15,49 @@ import ImageSlideContainer from "../../../container/modules/ImageSlideContainer"
 export interface InfoWindowTemplateProps {
   infoProps: InfoPropsStateType;
   tabState: TabState;
-  setTabState: (TabState: TabState) => void;
-  screenSizeState: { innerWidth: number; innerHeight: number };
+  returnPageState: () => void;
 }
 
 const InfoWindowTemplate = ({
   tabState,
-  setTabState,
-  screenSizeState,
   infoProps,
+  returnPageState,
 }: InfoWindowTemplateProps) => {
+  let smoothLoopId: { id: number } = { id: -1 };
   return (
-    <PopUpWindow tabState={tabState} id="popUpWindow">
+    <PopUpWindow
+      tabState={tabState}
+      id="popUpWindow"
+      smoothLoopId={smoothLoopId}
+    >
       <S.TopBarWrapper>
         <S.PlaceName>{infoProps.contentsArgs.placeName}</S.PlaceName>
         <S.CloseIconWrapper
           onClick={() => {
-            const returnTabState: TabState = {
-              ...tabState,
-              top: screenSizeState.innerHeight - 30,
-              popUpState: "thumbNail",
-            };
-            setTabState(returnTabState);
+            window.cancelAnimationFrame(smoothLoopId.id);
+            returnPageState();
           }}
         >
           <MdClear />
         </S.CloseIconWrapper>
       </S.TopBarWrapper>
-      <S.ImageListWrapper>
+      <S.ImageListWrapper id="imageListWrapper">
         <ImageSlideContainer
           instaId={infoProps.contentsArgs.instaId}
           tabState={tabState}
         />
       </S.ImageListWrapper>
-
-      <S.InfoWrapper>
-        <Info infoList={infoProps.contentsArgs.infoList} />
-        <MenuTable menuInfoList={infoProps.menuInfoList}></MenuTable>
-      </S.InfoWrapper>
-      <S.BottomWrapper>
-        <FindWay />
-      </S.BottomWrapper>
+      {tabState.popUpState === "full" && (
+        <>
+          <S.InfoWrapper>
+            <Info infoList={infoProps.contentsArgs.infoList} />
+            <MenuTable menuInfoList={infoProps.menuInfoList}></MenuTable>
+          </S.InfoWrapper>
+          <S.BottomWrapper>
+            <FindWay />
+          </S.BottomWrapper>
+        </>
+      )}
     </PopUpWindow>
   );
 };

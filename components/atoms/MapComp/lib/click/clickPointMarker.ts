@@ -1,9 +1,11 @@
 import mapboxgl, { GeoJSONSource } from "mapbox-gl";
-import { useSetRecoilState } from "recoil";
-import { getImageDataJson } from "../../../../../libs/api/image";
 import { getOnePlaceInfo } from "../../../../../libs/api/place";
-import { infoPropsStateAtom, InfoPropsStateType } from "../../../../../libs/states/infoWindowState";
+import {  InfoPropsStateType } from "../../../../../libs/states/infoWindowState";
+import { CameraStateType } from "../../../../../libs/states/map/map";
 import { TabState } from "../../../../../libs/types/infowindow";
+import { clacRadAndDisToNewCoord } from "../../../../../libs/utils/clacRadAndDisToNewCoord";
+import { DISTANCE, RAD } from "../../../../../libs/utils/const/mapCamera";
+import markerFlytoOption from "../common/markerFlytoOption";
 
 export type clusterLeavesInfoParam = {
     map: mapboxgl.Map,
@@ -11,11 +13,29 @@ export type clusterLeavesInfoParam = {
     clusterLayerId: string,
     setInfoProps?: (info: any) => void;
     tabState: TabState;
-    setTabState?: ( tabState : any )=>void;
+    setTabState?: (tabState: any) => void;
+    cameraState: CameraStateType;
+    setCameraState: (setCameraState: CameraStateType) => void
+    cameraRef: any;
 }
 
-export const clickPointMarker = ({ map, sourceId, clusterLayerId, setInfoProps = ()=>{console.log('error')} ,tabState, setTabState = ()=>{console.log('error')}}: clusterLeavesInfoParam) => {
+
+
+export const clickPointMarker = ({ map,
+    sourceId,
+    clusterLayerId,
+    setInfoProps = () => { console.log('error') },
+    tabState, setTabState = () => {
+        console.log('error')
+    },
+    cameraState,
+    setCameraState,
+    cameraRef,
+}: clusterLeavesInfoParam) => {
     map.on("click", /* cluster layer id */ async (e) => {
+
+
+
         const popUpHeights = {
             top: -30,
             middle: window.innerHeight / 2,
@@ -30,35 +50,67 @@ export const clickPointMarker = ({ map, sourceId, clusterLayerId, setInfoProps =
         let features = map.queryRenderedFeatures(bbox, {
             layers: [clusterLayerId],
         });
+
+
+        
+        // console.log(features)
         if (features.length === 0 || features === null) {
-            return console.log('features가 없어요')
+
+            console.log('features가 없어요')
+       
         }
+
+
         else {
+            cameraRef.current = {...cameraRef.current, markerClicked:true}
+            setCameraState({ ...cameraRef.current, markerClicked: true });
+
             const feature = features[0];
             const { instaId } = feature.properties!
-            const info = await getOnePlaceInfo(instaId);
-            const { address, businessDay, contactNum, kakaoMapUrl, naverMapUrl, menu, placeName, review } = info;
+            const { coordinates } = feature.geometry
+            if (instaId) {
+                const info = await getOnePlaceInfo(instaId);
+                const { address, businessDay, contactNum, kakaoMapUrl, naverMapUrl, menu, placeName, review } = info;
             
-            const infoProps: InfoPropsStateType = {
-                contentsArgs: {
-                    placeName,
-                    infoList: [
-                        { title: "영업시간", content: businessDay },
-                        { title: "주소", content: address },
-                        { title: '전화번호', content: contactNum },
-                    ],
-                    instaId
-                },
+                const newCoord = clacRadAndDisToNewCoord({
+                    point: coordinates,
+                    rad: RAD,
+                    distance: DISTANCE,
+                });
+           
+                //   console.log(newCoord);
+            
+                //계산값이랑 좀 달라서 보정치 입힘 
+                map.flyTo(markerFlytoOption({
+                    coordinate:
+                        { lat: newCoord.lat, lng: newCoord.lng }
+                }));
+        
+        
+            
+                const infoProps: InfoPropsStateType = {
+                    contentsArgs: {
+                        placeName,
+                        infoList: [
+                            { title: "영업시간", content: businessDay },
+                            { title: "주소", content: address },
+                            { title: '전화번호', content: contactNum },
+                        ],
+                        instaId
+                    },
           
-                menuInfoList: [],
+                    menuInfoList: [],
+                }
+  
+        
+                setInfoProps(infoProps);
+                const midTabState = { onHandling: false, top: popUpHeights.middle, popUpState: "middle" };
+                setTabState(midTabState)
+
             }
-            console.log(infoProps)
-            setInfoProps(infoProps);
-            const midTabState = { onHandling:false, top: popUpHeights.middle ,popUpState:"middle"};
-
-            setTabState(midTabState)
-
-
         }
     });
 }
+
+
+

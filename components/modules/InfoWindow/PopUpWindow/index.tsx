@@ -4,10 +4,12 @@ import React, {
   ReactNode,
   TouchEventHandler,
   useEffect,
+  useRef,
 } from "react";
 import { VscGrabber } from "react-icons/vsc";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { tabStateAtom } from "../../../../libs/states/infoWindowState";
+import { cameraStateAtom } from "../../../../libs/states/map/map";
 import { TabState } from "../../../../libs/types/infowindow";
 import smoothMove from "./smoothMove";
 import * as S from "./style";
@@ -16,11 +18,19 @@ export interface PopUpWindowProps {
   id: string;
   tabState: TabState;
   children: ReactChildren | ReactNode;
+  smoothLoopId: { id: number };
 }
 
-const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
+const PopUpWindow = ({
+  id,
+  tabState,
+  children,
+  smoothLoopId,
+}: PopUpWindowProps) => {
   const setTabState = useSetRecoilState(tabStateAtom);
-  let smoothLoopId: { id: number } = { id: -1 };
+  const [cameraState, setCameraState] = useRecoilState(cameraStateAtom);
+  const modifyRef = useRef<number>(0);
+
   const popUpHeights = {
     top: -30,
     middle: window.innerHeight / 2,
@@ -38,7 +48,12 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       ...tabState,
       onHandling: true,
     };
-    target.style.setProperty("padding", "100vh 0");
+    target.style.setProperty("padding", "calc(var(--vh,1vh) * 100) 0");
+    target.style.setProperty("transform", "translateY(-50%)");
+
+    console.log(target.parentElement.getBoundingClientRect().top, e.clientY);
+    modifyRef.current =
+      target.parentElement.getBoundingClientRect().top - e.clientY;
   };
   const onTouchStart: TouchEventHandler<HTMLDivElement> = (e) => {
     if (smoothLoopId) {
@@ -51,7 +66,12 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       ...tabState,
       onHandling: true,
     };
-    target.style.setProperty("padding", "100vh 0");
+    target.style.setProperty("padding", "calc(var(--vh,1vh) * 100) 0");
+    target.style.setProperty("transform", "translateY(-50%)");
+
+    modifyRef.current =
+      target.parentElement.getBoundingClientRect().top - e.touches[0].clientY;
+    console.log(e.touches[0].clientY);
   };
 
   const onMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -62,7 +82,10 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
         ...tabState,
         top: e.clientY,
       };
-      e.target.parentElement.style.setProperty("top", `${e.clientY - 15}px`);
+      e.target.parentElement.style.setProperty(
+        "top",
+        `${e.clientY + modifyRef.current}px`
+      );
 
       const slideEvent = new Event("forSlide");
       slideEvent.clientY = e.clientY;
@@ -81,13 +104,12 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       };
       e.target.parentElement.style.setProperty(
         "top",
-        `${e.touches[0].clientY - 15}px`
+        `${e.touches[0].clientY + modifyRef.current}px`
       );
 
       const slideEvent = new Event("forSlide");
       slideEvent.clientY = e.touches[0].clientY;
       document.getElementById("slide")?.dispatchEvent(slideEvent);
-
       return;
     }
   };
@@ -113,10 +135,13 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       } else {
         endPointTabState.top = popUpHeights.bottom;
         endPointTabState.onHandling = false;
-        endPointTabState.popUpState = "half";
+        endPointTabState.popUpState = "thumbNail";
+        setCameraState({ ...cameraState, markerClicked: false });
       }
 
       target.style.setProperty("padding", "0px");
+      target.style.removeProperty("transform");
+
       setTabState(endPointTabState);
     }
   };
@@ -141,27 +166,44 @@ const PopUpWindow = ({ id, tabState, children }: PopUpWindowProps) => {
       } else {
         endPointTabState.top = popUpHeights.bottom;
         endPointTabState.onHandling = false;
-        endPointTabState.popUpState = "half";
+        endPointTabState.popUpState = "thumbNail";
+        setCameraState({ ...cameraState, markerClicked: false });
       }
 
       target.style.setProperty("padding", "0px");
+      target.style.removeProperty("transform");
+
       setTabState(endPointTabState);
+    }
+  };
+
+  const onPopUpTouchMove: TouchEventHandler<HTMLDivElement> = (e) => {
+    if (e.currentTarget.scrollTop < -100) {
+      if (smoothLoopId) cancelAnimationFrame(smoothLoopId.id);
+      const endPointTabState = { ...tabState };
+      endPointTabState.top = popUpHeights.bottom;
+      endPointTabState.onHandling = false;
+      endPointTabState.popUpState = "thumbNail";
+      setTabState(endPointTabState);
+      setCameraState({ ...cameraState, markerClicked: false });
     }
   };
   useEffect(() => {
     smoothMove({
       parentElement: document.getElementById("popUpWindow") as HTMLDivElement,
       endPointTabState: tabState,
+      smoothLoopId,
     });
   });
   return (
-    <S.Layout id={id}>
-      <S.Wrapper>{children}</S.Wrapper>
+    <S.Layout id={id} tabState={tabState}>
+      <S.Wrapper onTouchMove={onPopUpTouchMove}>{children}</S.Wrapper>
       <S.ResizeSideStyle>
         <VscGrabber />
       </S.ResizeSideStyle>
 
       <S.ResizeSide
+        tabState={tabState}
         onMouseUp={onMouseUp}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}

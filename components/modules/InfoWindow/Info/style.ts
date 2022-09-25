@@ -8,6 +8,6 @@ export const InfoListWrapper = styled.div`
 `
 export const InfoWrapper = styled.div`
     & > div{
-        margin-top:4px;
+        margin-top:6px;
     }
 `

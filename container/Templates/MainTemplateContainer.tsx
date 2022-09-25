@@ -18,8 +18,6 @@ import {
   screenSizeStateAtom,
   tabStateAtom,
 } from "../../libs/states/infoWindowState";
-import { TabState } from "../../libs/types/infowindow";
-
 const MainContainer = () => {
   //main container의 useEffect 먼저 체크
   const [isInit, setIsinit] = useState<boolean>(false);
@@ -32,7 +30,6 @@ const MainContainer = () => {
   // );
   const [screenSizeState, setScreenSizeState] =
     useRecoilState(screenSizeStateAtom);
-  const [tabState, setTabState] = useRecoilState<TabState>(tabStateAtom);
   const [placeList, setPlaceList] = useRecoilState<Array<Place>>(placeListAtom);
   const [geoJson, setGeoJson] = useRecoilState<any>(geoJsonAtom);
   const categories = useRecoilValue(

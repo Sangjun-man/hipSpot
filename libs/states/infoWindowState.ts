@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 import { ImageCompProps } from "../../components/atoms/ImageComp";
-import { TabState } from "../types/infowindow";
+import { CoordState, TabState } from "../types/infowindow";
 
 
 export interface PlaceInfo {
@@ -68,6 +68,19 @@ export const tabStateAtom = atom<TabState>({
     }
 })
 
+export const coordStateAtom = atom<CoordState>({
+    key: "atom/ coordState",
+    default: {
+        startX: 0,
+        startY: 0,
+    }
+})
+
+export const modifyNumState = atom <number>({
+    key: "atom / modifyNumState",
+    default: 0
+})
+
 export const infoPropsStateAtom = atom({
     key: "atom / infoPropsState",
     default: {
@@ -117,6 +130,7 @@ export const imageListStateAtom = atom({
     default : initImageList
 })
 
+//ImageList 컴포넌트 다시 랜더링 하기 위해 사용하는 state
 export const imageRenderStateAtom = atom({
     key: "atom / imageRenderState",
     default: false
