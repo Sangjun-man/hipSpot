@@ -15,8 +15,6 @@ import ImageSlideContainer from "../../../container/modules/ImageSlideContainer"
 export interface InfoWindowTemplateProps {
   infoProps: InfoPropsStateType;
   tabState: TabState;
-  // setTabState: (TabState: TabState) => void;
-  // screenSizeState: { innerWidth: number; innerHeight: number };
   returnPageState: () => void;
 }
 
@@ -49,14 +47,17 @@ const InfoWindowTemplate = ({
           tabState={tabState}
         />
       </S.ImageListWrapper>
-
-      <S.InfoWrapper>
-        <Info infoList={infoProps.contentsArgs.infoList} />
-        <MenuTable menuInfoList={infoProps.menuInfoList}></MenuTable>
-      </S.InfoWrapper>
-      <S.BottomWrapper>
-        <FindWay />
-      </S.BottomWrapper>
+      {tabState.popUpState === "full" && (
+        <>
+          <S.InfoWrapper>
+            <Info infoList={infoProps.contentsArgs.infoList} />
+            <MenuTable menuInfoList={infoProps.menuInfoList}></MenuTable>
+          </S.InfoWrapper>
+          <S.BottomWrapper>
+            <FindWay />
+          </S.BottomWrapper>
+        </>
+      )}
     </PopUpWindow>
   );
 };

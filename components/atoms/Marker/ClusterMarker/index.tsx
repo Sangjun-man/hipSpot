@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { PinkColor } from "../../../../libs/styles/colors";
 import styles from "./cluster.module.css";
 
 export const RoundedMarker = (feature, index: number) => {
@@ -56,7 +57,8 @@ export const ClusterMarkerSeal = (pointCount: number, featureLength) => {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: pink;
+    background-color: ${PinkColor.lightTint};
+    color: black;
   `;
 
   const moreCounts = pointCount - featureLength;

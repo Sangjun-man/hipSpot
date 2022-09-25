@@ -57,7 +57,6 @@ export const clickPointMarker = ({ map,
         if (features.length === 0 || features === null) {
 
             console.log('features가 없어요')
-            console.log(e);
        
         }
 
@@ -69,46 +68,46 @@ export const clickPointMarker = ({ map,
             const feature = features[0];
             const { instaId } = feature.properties!
             const { coordinates } = feature.geometry
-
-            const info = await getOnePlaceInfo(instaId);
-            const { address, businessDay, contactNum, kakaoMapUrl, naverMapUrl, menu, placeName, review } = info;
+            if (instaId) {
+                const info = await getOnePlaceInfo(instaId);
+                const { address, businessDay, contactNum, kakaoMapUrl, naverMapUrl, menu, placeName, review } = info;
             
-            const newCoord = clacRadAndDisToNewCoord({
-                point: coordinates,
-                rad:RAD,
-                distance: DISTANCE,
-              });
+                const newCoord = clacRadAndDisToNewCoord({
+                    point: coordinates,
+                    rad: RAD,
+                    distance: DISTANCE,
+                });
            
-            //   console.log(newCoord);
+                //   console.log(newCoord);
             
-           //계산값이랑 좀 달라서 보정치 입힘 
-            map.flyTo(markerFlytoOption({
-                coordinate:
-                    {lat :newCoord.lat, lng :newCoord.lng}
-            }));
+                //계산값이랑 좀 달라서 보정치 입힘 
+                map.flyTo(markerFlytoOption({
+                    coordinate:
+                        { lat: newCoord.lat, lng: newCoord.lng }
+                }));
         
         
             
-            const infoProps: InfoPropsStateType = {
-                contentsArgs: {
-                    placeName,
-                    infoList: [
-                        { title: "영업시간", content: businessDay },
-                        { title: "주소", content: address },
-                        { title: '전화번호', content: contactNum },
-                    ],
-                    instaId
-                },
+                const infoProps: InfoPropsStateType = {
+                    contentsArgs: {
+                        placeName,
+                        infoList: [
+                            { title: "영업시간", content: businessDay },
+                            { title: "주소", content: address },
+                            { title: '전화번호', content: contactNum },
+                        ],
+                        instaId
+                    },
           
-                menuInfoList: [],
-            }
+                    menuInfoList: [],
+                }
   
         
-            setInfoProps(infoProps);
-            const midTabState = { onHandling:false, top: popUpHeights.middle ,popUpState:"middle"};
-            setTabState(midTabState)
+                setInfoProps(infoProps);
+                const midTabState = { onHandling: false, top: popUpHeights.middle, popUpState: "middle" };
+                setTabState(midTabState)
 
-
+            }
         }
     });
 }

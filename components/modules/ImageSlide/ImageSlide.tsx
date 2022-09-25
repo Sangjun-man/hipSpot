@@ -21,9 +21,8 @@ export interface ImageSlideProps {
 
 function ImageSlide({ imageList }: ImageSlideProps) {
   // console.log("imageList 전달값 : ", imageList);
-  const imageSize = { base: 260, full: 400 };
+  const imageSize = { base: 240, full: 400 };
   const [size, setSize] = useState<number>(imageSize.base);
-
   const tabState = useRecoilValue(tabStateAtom);
   const imageRenderState = useRecoilValue(imageRenderStateAtom);
 

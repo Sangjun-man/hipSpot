@@ -62,8 +62,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
 
       map.on("dragend", (e) => {
         if (!cameraRef.current.markerClicked) {
-          console.log("dragend", e.target.getCenter());
-          console.log(cameraRef);
+          // console.log("dragend", e.target.getCenter());
           cameraRef.current = {
             ...cameraRef.current,
             ...dragEventHandler(e, cameraRef),
@@ -188,13 +187,12 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
 
   useEffect(() => {
     const map = mapRef.current;
-    console.log(map);
     if (!map) {
       return;
     }
 
     const { pitch, bearing, center, markerClicked, zoom } = cameraState;
-    console.log("cameraState 변경 :", cameraState);
+    // console.log("cameraState 변경 :", cameraState);
 
     map.flyTo({
       pitch,
