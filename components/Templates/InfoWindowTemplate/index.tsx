@@ -15,15 +15,15 @@ import ImageSlideContainer from "../../../container/modules/ImageSlideContainer"
 export interface InfoWindowTemplateProps {
   infoProps: InfoPropsStateType;
   tabState: TabState;
-  setTabState: (TabState: TabState) => void;
-  screenSizeState: { innerWidth: number; innerHeight: number };
+  // setTabState: (TabState: TabState) => void;
+  // screenSizeState: { innerWidth: number; innerHeight: number };
+  returnPageState: () => void;
 }
 
 const InfoWindowTemplate = ({
   tabState,
-  setTabState,
-  screenSizeState,
   infoProps,
+  returnPageState,
 }: InfoWindowTemplateProps) => {
   let smoothLoopId: { id: number } = { id: -1 };
   return (
@@ -37,12 +37,7 @@ const InfoWindowTemplate = ({
         <S.CloseIconWrapper
           onClick={() => {
             window.cancelAnimationFrame(smoothLoopId.id);
-            const returnTabState: TabState = {
-              ...tabState,
-              top: screenSizeState.innerHeight - 30,
-              popUpState: "thumbNail",
-            };
-            setTabState(returnTabState);
+            returnPageState();
           }}
         >
           <MdClear />

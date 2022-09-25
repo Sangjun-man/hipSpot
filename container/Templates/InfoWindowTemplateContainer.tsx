@@ -9,6 +9,7 @@ import {
   screenSizeStateAtom,
   tabStateAtom,
 } from "../../libs/states/infoWindowState";
+import { cameraStateAtom, CameraStateType } from "../../libs/states/map/map";
 import { TabState } from "../../libs/types/infowindow";
 
 const initInfoProps: InfoPropsStateType = {
@@ -34,6 +35,19 @@ function InfoWindowContainer() {
     useRecoilState(screenSizeStateAtom);
   const [tabState, setTabState] = useRecoilState<TabState>(tabStateAtom);
   const [infoProps, setInfoProps] = useRecoilState<any>(infoPropsStateAtom);
+  const [cameraState, setCameraState] =
+    useRecoilState<CameraStateType>(cameraStateAtom);
+
+  const returnPageState = () => {
+    const returnTabState: TabState = {
+      ...tabState,
+      top: screenSizeState.innerHeight - 30,
+      popUpState: "thumbNail",
+    };
+    setTabState(returnTabState);
+    setCameraState({ ...cameraState, markerClicked: false });
+    console.log(cameraState, 123);
+  };
 
   useEffect(() => {
     // console.log("infoWindowRender");
@@ -67,8 +81,7 @@ function InfoWindowContainer() {
     <InfoWindowTemplate
       infoProps={infoProps}
       tabState={tabState}
-      setTabState={setTabState}
-      screenSizeState={screenSizeState}
+      returnPageState={returnPageState}
     />
   );
 }

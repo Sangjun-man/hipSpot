@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { PointMarkerString, PointMarker } from "../Marker/PointMarker";
-import mapboxgl, { GeoJSONSource } from "mapbox-gl"; // or "const mapboxgl = require('mapbox-gl');"
+import mapboxgl, { DragPanHandler, GeoJSONSource, Map } from "mapbox-gl"; // or "const mapboxgl = require('mapbox-gl');"
 import { updateMarkers } from "./lib/render/updateMarkers";
 import { RoundedMarker } from "../Marker/ClusterMarker";
 import { renderMarkers } from "./lib/render/renderMarkers";
@@ -13,6 +13,8 @@ import {
   infoPropsStateAtom,
   tabStateAtom,
 } from "../../../libs/states/infoWindowState";
+import { cameraStateAtom, CameraStateType } from "../../../libs/states/map/map";
+import { dragEventHandler } from "./lib/drag/dragEventHandler";
 
 export interface MapCompProps {
   markerList: Array<any>;
@@ -22,6 +24,15 @@ export interface MapCompProps {
 const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
   const setInfoProps = useSetRecoilState(infoPropsStateAtom);
   const [tabState, setTabState] = useRecoilState(tabStateAtom);
+  const [cameraState, setCameraState] = useRecoilState(cameraStateAtom);
+  const mapRef = useRef<Map | undefined>(undefined);
+  const cameraRef = useRef<CameraStateType>({
+    center: [127.0582071, 37.5447481],
+    pitch: 0,
+    bearing: 0,
+    markerClicked: false,
+    zoom: 17,
+  });
 
   useEffect(() => {
     mapboxgl.accessToken = `${process.env.MAPBOX_MAP_ALL_ACCESS_TOKKEN}`;
@@ -49,7 +60,20 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
         },
       });
 
+      map.on("dragend", (e) => {
+        if (!cameraRef.current.markerClicked) {
+          console.log("dragend", e.target.getCenter());
+          console.log(cameraRef);
+          cameraRef.current = {
+            ...cameraRef.current,
+            ...dragEventHandler(e, cameraRef),
+          };
+          setCameraState(cameraRef.current);
+        }
+      });
+
       map.on("load", () => {
+        mapRef.current = map;
         // console.log("mapbox geoJSON :", placeListGeoJson);
         map.addSource("placeList", {
           type: "geojson",
@@ -77,6 +101,9 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
           setInfoProps,
           tabState,
           setTabState,
+          cameraState,
+          setCameraState,
+          cameraRef,
         });
       });
 
@@ -128,7 +155,6 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
         })();
       });
 
-      //
       map.on("render", async () => {
         if (!map.isSourceLoaded("placeList")) return;
         if (!allPointMarkers[Object.keys(allPointMarkers).length - 1]) {
@@ -160,6 +186,28 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
     }
   });
 
+  useEffect(() => {
+    const map = mapRef.current;
+    console.log(map);
+    if (!map) {
+      return;
+    }
+
+    const { pitch, bearing, center, markerClicked, zoom } = cameraState;
+    console.log("cameraState 변경 :", cameraState);
+
+    map.flyTo({
+      pitch,
+      bearing,
+      center,
+      duration: 500,
+      zoom,
+    });
+
+    cameraRef.current = {
+      ...cameraState,
+    };
+  }, [cameraState]);
   return (
     <div
       id="map"
