@@ -7,8 +7,9 @@ import React, {
   useRef,
 } from "react";
 import { VscGrabber } from "react-icons/vsc";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { tabStateAtom } from "../../../../libs/states/infoWindowState";
+import { cameraStateAtom } from "../../../../libs/states/map/map";
 import { TabState } from "../../../../libs/types/infowindow";
 import smoothMove from "./smoothMove";
 import * as S from "./style";
@@ -27,11 +28,9 @@ const PopUpWindow = ({
   smoothLoopId,
 }: PopUpWindowProps) => {
   const setTabState = useSetRecoilState(tabStateAtom);
+  const [cameraState, setCameraState] = useRecoilState(cameraStateAtom);
   const modifyRef = useRef<number>(0);
-  const startCoord = useRef<{ startX: number; startY: number }>({
-    startX: 0,
-    startY: 0,
-  });
+
   const popUpHeights = {
     top: -30,
     middle: window.innerHeight / 2,
@@ -136,7 +135,8 @@ const PopUpWindow = ({
       } else {
         endPointTabState.top = popUpHeights.bottom;
         endPointTabState.onHandling = false;
-        endPointTabState.popUpState = "half";
+        endPointTabState.popUpState = "thumbNail";
+        setCameraState({ ...cameraState, markerClicked: false });
       }
 
       target.style.setProperty("padding", "0px");
@@ -166,7 +166,8 @@ const PopUpWindow = ({
       } else {
         endPointTabState.top = popUpHeights.bottom;
         endPointTabState.onHandling = false;
-        endPointTabState.popUpState = "half";
+        endPointTabState.popUpState = "thumbNail";
+        setCameraState({ ...cameraState, markerClicked: false });
       }
 
       target.style.setProperty("padding", "0px");
@@ -182,8 +183,9 @@ const PopUpWindow = ({
       const endPointTabState = { ...tabState };
       endPointTabState.top = popUpHeights.bottom;
       endPointTabState.onHandling = false;
-      endPointTabState.popUpState = "half";
+      endPointTabState.popUpState = "thumbNail";
       setTabState(endPointTabState);
+      setCameraState({ ...cameraState, markerClicked: false });
     }
   };
   useEffect(() => {
