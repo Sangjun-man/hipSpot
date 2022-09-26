@@ -81,13 +81,24 @@ export const modifyNumState = atom <number>({
     default: 0
 })
 
-export const infoPropsStateAtom = atom({
+export const infoPropsStateAtom = atom<{
+    contentsArgs: {
+        placeName: string;
+        infoList: PlaceInfo[];
+        instaId: string;
+    }
+    , menuInfoList: MenuInfo[]
+}>({
     key: "atom / infoPropsState",
     default: {
         contentsArgs: {
             placeName: "",
-            infoList:[],
-            instagram: "",
+            infoList: [
+                {
+                    title: '',
+                    content: ''
+                }],
+            instaId: "",
           },
         
           menuInfoList:[],

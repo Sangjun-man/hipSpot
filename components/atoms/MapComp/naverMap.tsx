@@ -1,4 +1,4 @@
-gitimport { css } from "@emotion/react";
+import { css } from "@emotion/react";
 import React, { useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import { testImg } from "../../../public/image/data64/testImg";

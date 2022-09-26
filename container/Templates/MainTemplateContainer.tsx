@@ -18,6 +18,7 @@ import {
   screenSizeStateAtom,
   tabStateAtom,
 } from "../../libs/states/infoWindowState";
+import NotFound from "../../pages/notFound";
 const MainContainer = () => {
   //main container의 useEffect 먼저 체크
   const [isInit, setIsinit] = useState<boolean>(false);
@@ -81,16 +82,9 @@ const MainContainer = () => {
   }, []);
 
   if (!isInit) {
-    return <div></div>;
+    return <NotFound></NotFound>;
   }
-  if (isInit) {
-    return (
-      <MainTemplate
-      // activeFilterList={activeFilterList}
-      // isFilterListOpen={isFilterListOpen}
-      />
-    );
-  }
+  return <MainTemplate />;
 };
 
 export default MainContainer;

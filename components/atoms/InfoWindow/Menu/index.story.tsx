@@ -10,7 +10,3 @@ export default {
 const Template: ComponentStory<typeof Menu> = (args) => <Menu {...args} />;
 
 export const FirstStory = Template.bind({});
-
-FirstStory.args = {
-  title: "아메리카노 4500원",
-};

@@ -8,7 +8,6 @@ import MenuTable from "../../modules/InfoWindow/MenuTable/MenuTable";
 import FindWay from "../../modules/InfoWindow/FindWay/FindWay";
 import PopUpWindow from "../../modules/InfoWindow/PopUpWindow";
 import { InfoPropsStateType } from "../../../libs/states/infoWindowState";
-import ImageTabList from "../../modules/InfoWindow/ImageTabList/ImageTabList";
 import { MdClear } from "react-icons/md";
 import { TabState } from "../../../libs/types/infowindow";
 import ImageSlideContainer from "../../../container/modules/ImageSlideContainer";
@@ -24,6 +23,8 @@ const InfoWindowTemplate = ({
   returnPageState,
 }: InfoWindowTemplateProps) => {
   let smoothLoopId: { id: number } = { id: -1 };
+  const { contentsArgs, menuInfoList } = infoProps;
+
   return (
     <PopUpWindow
       tabState={tabState}
@@ -31,7 +32,7 @@ const InfoWindowTemplate = ({
       smoothLoopId={smoothLoopId}
     >
       <S.TopBarWrapper>
-        <S.PlaceName>{infoProps.contentsArgs.placeName}</S.PlaceName>
+        <S.PlaceName>{contentsArgs.placeName}</S.PlaceName>
         <S.CloseIconWrapper
           onClick={() => {
             window.cancelAnimationFrame(smoothLoopId.id);
@@ -43,15 +44,15 @@ const InfoWindowTemplate = ({
       </S.TopBarWrapper>
       <S.ImageListWrapper id="imageListWrapper">
         <ImageSlideContainer
-          instaId={infoProps.contentsArgs.instaId}
+          instaId={contentsArgs.instaId}
           tabState={tabState}
         />
       </S.ImageListWrapper>
       {tabState.popUpState === "full" && (
         <>
           <S.InfoWrapper>
-            <Info infoList={infoProps.contentsArgs.infoList} />
-            <MenuTable menuInfoList={infoProps.menuInfoList}></MenuTable>
+            <Info infoList={contentsArgs.infoList} />
+            <MenuTable menuInfoList={menuInfoList}></MenuTable>
           </S.InfoWrapper>
           <S.BottomWrapper>
             <FindWay />

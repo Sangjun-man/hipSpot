@@ -1,21 +1,19 @@
 /** @type {import('next').NextConfig} */
 const Dotenv = require("dotenv-webpack");
 module.exports = {
+  typescript: { ignoreBuildErrors: true },
   reactStrictMode: true,
   images: {
     domains: ["images.unsplash.com"],
   },
   async rewrites() {
-    if (process.env.NODE_ENV == "production") {
-      return {
-        beforeFiles: [
-          {
-            destination: process.env.DESTINATION_URL,
-            source: process.env.SOURCE_PATH,
-          },
-        ],
-      };
-    }
+    console.log(process.env);
+    return [
+      {
+        destination: process.env.DESTINATION_URL,
+        source: process.env.SOURCE_PATH,
+      },
+    ];
   },
   webpack(config) {
     config.plugins.push(new Dotenv({ silent: true }));

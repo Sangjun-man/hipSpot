@@ -1,2 +1,2 @@
-export {default as InfoWindowLayout} from './InfoWindowLayout';
+export { InfoWindowLayout } from './InfoWindowLayout';
 export {default as MainLayout} from './MainLayout';

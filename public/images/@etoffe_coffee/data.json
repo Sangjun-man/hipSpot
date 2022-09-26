@@ -1,0 +1,13 @@
+[
+	{
+		"instaId": "@etoffe_coffee",
+		"storeImage": {
+			"counts": 5,
+			"name": "업체제공사진"
+		},
+		"menuImageCounts": {
+			"counts": 4,
+			"name": "메뉴"
+		}
+	}
+]

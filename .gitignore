@@ -25,6 +25,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
+.env.production
 .env.local
 .env.development.local
 .env.test.local
@@ -35,9 +37,3 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-
-#이미지파일
-/public/images
-
-.env
-.production.env

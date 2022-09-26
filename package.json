@@ -2,7 +2,7 @@
   "name": "hipspot",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production next start",
     "lint": "next lint",

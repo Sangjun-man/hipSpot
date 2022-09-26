@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 export interface ImageCompProps {
   src: StaticImageData | HTMLImageElement | string;

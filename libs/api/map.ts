@@ -1,5 +1,5 @@
 export const getGeoJson = async () => {
-    const url = "api/map/GeoJson"
+    const url = "/api/map/GeoJson"
     const option = {
      method: "GET",
     };

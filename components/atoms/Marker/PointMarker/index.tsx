@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { StaticImageData } from "next/image";
 
 export interface MarkerProps {
   src?: StaticImageData | HTMLImageElement | string;
@@ -20,6 +21,8 @@ export const PointMarkerString = ({
   scale = 1,
   placeName = "",
 }: MarkerProps) => {
+  // const src = `/_next/image?url=%2Fimages%2F${instaId}%2Fstore%2F0.jpg`;
+  // /_next/image?url=%2Fimages%2F%404fbhouse%2Fstore%2F3.jpg&w=1200&q=75
   const src = `/images/${instaId}/store/0.jpg`;
   const componentCss = {
     wrapperStyle: css`

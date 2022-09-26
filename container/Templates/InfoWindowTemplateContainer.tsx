@@ -11,10 +11,11 @@ import {
 } from "../../libs/states/infoWindowState";
 import { cameraStateAtom, CameraStateType } from "../../libs/states/map/map";
 import { TabState } from "../../libs/types/infowindow";
+import NotFound from "../../pages/notFound";
 
 const initInfoProps: InfoPropsStateType = {
   contentsArgs: {
-    placeName: "여기엔 가게 이름이 표시됩니다",
+    placeName: "가게이름",
     infoList: [
       { title: "영업시간", content: "월~일 10:00 - 19:00" },
       { title: "주소", content: "사랑시 고백구 행복동" },
@@ -46,7 +47,7 @@ function InfoWindowContainer() {
     };
     setTabState(returnTabState);
     setCameraState({ ...cameraState, markerClicked: false });
-    console.log(cameraState, 123);
+    // console.log(cameraState, 123);
   };
 
   useEffect(() => {
@@ -76,7 +77,7 @@ function InfoWindowContainer() {
     })();
   }, []);
 
-  if (!init) return <div></div>;
+  if (!init) return <NotFound />;
   return (
     <InfoWindowTemplate
       infoProps={infoProps}
