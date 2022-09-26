@@ -6,7 +6,7 @@ module.exports = {
     domains: ["images.unsplash.com"],
   },
   async rewrites() {
-    if (process.env.NODE_ENV == "development") {
+    if (process.env.NODE_ENV == "production") {
       return {
         beforeFiles: [
           {
