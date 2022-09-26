@@ -36,7 +36,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
 
   useEffect(() => {
     console.log(process.env);
-    mapboxgl.accessToken = `${process.env.MAPBOX_MAP_ALL_ACCESS_TOKKEN}`;
+    mapboxgl.accessToken = `pk.eyJ1Ijoic2FuZ2p1biIsImEiOiJjbDVnN3cxN20xaWlyM2psd3RwN2ZxeTVuIn0.AUYaeDWIJPHG62nFTNO49w`;
     if (!mapboxgl.supported())
       alert(
         "mapbox지도를 지원하지 않는 브라우저입니다, 다른 브라우저로 접속해주세요"
