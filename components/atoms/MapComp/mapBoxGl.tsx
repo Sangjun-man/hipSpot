@@ -35,6 +35,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
   });
 
   useEffect(() => {
+    console.log(process.env.MAPBOX_MAP_ALL_ACCESS_TOKKEN);
     mapboxgl.accessToken = `${process.env.MAPBOX_MAP_ALL_ACCESS_TOKKEN}`;
     if (!mapboxgl.supported())
       alert(
