@@ -37,9 +37,9 @@ export const ResizeSide = styled.div<{ tabState: TabState }>`
     z-index:0;
     top:0;
     width:100%;
-    height:${props => props.tabState.popUpState === 'half' ? 500 : 120 }px;
+    height:${props => props.tabState.popUpState === 'half' ? 500 : 120}px;
     transform:translateY(-50%);
-    transform:${props => !props.tabState.onHandling && `translateY(-60px)`};
+    transform:${props => props.tabState.popUpState ==='half' && `translateY(0px)`};
     &:hover{
         cursor:row-resize;
     }

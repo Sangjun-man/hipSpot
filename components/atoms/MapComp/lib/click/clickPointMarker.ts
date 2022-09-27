@@ -68,25 +68,31 @@ export const clickPointMarker = ({ map,
             const feature = features[0];
             const { instaId } = feature.properties!
             const { coordinates } = feature.geometry
-            if (instaId) {
-                const info = await getOnePlaceInfo(instaId);
-                const { address, businessDay, contactNum, kakaoMapUrl, naverMapUrl, menu, placeName, review } = info;
             
+
+            console.log(coordinates);
+
+          
+
+            if (instaId) {
+                            
+         
+                const info = await getOnePlaceInfo(instaId);
+
+                const { address, businessDay, contactNum, kakaoMapUrl, naverMapUrl, menu, placeName, review } = info;
+
                 const newCoord = clacRadAndDisToNewCoord({
                     point: coordinates,
                     rad: RAD,
                     distance: DISTANCE,
                 });
            
-                //   console.log(newCoord);
-            
-                //계산값이랑 좀 달라서 보정치 입힘 
                 map.flyTo(markerFlytoOption({
                     coordinate:
                         { lat: newCoord.lat, lng: newCoord.lng }
                 }));
-        
-        
+                  console.log(newCoord);
+            
             
                 const infoProps: InfoPropsStateType = {
                     contentsArgs: {

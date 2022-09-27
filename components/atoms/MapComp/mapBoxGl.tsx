@@ -35,7 +35,6 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
   });
 
   useEffect(() => {
-    console.log(process.env);
     mapboxgl.accessToken = `pk.eyJ1Ijoic2FuZ2p1biIsImEiOiJjbDVnN3cxN20xaWlyM2psd3RwN2ZxeTVuIn0.AUYaeDWIJPHG62nFTNO49w`;
     if (!mapboxgl.supported())
       alert(
@@ -48,7 +47,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
         center: [127.0582071, 37.5447481],
-        zoom: 17,
+        zoom: 13,
         maxZoom: 18,
         minZoom: 13,
         maxBounds: [
@@ -119,9 +118,11 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
         if (!map.isSourceLoaded("placeList")) return;
         if (allPointMarkers[0] && allClusterMarkers[0]) return;
         // console.log("placeListLoaded");
-
         source = map.getSource("placeList");
         const allFeatures = source._data.features;
+        await (async () => {
+          setTimeout(() => map.flyTo({ zoom: 18 }), 500);
+        })();
         await (async () => {
           console.log("makemarker");
           for (const feature of allFeatures) {
@@ -160,6 +161,7 @@ const MapComp = ({ markerList = [], placeListGeoJson = [] }: MapCompProps) => {
         if (!allPointMarkers[Object.keys(allPointMarkers).length - 1]) {
           return;
         }
+
         const { newMarkers, newClusterMarkers } = await updateMarkers({
           map,
           allPointMarkers,

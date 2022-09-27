@@ -13,8 +13,21 @@ const FindWay = ({}: InfoWindowContentProps) => {
     <S.FindWayWrapper>
       <I.Title> 길찾기 </I.Title>
       <S.ButtonWrapper>
-        <Button color="#03C75A">네이버 길찾기</Button>
-        <Button color="#FEE500" fontColor="#191919">
+        <Button
+          color="#03C75A"
+          onClick={() => {
+            alert("구현예정입니다.");
+          }}
+        >
+          네이버 길찾기
+        </Button>
+        <Button
+          color="#FEE500"
+          onClick={() => {
+            alert("구현예정입니다.");
+          }}
+          fontColor="#191919"
+        >
           카카오 길찾기
         </Button>
       </S.ButtonWrapper>

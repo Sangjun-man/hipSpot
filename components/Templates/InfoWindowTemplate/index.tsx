@@ -48,7 +48,7 @@ const InfoWindowTemplate = ({
           tabState={tabState}
         />
       </S.ImageListWrapper>
-      {tabState.popUpState === "full" && (
+      {tabState.popUpState === "full" ? (
         <>
           <S.InfoWrapper>
             <Info infoList={contentsArgs.infoList} />
@@ -58,6 +58,8 @@ const InfoWindowTemplate = ({
             <FindWay />
           </S.BottomWrapper>
         </>
+      ) : (
+        <div style={{ height: "100vh" }}> </div>
       )}
     </PopUpWindow>
   );

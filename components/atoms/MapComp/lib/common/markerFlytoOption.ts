@@ -1,7 +1,8 @@
 import { LngLatLike } from "mapbox-gl"
 import { DURATION, PITCH, RAD } from "../../../../../libs/utils/const/mapCamera"
 
-const markerFlytoOption = ({coordinate}:{coordinate:LngLatLike}) => {
+const markerFlytoOption = ({ coordinate }: { coordinate: LngLatLike }) => {   
+    console.log(coordinate,PITCH,RAD)
     
 
     return {
